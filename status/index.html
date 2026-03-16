@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indonesia Gov Portal Status — status.datarakyat.id</title>
+<meta name="description" content="Daily uptime monitoring of 52 Indonesian government data portals and APIs.">
+<meta property="og:title" content="Indonesia Gov Portal Status">
+<meta property="og:description" content="Daily uptime monitoring of 52 Indonesian government data portals and APIs. Checked from US and Jakarta.">
+<meta property="og:image" content="https://status.datarakyat.id/og-image.png">
+<meta property="og:url" content="https://status.datarakyat.id">
+<meta property="og:type" content="website">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="Indonesia Gov Portal Status">
+<meta name="twitter:image" content="https://status.datarakyat.id/og-image.png">
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🇮🇩</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  @font-face {
+    font-family: 'Bakso Sapi';
+    src: url('BaksoSapi.otf') format('opentype');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+  }
+
+  :root {
+    --font-bakso: 'Bakso Sapi', sans-serif;
+    --font-jakarta: 'Plus Jakarta Sans', sans-serif;
+    --font-mono: 'JetBrains Mono', monospace;
+    --red: #CE1126;
+    --red-dark: #A00E1F;
+    --bg: #fafafa; --surface: #fff; --surface-2: #f5f5f5;
+    --border: #e5e5e5; --border-light: #d4d4d4;
+    --text: #171717; --text-dim: #737373; --text-muted: #a3a3a3;
+    --up: #16a34a; --up-dim: rgba(22,163,74,.08);
+    --warn: #ca8a04; --warn-dim: rgba(202,138,4,.08);
+    --down: #dc2626; --down-dim: rgba(220,38,38,.08);
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    font-family: var(--font-jakarta);
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  .container { max-width: 880px; margin: 0 auto; padding: 2.5rem 1.25rem; }
+
+  /* Header */
+  header { margin-bottom: 2rem; }
+  header h1 {
+    font-family: var(--font-bakso);
+    font-size: 1.75rem;
+    font-weight: normal;
+    letter-spacing: .01em;
+    margin-bottom: .25rem;
+  }
+  header h1 .flag { margin-right: .25rem; }
+  header h1 .accent { color: var(--red); }
+  header p { color: var(--text-dim); font-size: .875rem; }
+  header a { color: var(--red); text-decoration: none; }
+  header a:hover { text-decoration: underline; }
+
+  /* Summary cards */
+  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+  .summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 10px;
+    padding: .875rem 1rem;
+    text-align: center;
+    box-shadow: 0 1px 2px rgba(0,0,0,.04);
+  }
+  .summary-card .num { font-family: var(--font-bakso); font-size: 2.25rem; line-height: 1.1; }
+  .summary-card .label { font-size: .7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; margin-top: .125rem; }
+  .num.up { color: var(--up); } .num.warn { color: var(--warn); } .num.down { color: var(--down); }
+
+  .last-check { font-size: .8rem; color: var(--text-muted); margin-bottom: 2rem; font-family: var(--font-mono); }
+
+  /* Tier groups */
+  .tier-group { margin-bottom: 1.75rem; }
+  .tier-header {
+    font-family: var(--font-bakso);
+    font-size: .95rem;
+    color: var(--text-dim);
+    padding: .5rem 0;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: .25rem;
+  }
+
+  /* Portal rows */
+  .portal-row {
+    display: grid;
+    grid-template-columns: 1fr 200px auto;
+    align-items: center;
+    padding: .625rem 0;
+    border-bottom: 1px solid var(--border);
+    gap: .75rem;
+  }
+  .portal-row:last-child { border-bottom: none; }
+  .portal-name { font-size: .875rem; font-weight: 600; }
+  .portal-name a { color: var(--text); text-decoration: none; transition: color .15s; }
+  .portal-name a:hover { color: var(--red); }
+  .portal-sub { font-size: .75rem; color: var(--text-dim); display: flex; align-items: center; gap: .375rem; margin-top: 1px; }
+
+  /* Source pills */
+  .pill {
+    font-family: var(--font-mono);
+    font-size: .6rem;
+    padding: 1px 5px;
+    border-radius: 3px;
+    font-weight: 500;
+    letter-spacing: .02em;
+  }
+  .pill.up { background: var(--up-dim); color: var(--up); }
+  .pill.warn { background: var(--warn-dim); color: var(--warn); }
+  .pill.down { background: var(--down-dim); color: var(--down); }
+
+  /* Spark chart */
+  .spark { display: flex; align-items: end; gap: 1px; height: 24px; }
+  .spark-bar {
+    width: 3.5px; min-height: 2px; border-radius: 1px;
+    transition: opacity .15s; cursor: default; position: relative;
+  }
+  .spark-bar.up { background: var(--up); height: 100%; }
+  .spark-bar.geo_blocked_intl, .spark-bar.geo_blocked_id { background: var(--warn); height: 75%; }
+  .spark-bar.blocked { background: var(--warn); height: 50%; }
+  .spark-bar.error, .spark-bar.down { background: var(--down); height: 30%; }
+  .spark-bar.dns_dead { background: var(--down); height: 8%; opacity: .4; }
+  .spark-bar.empty { background: var(--border); height: 3px; opacity: .5; }
+  .spark-bar:hover { opacity: .6; }
+
+  .tooltip {
+    position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+    background: var(--surface-2); border: 1px solid var(--border-light);
+    border-radius: 5px; padding: 3px 7px;
+    font-family: var(--font-mono); font-size: .65rem;
+    white-space: nowrap; pointer-events: none; opacity: 0; transition: opacity .15s; z-index: 10;
+  }
+  .spark-bar:hover .tooltip { opacity: 1; }
+
+  /* Status badge */
+  .portal-meta { text-align: right; }
+  .badge {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: .65rem; font-weight: 600;
+    padding: 2px 7px; border-radius: 4px;
+    text-transform: uppercase; letter-spacing: .03em;
+  }
+  .badge.up { background: var(--up-dim); color: var(--up); }
+  .badge.blocked, .badge.geo_blocked_intl, .badge.geo_blocked_id { background: var(--warn-dim); color: var(--warn); }
+  .badge.error, .badge.dns_dead, .badge.down { background: var(--down-dim); color: var(--down); }
+
+  /* Footer */
+  footer {
+    margin-top: 2.5rem; padding-top: 1.25rem;
+    border-top: 1px solid var(--border);
+    text-align: center;
+  }
+  footer p { font-size: .75rem; color: var(--text-muted); }
+  footer a { color: var(--text-dim); text-decoration: none; }
+  footer a:hover { color: var(--red); }
+  footer .brand { font-family: var(--font-bakso); color: var(--red); }
+
+  .loading { text-align: center; padding: 4rem; color: var(--text-dim); font-family: var(--font-mono); }
+
+  @media (max-width: 640px) {
+    .summary { grid-template-columns: repeat(2, 1fr); }
+    .portal-row { grid-template-columns: 1fr auto; }
+    .spark { display: none; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <header>
+    <h1><span class="flag">🇮🇩</span> Gov Portal <span class="accent">Status</span></h1>
+    <p>Daily uptime monitoring of 51 Indonesian government portals · Part of <a href="https://datarakyat.id">Data Rakyat</a></p>
+  </header>
+
+  <div class="summary" id="summary"></div>
+  <div class="last-check" id="last-check"></div>
+  <div id="portals"><div class="loading">Loading...</div></div>
+
+  <footer>
+    <p>
+      Checked daily from US + Jakarta 🇮🇩 ·
+      <a href="https://github.com/suryast/indonesia-gov-apis">Source</a> ·
+      <span class="brand">Data Rakyat</span>
+    </p>
+  </footer>
+</div>
+
+<script>
+const TIER_NAMES = {
+  1: "Open APIs",
+  2: "Scrapeable Web",
+  3: "Regional Open Data",
+  4: "Ministry-Specific",
+  5: "Transparency",
+  6: "Financial Sector",
+  7: "Civil Society & Geospatial",
+};
+
+const DAYS = 90;
+
+async function load() {
+  try {
+    const indexRes = await fetch("data/index.json");
+    const allDays = await indexRes.json();
+    const days = allDays.slice(-DAYS);
+
+    const dayData = {};
+    await Promise.all(days.map(async (d) => {
+      try { const r = await fetch(`data/${d}.json`); dayData[d] = await r.json(); } catch {}
+    }));
+
+    const latest = dayData[days[days.length - 1]];
+    if (!latest) { document.getElementById("portals").innerHTML = "<p>No data yet.</p>"; return; }
+
+    const portals = Object.values(latest.portals);
+    const up = portals.filter(p => p.status === "up").length;
+    const geo = portals.filter(p => p.status === "geo_blocked_intl" || p.status === "geo_blocked_id").length;
+    const blocked = portals.filter(p => p.status === "blocked").length;
+    const down = portals.filter(p => ["error", "dns_dead", "down"].includes(p.status)).length;
+
+    document.getElementById("summary").innerHTML = `
+      <div class="summary-card"><div class="num up">${up}</div><div class="label">Up</div></div>
+      <div class="summary-card"><div class="num warn">${geo}</div><div class="label">Geo-blocked</div></div>
+      <div class="summary-card"><div class="num warn">${blocked}</div><div class="label">CF Challenge</div></div>
+      <div class="summary-card"><div class="num down">${down}</div><div class="label">Down / Dead</div></div>
+    `;
+
+    const checkedAt = new Date(latest.checked_at);
+    const sources = latest.sources;
+    const srcText = sources
+      ? Object.values(sources).filter(s => s.available !== false).map(s => s.location).join(" + ")
+      : "Sydney, AU";
+    document.getElementById("last-check").textContent = `${checkedAt.toISOString().slice(0,16).replace('T',' ')} UTC · ${srcText}`;
+
+    const tiers = {};
+    for (const [pid, info] of Object.entries(latest.portals)) {
+      const t = info.tier || 1;
+      if (!tiers[t]) tiers[t] = [];
+      tiers[t].push({ id: pid, ...info });
+    }
+
+    let html = "";
+    for (const tier of Object.keys(tiers).sort((a, b) => a - b)) {
+      html += `<div class="tier-group"><div class="tier-header">${TIER_NAMES[tier] || `Tier ${tier}`}</div>`;
+
+      for (const portal of tiers[tier]) {
+        const padded = [];
+        for (let i = 0; i < DAYS; i++) {
+          const dayKey = days[days.length - DAYS + i];
+          if (dayKey && dayData[dayKey] && dayData[dayKey].portals[portal.id]) {
+            const s = dayData[dayKey].portals[portal.id].status;
+            padded.push({ status: s, date: dayKey });
+          } else {
+            padded.push({ status: "empty", date: "" });
+          }
+        }
+
+        const sparkBars = padded.map(d =>
+          `<div class="spark-bar ${d.status}"><div class="tooltip">${d.date || "—"} · ${d.status}</div></div>`
+        ).join("");
+
+        const labels = {
+          up: "up", blocked: "cf", error: "down", dns_dead: "dns dead",
+          geo_blocked_intl: "🇮🇩 only", geo_blocked_id: "intl only", down: "down",
+        };
+
+        const au = portal.au || {};
+        const id = portal.id || {};
+        const pc = (s) => s === "up" ? "up" : (s === "blocked" ? "warn" : "down");
+        const auPill = au.status ? `<span class="pill ${pc(au.status)}">AU ${au.http_code || "—"}</span>` : "";
+        const idPill = id.status && id.status !== "skip" ? `<span class="pill ${pc(id.status)}">ID ${id.http_code || "—"}</span>` : "";
+
+        html += `
+          <div class="portal-row">
+            <div>
+              <div class="portal-name"><a href="${portal.url}" target="_blank" rel="noopener">${portal.name}</a></div>
+              <div class="portal-sub">${portal.agency} ${auPill}${idPill}</div>
+            </div>
+            <div class="spark">${sparkBars}</div>
+            <div class="portal-meta"><span class="badge ${portal.status}">${labels[portal.status] || portal.status}</span></div>
+          </div>`;
+      }
+      html += `</div>`;
+    }
+
+    document.getElementById("portals").innerHTML = html;
+  } catch (e) {
+    document.getElementById("portals").innerHTML = `<p style="color:var(--down)">Error: ${e.message}</p>`;
+  }
+}
+
+load();
+</script>
+</body>
+</html>

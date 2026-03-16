@@ -172,6 +172,117 @@ requests.get("https://{portal}/api/3/action/package_search", params={"q": "keywo
 └── examples/                     # Working Python examples
 ```
 
+## 📅 Portal Status Timeline
+
+Daily log of which Indonesian government portals are accessible, blocked, or down. Monitored from Sydney (AU), Singapore, and Jakarta (ID) via [indonesia-civic-signal-monitor](https://github.com/suryast/indonesia-civic-signal-monitor).
+
+**Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no public status page. This is the closest thing to one.
+
+### 2026-03-16 (Monday)
+
+Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Working, ⚠️ Degraded/Blocked, ❌ Down.
+
+#### Tier 1: Open APIs
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 1 | **Satu Data** (data.go.id) | ✅ 200 | ✅ | ✅ Working | CKAN API stable |
+| 2 | **BPS** (webapi.bps.go.id) | ❌ 403 | ❌ 403 | ⚠️ CF Challenge | Cloudflare bot protection on both AU and ID. API works with key via `requests` but not `curl` |
+| 3 | **BMKG** (data.bmkg.go.id) | ✅ 200 | ✅ | ✅ Working | Earthquake + weather JSON feeds stable |
+| 4 | **IDX** (idx.co.id) | ❌ 403 | ❌ 403 | ⚠️ CF Challenge | Cloudflare bot protection. Web works in browser |
+| 5 | **DJPB Treasury** (data.treasury.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
+| 6 | **JDIH BPK** (jdih.bpk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Blocked from AU datacenter IPs |
+| 7 | **Putusan MA** (putusan3.mahkamahagung.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (103.16.79.91) but connection times out from both AU and ID |
+| 8 | **LPSE** (spse.inaproc.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | CF Turnstile challenge. Individual `lpse.*.go.id` portals all broken — LKPP CNAME migration to `ars.inaproc.id` caused "CNAME Cross-User Banned" on CF. 589 portals affected |
+| 9 | **Portal APBN** (data.anggaran.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
+| 10 | **Bank Indonesia** (www.bi.go.id) | ⚠️ 302 | ✅ | ✅ Working | Redirects to `/id/` — normal behavior |
+| 11 | **BIG Geospatial** (tanahair.indonesia.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (202.4.179.23) but server unresponsive |
+| 12 | **BNPB Disaster** (dibi.bnpb.go.id) | ✅ 200 | ✅ | ✅ Working | REST + GeoJSON API stable |
+
+#### Tier 2: Scrapeable Web
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 13 | **BPJPH** (sertifikasi.halal.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | Old cert search portal gone. `bpjph.halal.go.id` is alive but it's a Gatsby news site — no public cert search API |
+| 14 | **BPOM** (cekbpom.pom.go.id) | ✅ 200 | ✅ | ✅ Working | Redesigned — old `/produk/0/{id}` URLs all 404. New endpoint: `POST /produk-dt/all` (DataTables + CSRF). 639K+ products |
+| 15 | **AHU** (ahu.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Company registry in extended maintenance. Accessible from ID but returns 0 records |
+| 16 | **OSS** (oss.go.id) | ✅ 200 | ✅ 200 | ⚠️ Changed | Site loads but `/informasi/pencarian-nib` returns 404 from everywhere — public NIB search page removed |
+| 17 | **OJK Registry** (sikapiuangmu.ojk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Blacklist data accessible only via Indonesian IP |
+| 18 | **OJK API** (api.ojk.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere since at least Mar 10 |
+| 19 | **LHKPN** (elhkpn.kpk.go.id) | ✅ 200 | ✅ 200 | ⚠️ Auth Wall | Page loads but redirects to reCAPTCHA + login. Wealth declaration search was previously public |
+| 20 | **Putusan MK** (putusan.mahkamahkonstitusi.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
+| 21 | **KSEI** (www.ksei.co.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Blocks datacenter IPs |
+| 22 | **e-PPID** (ppid.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
+| 23 | **Pajak / DJP** (ereg.pajak.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (103.28.106.134) but connection times out from both |
+
+#### Tier 3: Regional Open Data
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 24 | **Satu Data Jakarta** (data.jakarta.go.id) | ✅ 200 | ✅ | ✅ Working | Best regional portal, CKAN API |
+| 25 | **Open Data Jabar** (opendata.jabarprov.go.id) | ❌ 403 | ❌ 403 | ❌ CF Challenge | Cloudflare blocking from both AU and ID |
+| 26 | **Open Data Jatim** (data.jatimprov.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
+| 27 | **Satu Data Surabaya** (data.surabaya.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
+| 28 | **Open Data Bandung** (data.bandung.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (202.58.242.113) but unresponsive |
+| 29 | **Open Data Bali** (data.baliprov.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
+
+#### Tier 4: Ministry-Specific
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 30 | **Kemnaker** (kemnaker.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 31 | **Komdigi** (komdigi.go.id) | ❌ 403 | ❌ 403 | ❌ CF Challenge | Cloudflare blocking from both |
+| 32 | **ESDM** (www.esdm.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 33 | **KKP** (kkp.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 34 | **ATR/BPN** (www.atrbpn.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 35 | **Kemendikdasmen** (dapo.kemdikbud.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN — ministry restructured from Kemdikbud |
+| 36 | **Kemenkes** (sirs.kemkes.go.id) | ✅ 200 | ✅ | ✅ Working | Hospital/clinic registry |
+| 37 | **Kemenag** (simas.kemenag.go.id) | ✅ 200 | ✅ | ✅ Working | Mosque registry |
+
+#### Tier 5: Transparency
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 38 | **OCCRP Aleph** (aleph.occrp.org) | ✅ 200 | ✅ | ✅ Working | International — no geo-blocking |
+| 39 | **OpenCorporates** (opencorporates.com) | ❌ 403 | ❌ 403 | ⚠️ Bot Protection | Rate-limited, needs API key |
+| 40 | **EITI Indonesia** (eiti.esdm.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
+| 41 | **AHU-BO** (ahu.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Same as AHU (#15) — accessible from ID only |
+| 42 | **ICW** (antikorupsi.org) | ✅ 200 | ✅ | ✅ Working | |
+
+#### Tier 6: Financial
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 43 | **OJK SIKEPO** (ojk.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Main OJK site blocked from AU |
+| 44 | **Satgas Waspada** (sikapiuangmu.ojk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Same as OJK Registry (#17) |
+| 45 | **KSEI Stats** (www.ksei.co.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Same as KSEI (#21) |
+| 46 | **DJPB Budget** (djpb.kemenkeu.go.id) | ✅ 200 | ✅ | ✅ Working | |
+
+#### Tier 7: Civil Society & Geospatial
+
+| # | Portal | AU | ID | Status | Notes |
+|---|--------|----|----|--------|-------|
+| 47 | **LAPOR!** (www.lapor.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 48 | **IndoLII** (www.indolii.org) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN — project may have shut down |
+| 49 | **Geoportal** (tanahair.indonesia.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | Same as BIG (#11) |
+| 50 | **InaRisk** (inarisk.bnpb.go.id) | ✅ 200 | ✅ | ✅ Working | |
+| 51 | **pasal.id** (pasal.id) | ✅ 200 | ✅ | ✅ Working | Community-run, MCP-ready |
+
+#### Summary
+
+| Category | Count | Portals |
+|----------|-------|---------|
+| ✅ **Working** (from everywhere) | **19** | Satu Data, BMKG, BI, BNPB, BPOM, OSS*, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, DJPB Budget, LAPOR!, InaRisk, pasal.id, Jakarta |
+| ⚠️ **Geo-blocked** (ID only) | **8** | JDIH BPK, LPSE, AHU/AHU-BO, OJK Registry, OJK SIKEPO, Satgas Waspada, KSEI |
+| ⚠️ **CF Challenge** (bot protection) | **4** | BPS, IDX, Jabar, Komdigi |
+| ⚠️ **Changed/Degraded** | **2** | LHKPN (auth wall), OSS (search page removed) |
+| ❌ **DNS Dead** | **13** | DJPB Treasury, APBN, BPJPH, OJK API, Putusan MK, e-PPID, Jatim, Surabaya, Bali, Kemendikdasmen, EITI, IndoLII, sertifikasi.halal.go.id |
+| ❌ **Down** (DNS ok, server dead) | **5** | Putusan MA, BIG Geospatial, Pajak/DJP, Bandung, SIMBG |
+
+**13 out of 51 portals have dead DNS.** That's 25% of Indonesian government data infrastructure with completely broken domain records.
+
+---
+
 ## Related Projects
 
 | Project | Description |
