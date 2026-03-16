@@ -2,7 +2,9 @@
 
 A comprehensive reference for **50+ Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
 
-> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all 52 portals from US + Jakarta. Currently: 22 up, 6 geo-blocked, 19 down or DNS dead.
+> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all 52 portals from US + Jakarta.
+>
+> **Last checked: 2026-03-16** — 22 up · 6 geo-blocked (ID only) · 5 CF challenge · 17 DNS dead · 2 down
 
 > **Why this exists:** Indonesian government APIs are poorly documented, frequently change without notice, and have quirks not covered in official docs. This repo captures real-world knowledge from building production applications against these data sources.
 
@@ -281,7 +283,9 @@ Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Wor
 | ❌ **DNS Dead** | **13** | DJPB Treasury, APBN, BPJPH, OJK API, Putusan MK, e-PPID, Jatim, Surabaya, Bali, Kemendikdasmen, EITI, IndoLII, sertifikasi.halal.go.id |
 | ❌ **Down** (DNS ok, server dead) | **5** | Putusan MA, BIG Geospatial, Pajak/DJP, Bandung, SIMBG |
 
-**13 out of 51 portals have dead DNS.** That's 25% of Indonesian government data infrastructure with completely broken domain records.
+**17 out of 52 portals have dead DNS.** That's 33% of Indonesian government data infrastructure with completely broken domain records.
+
+*Last updated: 2026-03-16*
 
 ---
 
