@@ -193,6 +193,22 @@
   <div class="last-check" id="last-check"></div>
   <div id="portals"><div class="loading">Loading...</div></div>
 
+  <div class="legend" style="margin-top:2rem;padding:1rem 1.25rem;background:var(--surface);border:1px solid var(--border);border-radius:10px;box-shadow:0 1px 2px rgba(0,0,0,.04);">
+    <div style="font-weight:600;font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem;">Status Legend</div>
+    <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem .75rem;font-size:.8rem;">
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);margin-right:.5rem;vertical-align:middle;"></span><strong>Up</strong> — Portal responding normally</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-right:.5rem;vertical-align:middle;"></span><strong>🇮🇩 Only</strong> — Geo-blocked outside Indonesia</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.6;margin-right:.5rem;vertical-align:middle;"></span><strong>CF Challenge</strong> — Cloudflare bot protection active</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>Down</strong> — Portal unreachable or erroring</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>DNS Dead</strong> — Domain no longer resolves</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--up);width:14px;height:8px;margin-right:.5rem;vertical-align:middle;"></span><strong>Spark bars</strong> — Last 30 days, one bar per day</div>
+    </div>
+    <div style="margin-top:.75rem;font-size:.75rem;color:var(--text-muted);">
+      Portals are checked from <strong>US</strong> (international accessibility) and <strong>Jakarta</strong> (via SOCKS5 proxy) daily at 04:30 UTC.
+      Geo-blocked portals may work fine from within Indonesia but return 403/timeout from international IPs.
+    </div>
+  </div>
+
   <footer>
     <p>
       Checked daily from US + Jakarta 🇮🇩 ·
