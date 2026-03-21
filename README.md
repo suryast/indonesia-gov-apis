@@ -1,5 +1,8 @@
 # 🇮🇩 Indonesia Government APIs & Data Sources
 
+![Indonesia Government APIs Status](public/og-preview.png)
+
+
 A comprehensive reference for **50+ Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
 
 > **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all 52 portals from US + Jakarta.
