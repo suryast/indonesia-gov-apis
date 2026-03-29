@@ -3,11 +3,11 @@
 ![Indonesia Government APIs Status](public/og-preview.png)
 
 
-A comprehensive reference for **50+ Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
+A comprehensive reference for **57 Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
 
-> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all 52 portals from US + Jakarta.
+> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all portals from US + Jakarta.
 >
-> **Last checked: 2026-03-16** — 22 up · 6 geo-blocked (ID only) · 5 CF challenge · 17 DNS dead · 2 down
+> **Last checked: 2026-03-29** — 22 up · 6 geo-blocked (ID only) · 5 CF challenge · 16 DNS dead · 3 down · [Full update →](status/2026-03-29-update.md)
 
 > **Why this exists:** Indonesian government APIs are poorly documented, frequently change without notice, and have quirks not covered in official docs. This repo captures real-world knowledge from building production applications against these data sources.
 
@@ -40,13 +40,13 @@ See [`mcp-servers/`](mcp-servers/) for full setup instructions and a list of dat
 | # | Source | Agency | Docs | API? |
 |---|--------|--------|------|------|
 | 1 | [Portal Satu Data (SDI)](apis/tier1-open-apis/data-go-id/) | Bappenas | CKAN portal, 10K+ datasets | ✅ CKAN API |
-| 2 | [BPS Statistics](apis/tier1-open-apis/bps/) | Badan Pusat Statistik | GDP, CPI, population, trade | ✅ REST API |
+| 2 | [BPS Statistics](apis/tier1-open-apis/bps/) | Badan Pusat Statistik | GDP, CPI, population, trade | ✅ REST API (was CF-blocked, now working) |
 | 3 | [BMKG Weather](apis/tier1-open-apis/bmkg/) | BMKG | Weather, earthquakes, tsunami | ✅ JSON feeds |
 | 4 | [IDX / BEI](apis/tier1-open-apis/idx/) | Bursa Efek Indonesia | Stock prices, corporate data | ⚠️ Unofficial |
 | 5 | [DJPB Treasury](apis/tier1-open-apis/djpb-treasury/) | Kemenkeu | Treasury, disbursement data | ✅ CKAN API |
 | 6 | [JDIH BPK](apis/tier1-open-apis/jdih-bpk/) | BPK / Perpusnas | Legal documentation network | ✅ Partial API |
 | 7 | [Putusan MA](apis/tier1-open-apis/putusan-ma/) | Mahkamah Agung | Court decisions (millions) | ✅ Public search |
-| 8 | [LPSE / INAPROC](apis/tier1-open-apis/lpse-inaproc/) | LKPP | Government procurement tenders | ❌ DEGRADED — all portals dead, migrated to inaproc.id (WAF/SSO) |
+| 8 | [LPSE / INAPROC](apis/tier1-open-apis/lpse-inaproc/) | LKPP | Government procurement tenders | ⚠️ Geo-blocked (ID only) |
 | 9 | [Portal APBN](apis/tier1-open-apis/apbn-kemenkeu/) | Kemenkeu | State budget data | ✅ CSV/XLSX |
 | 10 | [Bank Indonesia](apis/tier1-open-apis/bank-indonesia/) | Bank Indonesia | Exchange rates, BI Rate | ✅ REST API |
 | 11 | [BIG Geospatial](apis/tier1-open-apis/big-geospatial/) | BIG | Admin boundaries, zoning | ✅ WMS/WFS |
@@ -121,6 +121,16 @@ See [`mcp-servers/`](mcp-servers/) for full setup instructions and a list of dat
 | 50 | [SIGAP / InaRisk](apis/tier7-civil-society/sigap-inarisk/) | BNPB | Disaster risk scores by location | ✅ REST API |
 | 51 | [pasal.id](apis/tier7-civil-society/pasal-id/) | Community (third-party) | 40K regulations, 937K articles via MCP | 🔵 MCP Ready |
 
+### Tier 8: New Additions (2026-03-29) — 5 sources
+
+| # | Source | Agency | Docs | Key Data |
+|---|--------|--------|------|----------|
+| 52 | KPU Elections | KPU | Election results, candidate data | ✅ Web portal + JSON during elections |
+| 53 | SIMBG Building Permits | Kemen PUPR | Building permit (PBG) registry | ✅ Public search |
+| 54 | CoreTax DJP | DJP | New core tax system (replaced e-Filing) | ❌ Login-gated |
+| 55 | SATUSEHAT | Kemenkes | National health platform (FHIR API) | ✅ API (registration required) |
+| 56 | BPJPH Halal API | BPJPH | 1.98M+ halal business records | ✅ JSON POST (no auth) |
+
 ---
 
 ## Quick Start
@@ -175,7 +185,9 @@ requests.get("https://{portal}/api/3/action/package_search", params={"q": "keywo
 │   ├── tier4-ministry/           # 8 ministry-specific sources
 │   ├── tier5-transparency/       # 5 anti-corruption sources
 │   ├── tier6-financial/          # 4 financial sector sources
-│   └── tier7-civil-society/      # 5 civil society & geospatial
+│   ├── tier7-civil-society/      # 5 civil society & geospatial
+│   └── tier8-new/                # 5 newly discovered sources
+├── status/                       # Daily status checks + update logs
 └── examples/                     # Working Python examples
 ```
 
@@ -184,6 +196,10 @@ requests.get("https://{portal}/api/3/action/package_search", params={"q": "keywo
 Daily log of which Indonesian government portals are accessible, blocked, or down. Monitored from Sydney (AU), Singapore, and Jakarta (ID) via [indonesia-civic-signal-monitor](https://github.com/suryast/indonesia-civic-signal-monitor).
 
 **Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no public status page. This is the closest thing to one.
+
+### 2026-03-29 (Sunday) — [Full update](status/2026-03-29-update.md)
+
+22 up · 6 geo-blocked · 5 CF-blocked · 16 DNS dead · 3 down. **+5 new sources added** (KPU, SIMBG, CoreTax, SATUSEHAT, BPJPH Halal API). Changes since Mar 16: LAPOR! now accessible worldwide, BPS unblocked, DJPB Budget now geo-blocked.
 
 ### 2026-03-16 (Monday)
 
@@ -279,16 +295,15 @@ Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Wor
 
 | Category | Count | Portals |
 |----------|-------|---------|
-| ✅ **Working** (from everywhere) | **19** | Satu Data, BMKG, BI, BNPB, BPOM, OSS*, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, DJPB Budget, LAPOR!, InaRisk, pasal.id, Jakarta |
-| ⚠️ **Geo-blocked** (ID only) | **8** | JDIH BPK, LPSE, AHU/AHU-BO, OJK Registry, OJK SIKEPO, Satgas Waspada, KSEI |
-| ⚠️ **CF Challenge** (bot protection) | **4** | BPS, IDX, Jabar, Komdigi |
-| ⚠️ **Changed/Degraded** | **2** | LHKPN (auth wall), OSS (search page removed) |
-| ❌ **DNS Dead** | **13** | DJPB Treasury, APBN, BPJPH, OJK API, Putusan MK, e-PPID, Jatim, Surabaya, Bali, Kemendikdasmen, EITI, IndoLII, sertifikasi.halal.go.id |
-| ❌ **Down** (DNS ok, server dead) | **5** | Putusan MA, BIG Geospatial, Pajak/DJP, Bandung, SIMBG |
+| ✅ **Working** (from everywhere) | **22** | Satu Data, BPS, BMKG, BI, BNPB, BPJPH (new), BPOM, AHU, OSS, LHKPN, Jakarta, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, LAPOR!, InaRisk, pasal.id |
+| ⚠️ **Geo-blocked** (ID only) | **6** | JDIH BPK, LPSE, OJK Registry, KSEI, Satgas Waspada, DJPB Budget |
+| ⚠️ **CF/Bot blocked** | **5** | IDX, Jabar, Komdigi, OpenCorporates, (BPS now working ✅) |
+| ❌ **Down** (DNS ok, server dead) | **3** | Bandung (400/500), AHU-BO (404), KSEI Stats (404) |
+| ❌ **DNS Dead** | **16** | DJPB Treasury, APBN, BPJPH (old), OJK API, Putusan MA, Putusan MK, e-PPID, Pajak/DJP, Jatim, Surabaya, Bali, Kemendikdasmen, EITI, IndoLII, BIG/Geoportal, CoreTax |
 
-**17 out of 52 portals have dead DNS.** That's 33% of Indonesian government data infrastructure with completely broken domain records.
+**16 out of 57 portals have dead DNS.** That's 28% of Indonesian government data infrastructure with completely broken domain records.
 
-*Last updated: 2026-03-16*
+*Last updated: 2026-03-29* — [Full status update →](status/2026-03-29-update.md)
 
 ---
 
@@ -298,6 +313,8 @@ Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Wor
 |---------|-------------|
 | [**indonesia-civic-stack**](https://github.com/suryast/indonesia-civic-stack) | Production-ready Python SDK + MCP server wrapping 11 government portals |
 | [**indonesia-civic-signal-monitor**](https://github.com/suryast/indonesia-civic-signal-monitor) | Anomaly detection engine — monitors civic data for newsworthy changes |
+| [**cek-investasi / legalkah.id**](https://legalkah.id) | Investment legality checker using OJK + BPJPH data |
+| [**cerita.datarakyat.id**](https://github.com/suryast/indonesia-civic-correlation-engine) | Civic correlation engine — cross-references government datasets for stories |
 
 This repo is the **reference documentation** layer. The civic-stack SDK is the **code** layer. The signal monitor is the **intelligence** layer.
 

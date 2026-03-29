@@ -77,6 +77,12 @@ PORTALS = [
     ("geoportal", "Geoportal One Map", "https://tanahair.indonesia.go.id", "BIG/KLHK", 7),
     ("inarisk", "SIGAP / InaRisk", "https://inarisk.bnpb.go.id", "BNPB", 7),
     ("pasal-id", "pasal.id", "https://pasal.id", "Community", 7),
+    # Tier 8: New additions (2026-03-29)
+    ("kpu", "KPU Elections", "https://www.kpu.go.id", "KPU", 8),
+    ("simbg", "SIMBG Building Permits", "https://simbg.pu.go.id", "Kemen PUPR", 8),
+    ("coretax", "CoreTax DJP", "https://coretaxdjp.pajak.go.id", "DJP", 8),
+    ("satusehat", "SATUSEHAT", "https://satusehat.kemkes.go.id", "Kemenkes", 8),
+    ("cmsbl-halal", "BPJPH Halal API", "https://cmsbl.halal.go.id", "BPJPH", 8),
 ]
 
 
