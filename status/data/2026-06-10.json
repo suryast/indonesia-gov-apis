@@ -1,6 +1,6 @@
 {
   "date": "2026-06-10",
-  "checked_at": "2026-06-10T04:52:05.554058+00:00",
+  "checked_at": "2026-06-10T06:00:12.867976+00:00",
   "sources": {
     "au": {
       "location": "Sydney, Australia",
@@ -20,11 +20,11 @@
       "url": "https://data.go.id",
       "agency": "Bappenas",
       "tier": 1,
-      "status": "down",
+      "status": "up",
       "au": {
-        "http_code": 503,
-        "latency_ms": 327,
-        "status": "error"
+        "http_code": 200,
+        "latency_ms": 1958,
+        "status": "up"
       },
       "id": {
         "http_code": -1,
@@ -40,7 +40,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 325,
+        "latency_ms": 737,
         "status": "blocked"
       },
       "id": {
@@ -57,7 +57,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 71,
+        "latency_ms": 226,
         "status": "up"
       },
       "id": {
@@ -74,7 +74,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 55,
+        "latency_ms": 220,
         "status": "blocked"
       },
       "id": {
@@ -108,7 +108,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 75,
+        "latency_ms": 417,
         "status": "blocked"
       },
       "id": {
@@ -125,7 +125,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 49,
+        "latency_ms": 2410,
         "status": "blocked"
       },
       "id": {
@@ -142,7 +142,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 65,
+        "latency_ms": 164,
         "status": "blocked"
       },
       "id": {
@@ -159,7 +159,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 258,
+        "latency_ms": 256,
         "status": "dns_dead"
       },
       "id": {
@@ -176,7 +176,7 @@
       "status": "up",
       "au": {
         "http_code": 302,
-        "latency_ms": 1567,
+        "latency_ms": 2594,
         "status": "up"
       },
       "id": {
@@ -193,7 +193,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 468,
+        "latency_ms": 5338,
         "status": "up"
       },
       "id": {
@@ -210,7 +210,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 521,
+        "latency_ms": 1203,
         "status": "up"
       },
       "id": {
@@ -227,7 +227,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 1,
+        "latency_ms": 129,
         "status": "dns_dead"
       },
       "id": {
@@ -244,7 +244,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 1009,
+        "latency_ms": 1719,
         "status": "up"
       },
       "id": {
@@ -258,11 +258,11 @@
       "url": "https://cekbpom.pom.go.id",
       "agency": "BPOM",
       "tier": 2,
-      "status": "up",
+      "status": "dns_dead",
       "au": {
-        "http_code": 200,
-        "latency_ms": 3808,
-        "status": "up"
+        "http_code": 0,
+        "latency_ms": 10000,
+        "status": "dns_dead"
       },
       "id": {
         "http_code": -1,
@@ -275,11 +275,11 @@
       "url": "https://ahu.go.id",
       "agency": "Kemenkumham",
       "tier": 2,
-      "status": "dns_dead",
+      "status": "up",
       "au": {
-        "http_code": 0,
-        "latency_ms": 10003,
-        "status": "dns_dead"
+        "http_code": 200,
+        "latency_ms": 5336,
+        "status": "up"
       },
       "id": {
         "http_code": -1,
@@ -295,7 +295,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 957,
+        "latency_ms": 5470,
         "status": "up"
       },
       "id": {
@@ -312,7 +312,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 451,
+        "latency_ms": 1053,
         "status": "blocked"
       },
       "id": {
@@ -329,7 +329,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 2011,
+        "latency_ms": 257,
         "status": "dns_dead"
       },
       "id": {
@@ -346,7 +346,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 479,
+        "latency_ms": 2414,
         "status": "up"
       },
       "id": {
@@ -363,7 +363,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 257,
+        "latency_ms": 4516,
         "status": "dns_dead"
       },
       "id": {
@@ -377,11 +377,11 @@
       "url": "https://www.ksei.co.id",
       "agency": "KSEI",
       "tier": 2,
-      "status": "up",
+      "status": "dns_dead",
       "au": {
-        "http_code": 200,
-        "latency_ms": 9278,
-        "status": "up"
+        "http_code": 0,
+        "latency_ms": 10001,
+        "status": "dns_dead"
       },
       "id": {
         "http_code": -1,
@@ -397,7 +397,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 4,
+        "latency_ms": 256,
         "status": "dns_dead"
       },
       "id": {
@@ -414,7 +414,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 10003,
+        "latency_ms": 10001,
         "status": "dns_dead"
       },
       "id": {
@@ -431,7 +431,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 1299,
+        "latency_ms": 1906,
         "status": "up"
       },
       "id": {
@@ -448,7 +448,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 52,
+        "latency_ms": 242,
         "status": "blocked"
       },
       "id": {
@@ -465,7 +465,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 54,
+        "latency_ms": 253,
         "status": "blocked"
       },
       "id": {
@@ -482,7 +482,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 2011,
+        "latency_ms": 2761,
         "status": "dns_dead"
       },
       "id": {
@@ -496,11 +496,11 @@
       "url": "https://data.bandung.go.id",
       "agency": "Bandung",
       "tier": 3,
-      "status": "dns_dead",
+      "status": "down",
       "au": {
-        "http_code": 0,
-        "latency_ms": 10003,
-        "status": "dns_dead"
+        "http_code": 500,
+        "latency_ms": 5620,
+        "status": "error"
       },
       "id": {
         "http_code": -1,
@@ -550,7 +550,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 658,
+        "latency_ms": 5521,
         "status": "blocked"
       },
       "id": {
@@ -567,7 +567,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 2191,
+        "latency_ms": 4047,
         "status": "up"
       },
       "id": {
@@ -584,7 +584,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 681,
+        "latency_ms": 1478,
         "status": "up"
       },
       "id": {
@@ -601,7 +601,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 663,
+        "latency_ms": 924,
         "status": "up"
       },
       "id": {
@@ -618,7 +618,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 3,
+        "latency_ms": 256,
         "status": "dns_dead"
       },
       "id": {
@@ -635,7 +635,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 585,
+        "latency_ms": 1173,
         "status": "up"
       },
       "id": {
@@ -652,7 +652,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 6582,
+        "latency_ms": 7474,
         "status": "up"
       },
       "id": {
@@ -669,7 +669,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 983,
+        "latency_ms": 567,
         "status": "up"
       },
       "id": {
@@ -686,7 +686,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 381,
+        "latency_ms": 791,
         "status": "blocked"
       },
       "id": {
@@ -703,7 +703,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 256,
+        "latency_ms": 506,
         "status": "dns_dead"
       },
       "id": {
@@ -717,11 +717,11 @@
       "url": "https://ahu.go.id/pencarian/pencarian-bo",
       "agency": "Kemenkumham",
       "tier": 5,
-      "status": "dns_dead",
+      "status": "down",
       "au": {
-        "http_code": 0,
-        "latency_ms": 10002,
-        "status": "dns_dead"
+        "http_code": 404,
+        "latency_ms": 8012,
+        "status": "error"
       },
       "id": {
         "http_code": -1,
@@ -737,7 +737,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 800,
+        "latency_ms": 7234,
         "status": "up"
       },
       "id": {
@@ -751,11 +751,11 @@
       "url": "https://ojk.go.id",
       "agency": "OJK",
       "tier": 6,
-      "status": "dns_dead",
+      "status": "up",
       "au": {
-        "http_code": 0,
-        "latency_ms": 10003,
-        "status": "dns_dead"
+        "http_code": 200,
+        "latency_ms": 1153,
+        "status": "up"
       },
       "id": {
         "http_code": -1,
@@ -771,7 +771,7 @@
       "status": "blocked",
       "au": {
         "http_code": 403,
-        "latency_ms": 453,
+        "latency_ms": 719,
         "status": "blocked"
       },
       "id": {
@@ -802,11 +802,11 @@
       "url": "https://djpb.kemenkeu.go.id",
       "agency": "DJPB",
       "tier": 6,
-      "status": "dns_dead",
+      "status": "up",
       "au": {
-        "http_code": 0,
-        "latency_ms": 10001,
-        "status": "dns_dead"
+        "http_code": 200,
+        "latency_ms": 7680,
+        "status": "up"
       },
       "id": {
         "http_code": -1,
@@ -819,11 +819,11 @@
       "url": "https://www.lapor.go.id",
       "agency": "KemenPANRB",
       "tier": 7,
-      "status": "up",
+      "status": "dns_dead",
       "au": {
-        "http_code": 200,
-        "latency_ms": 1959,
-        "status": "up"
+        "http_code": 0,
+        "latency_ms": 10000,
+        "status": "dns_dead"
       },
       "id": {
         "http_code": -1,
@@ -839,7 +839,7 @@
       "status": "dns_dead",
       "au": {
         "http_code": 0,
-        "latency_ms": 3,
+        "latency_ms": 31,
         "status": "dns_dead"
       },
       "id": {
@@ -856,7 +856,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 697,
+        "latency_ms": 792,
         "status": "up"
       },
       "id": {
@@ -873,7 +873,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 1265,
+        "latency_ms": 2510,
         "status": "up"
       },
       "id": {
@@ -890,7 +890,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 415,
+        "latency_ms": 687,
         "status": "up"
       },
       "id": {
@@ -907,7 +907,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 558,
+        "latency_ms": 5460,
         "status": "up"
       },
       "id": {
@@ -924,7 +924,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 229,
+        "latency_ms": 554,
         "status": "up"
       },
       "id": {
@@ -941,7 +941,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 446,
+        "latency_ms": 1222,
         "status": "up"
       },
       "id": {
@@ -958,7 +958,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 234,
+        "latency_ms": 1271,
         "status": "up"
       },
       "id": {
@@ -975,7 +975,7 @@
       "status": "up",
       "au": {
         "http_code": 200,
-        "latency_ms": 574,
+        "latency_ms": 841,
         "status": "up"
       },
       "id": {
