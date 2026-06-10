@@ -1,7 +1,7 @@
 ---
 name: querying-indonesian-gov-data
 description: >
-  Query 50 Indonesian government APIs and data sources — BPJPH halal certification,
+  Query 57 Indonesian government APIs and data sources — BPJPH halal certification,
   BPOM food safety, OJK financial legality, BPS statistics, BMKG weather/earthquakes,
   Bank Indonesia exchange rates, IDX stocks, CKAN open data portals, pasal.id (third-party law MCP).
   Use when building apps with Indonesian government data, scraping .go.id websites,
