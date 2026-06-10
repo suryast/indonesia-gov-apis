@@ -5,9 +5,9 @@
 
 A comprehensive reference for **57 Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
 
-> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all portals from US + Jakarta.
+> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all portals from Sydney/AU + Jakarta/ID.
 >
-> **Last checked: 2026-03-29** — 22 up · 6 geo-blocked (ID only) · 5 CF challenge · 16 DNS dead · 3 down · [Full update →](status/2026-03-29-update.md)
+> **Last checked: 2026-06-10** — 27 up · 0 geo-blocked (Jakarta probe unavailable) · 11 CF challenge · 18 DNS dead · 1 down · [Latest data →](status/data/2026-06-10.json)
 
 > **Why this exists:** Indonesian government APIs are poorly documented, frequently change without notice, and have quirks not covered in official docs. This repo captures real-world knowledge from building production applications against these data sources.
 
@@ -193,7 +193,7 @@ requests.get("https://{portal}/api/3/action/package_search", params={"q": "keywo
 
 ## 📅 Portal Status Timeline
 
-Daily log of which Indonesian government portals are accessible, blocked, or down. Monitored from Sydney (AU), Singapore, and Jakarta (ID) via [indonesia-civic-signal-monitor](https://github.com/suryast/indonesia-civic-signal-monitor).
+Daily log of which Indonesian government portals are accessible, blocked, or down. Monitored from Sydney (AU) and Jakarta (ID) via [indonesia-civic-signal-monitor](https://github.com/suryast/indonesia-civic-signal-monitor).
 
 **Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no public status page. This is the closest thing to one.
 

@@ -177,7 +177,11 @@ def main():
         au_s = au["status"]
         id_s = id_result["status"]
 
-        if au_s == "up" or id_s == "up":
+        if id_s == "skip":
+            # Jakarta probe unavailable: report the observable AU status only.
+            # Do not infer geo-blocking from a missing comparison point.
+            overall = au_s if au_s in {"up", "blocked", "dns_dead"} else "down"
+        elif au_s == "up" or id_s == "up":
             if au_s == "up" and id_s == "up":
                 overall = "up"
             elif au_s != "up" and id_s == "up":
