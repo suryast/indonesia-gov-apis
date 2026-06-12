@@ -7,7 +7,7 @@ A comprehensive reference for **57 Indonesian government data portals, APIs, and
 
 > **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking uptime of all portals from Sydney/AU + Jakarta/ID.
 >
-> **Last checked: 2026-06-10** — 27 up · 0 geo-blocked (Jakarta probe unavailable) · 11 CF challenge · 18 DNS dead · 1 down · [Latest data →](status/data/2026-06-10.json)
+> **Last checked: 2026-06-12** — 29 up · 0 geo-blocked (Jakarta probe unavailable) · 11 CF challenge · 16 DNS dead · 1 down · [Latest data →](status/data/2026-06-12.json)
 
 > **Why this exists:** Indonesian government APIs are poorly documented, frequently change without notice, and have quirks not covered in official docs. This repo captures real-world knowledge from building production applications against these data sources.
 
