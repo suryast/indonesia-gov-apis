@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Daily portal status checker. Checks from AU (local) and ID (Jakarta SSH).
+"""Daily portal status checker. Checks from AU and, when enabled, Jakarta.
 Writes results to status/data/YYYY-MM-DD.json."""
 
 import json
@@ -12,9 +12,9 @@ DATA_DIR = Path(__file__).parent / "data"
 
 import os
 
-# Jakarta proxy box for in-country checks
-# In GH Actions: uses SSH config alias "jakarta" (key from secret)
-# Locally: direct SSH to polybot@117.53.46.31
+# The Jakarta probe is offline. Keep it opt-in so routine runs do not attempt a
+# connection or infer geo-blocking from missing ID observations.
+JAKARTA_PROBE_ENABLED = os.environ.get("JAKARTA_PROBE_ENABLED") == "1"
 JAKARTA_SSH = "jakarta" if os.environ.get("JAKARTA_SSH_KEY") else "polybot@117.53.46.31"
 
 PORTALS = [
@@ -153,8 +153,9 @@ def main():
     today = datetime.now(timezone.utc).strftime("%Y-%m-%d")
     ts = datetime.now(timezone.utc).isoformat()
 
-    jakarta_ok = check_jakarta_available()
-    print(f"Jakarta SSH: {'✅ available' if jakarta_ok else '❌ unreachable'}\n")
+    jakarta_ok = JAKARTA_PROBE_ENABLED and check_jakarta_available()
+    jakarta_state = "✅ available" if jakarta_ok else "⏭️ unavailable (skipped)"
+    print(f"Jakarta SSH: {jakarta_state}\n")
 
     results = {
         "date": today,
