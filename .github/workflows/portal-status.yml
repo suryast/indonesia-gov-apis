@@ -20,22 +20,9 @@ jobs:
           python-version: '3.12'
 
       - name: Check portals
-        env:
-          JAKARTA_SSH_KEY: ${{ secrets.JAKARTA_SSH_KEY }}
-        run: |
-          # Set up Jakarta SSH if key is available
-          if [ -n "$JAKARTA_SSH_KEY" ]; then
-            mkdir -p ~/.ssh
-            echo "$JAKARTA_SSH_KEY" > ~/.ssh/jakarta
-            chmod 600 ~/.ssh/jakarta
-            echo "Host jakarta" >> ~/.ssh/config
-            echo "  HostName 117.53.46.31" >> ~/.ssh/config
-            echo "  User polybot" >> ~/.ssh/config
-            echo "  IdentityFile ~/.ssh/jakarta" >> ~/.ssh/config
-            echo "  StrictHostKeyChecking no" >> ~/.ssh/config
-            echo "  ConnectTimeout 5" >> ~/.ssh/config
-          fi
-          python3 status/check.py
+        # Jakarta/ID is offline. The checker records ID as unavailable and
+        # does not infer geo-blocking without a comparison point.
+        run: python3 status/check.py
 
       - name: Build history.json
         run: |
