@@ -4,6 +4,43 @@
 
 ## Available MCP Servers
 
+### 🔍 You.com Search — Web Search for Indonesian Government Research
+
+Provides web search capabilities using You.com API to enhance Indonesian government data research with contextual information, policy background, and news coverage.
+
+**Repository:** `mcp-servers/youcom-search/`
+**Tools:** `youcom_search`, `youcom_news_search`
+
+#### Setup (Claude Desktop)
+
+```json
+{
+  "mcpServers": {
+    "youcom-search": {
+      "command": "node", 
+      "args": ["/path/to/youcom-search-mcp-server/dist/index.js"],
+      "env": {
+        "YDC_API_KEY": "your-api-key-here"
+      }
+    }
+  }
+}
+```
+
+#### Available Tools
+
+| Tool | Description |
+|------|-------------|
+| `youcom_search` | Web search with optional domain filtering (e.g., gov.id domains) |
+| `youcom_news_search` | Indonesian government and policy news search |
+
+#### Example Queries
+- "Indonesian digital transformation policy 2026"
+- "BPOM halal certification requirements" 
+- "Bank Indonesia interest rate policy context"
+
+See [youcom-search/README.md](youcom-search/README.md) for full setup and usage instructions.
+
 ### 🇮🇩 pasal.id — Indonesian Law & Regulation (third-party)
 
 The first open, AI-native Indonesian legal platform. 40,143 regulations and 937,155 pasal (articles) structured by article and clause.
@@ -66,3 +103,5 @@ These Indonesian data sources from this repo are good candidates for MCP server 
 | **data.go.id (CKAN)** | Standard CKAN API, broad dataset coverage | Easy |
 
 Building MCP servers for these would make Indonesian government data accessible through any MCP-compatible AI assistant.
+
+**Note:** The You.com Search MCP server has been added to provide web search context for government data research.
