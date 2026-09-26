@@ -4,9 +4,10 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Indonesia Gov Portal Status — status.datarakyat.id</title>
-<meta name="description" content="Daily uptime monitoring of 52 Indonesian government data portals and APIs.">
+<link rel="canonical" href="https://status.datarakyat.id/">
+<meta name="description" content="Daily uptime monitoring of Indonesian government data portals and APIs.">
 <meta property="og:title" content="Indonesia Gov Portal Status">
-<meta property="og:description" content="Daily uptime monitoring of 52 Indonesian government data portals and APIs. Checked from US and Jakarta.">
+<meta property="og:description" content="Daily uptime monitoring of Indonesian government data portals and APIs. Checked from US and Jakarta.">
 <meta property="og:image" content="https://status.datarakyat.id/og-image.png">
 <meta property="og:url" content="https://status.datarakyat.id">
 <meta property="og:type" content="website">
@@ -123,9 +124,10 @@
   .pill.down { background: var(--down-dim); color: var(--down); }
 
   /* Status pills */
-  .spark { display: flex; align-items: center; gap: 1.5px; height: 24px; }
+  /* Fit up to 90 daily bars within the desktop and tablet grid tracks. */
+  .spark { display: flex; align-items: center; gap: .5px; height: 24px; }
   .spark-bar {
-    flex: 1; max-width: 6px; min-width: 2px; height: 18px; border-radius: 1.5px;
+    flex: 1; max-width: 6px; min-width: 0; height: 18px; border-radius: 1.5px;
     transition: opacity .15s; cursor: default; position: relative;
   }
   .spark-bar.up { background: var(--up); }
@@ -137,7 +139,7 @@
   .spark-bar:hover { opacity: .6; }
 
   .tooltip {
-    position: absolute; bottom: calc(100% + 4px); left: 50%; transform: translateX(-50%);
+    position: absolute; bottom: calc(100% + 4px); right: 0;
     background: var(--surface-2); border: 1px solid var(--border-light);
     border-radius: 5px; padding: 3px 7px;
     font-family: var(--font-mono); font-size: .65rem;
@@ -186,7 +188,7 @@
 <div class="container">
   <header>
     <h1><span class="flag">🇮🇩</span> Gov Portal <span class="accent">Status</span></h1>
-    <p>Daily uptime monitoring of 51 Indonesian government portals · Part of <a href="https://datarakyat.id">Data Rakyat</a></p>
+    <p>Daily uptime monitoring of <span id="portal-count"></span>Indonesian government portals · Part of <a href="https://datarakyat.id">Data Rakyat</a></p>
   </header>
 
   <div class="summary" id="summary"></div>
@@ -201,7 +203,7 @@
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.6;margin-right:.5rem;vertical-align:middle;"></span><strong>CF Challenge</strong> — Cloudflare bot protection active</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>Down</strong> — Portal unreachable or erroring</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>DNS Dead</strong> — Domain no longer resolves</div>
-      <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--up);width:14px;height:8px;margin-right:.5rem;vertical-align:middle;"></span><strong>Spark bars</strong> — Last 30 days, one bar per day</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--up);width:14px;height:8px;margin-right:.5rem;vertical-align:middle;"></span><strong>Spark bars</strong> — <span id="history-window">Daily history</span>, one bar per day</div>
     </div>
     <div style="margin-top:.75rem;font-size:.75rem;color:var(--text-muted);">
       Portals are checked from <strong>US</strong> (international accessibility) and <strong>Jakarta</strong> (via SOCKS5 proxy) daily at 04:30 UTC.
@@ -231,6 +233,7 @@ const TIER_NAMES = {
 
 const MAX_DAYS = 90;
 const MIN_DAYS = 7;
+document.getElementById("history-window").textContent = `Last ${MAX_DAYS} days`;
 
 async function load() {
   try {
@@ -244,6 +247,11 @@ async function load() {
     if (!latest) { document.getElementById("portals").innerHTML = "<p>No data yet.</p>"; return; }
 
     const portals = Object.values(latest.portals);
+    // Use the same snapshot as the rendered rows, not latest.json or the registry.
+    document.getElementById("portal-count").textContent = `${portals.length} `;
+    const description = `Daily uptime monitoring of ${portals.length} Indonesian government data portals and APIs.`;
+    document.querySelector('meta[name="description"]').content = description;
+    document.querySelector('meta[property="og:description"]').content = `${description} Checked from US and Jakarta.`;
     const up = portals.filter(p => p.status === "up").length;
     const geo = portals.filter(p => p.status === "geo_blocked_intl" || p.status === "geo_blocked_id").length;
     const blocked = portals.filter(p => p.status === "blocked").length;
