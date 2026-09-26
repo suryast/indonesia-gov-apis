@@ -120,16 +120,17 @@ See [`mcp-servers/`](mcp-servers/) for full setup instructions and a list of dat
 | 49 | [Geoportal One Map](apis/tier7-civil-society/geoportal-onemap/) | BIG / KLHK | 85 thematic maps, One Map Policy | ✅ WMS/WFS |
 | 50 | [SIGAP / InaRisk](apis/tier7-civil-society/sigap-inarisk/) | BNPB | Disaster risk scores by location | ✅ REST API |
 | 51 | [pasal.id](apis/tier7-civil-society/pasal-id/) | Community (third-party) | 40K regulations, 937K articles via MCP | 🔵 MCP Ready |
+| 52 | [aturan.org](apis/tier7-civil-society/aturan-org/) | Community (third-party) | 243,852 regulations, 4,543,462 articles | ⚠️ Web search |
 
 ### Tier 8: New Additions (2026-03-29) — 5 sources
 
 | # | Source | Agency | Docs | Key Data |
 |---|--------|--------|------|----------|
-| 52 | KPU Elections | KPU | Election results, candidate data | ✅ Web portal + JSON during elections |
-| 53 | SIMBG Building Permits | Kemen PUPR | Building permit (PBG) registry | ✅ Public search |
-| 54 | CoreTax DJP | DJP | New core tax system (replaced e-Filing) | ❌ Login-gated |
-| 55 | SATUSEHAT | Kemenkes | National health platform (FHIR API) | ✅ API (registration required) |
-| 56 | BPJPH Halal API | BPJPH | 1.98M+ halal business records | ✅ JSON POST (no auth) |
+| 53 | KPU Elections | KPU | Election results, candidate data | ✅ Web portal + JSON during elections |
+| 54 | SIMBG Building Permits | Kemen PUPR | Building permit (PBG) registry | ✅ Public search |
+| 55 | CoreTax DJP | DJP | New core tax system (replaced e-Filing) | ❌ Login-gated |
+| 56 | SATUSEHAT | Kemenkes | National health platform (FHIR API) | ✅ API (registration required) |
+| 57 | BPJPH Halal API | BPJPH | 1.98M+ halal business records | ✅ JSON POST (no auth) |
 
 ---
 
