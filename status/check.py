@@ -5,6 +5,7 @@ Writes results to status/data/YYYY-MM-DD.json."""
 import json
 import subprocess
 import sys
+import tempfile
 from datetime import datetime, timezone
 from pathlib import Path
 
@@ -29,7 +30,8 @@ PORTALS = [
     ("lpse", "LPSE / INAPROC", "https://spse.inaproc.id", "LKPP", 1),
     ("apbn", "Portal APBN", "https://data.anggaran.kemenkeu.go.id", "Kemenkeu", 1),
     ("bi", "Bank Indonesia", "https://www.bi.go.id", "BI", 1),
-    ("big", "BIG Geospatial", "https://tanahair.indonesia.go.id", "BIG", 1),
+    # Repointed 2026-10: tanahair.indonesia.go.id timed out; boundaries now served via ArcGIS REST
+    ("big", "BIG Geoservices (ArcGIS)", "https://geoservices.big.go.id/rbi/rest/services?f=json", "BIG", 1),
     ("bnpb", "BNPB Disaster", "https://dibi.bnpb.go.id", "BNPB", 1),
     # Tier 2
     ("bpjph-old", "BPJPH Halal (old)", "https://sertifikasi.halal.go.id", "BPJPH", 2),
@@ -40,12 +42,14 @@ PORTALS = [
     ("ojk-registry", "OJK Registry", "https://sikapiuangmu.ojk.go.id", "OJK", 2),
     ("ojk-api", "OJK API", "https://api.ojk.go.id", "OJK", 2),
     ("lhkpn", "KPK e-LHKPN", "https://elhkpn.kpk.go.id", "KPK", 2),
-    ("putusan-mk", "Putusan MK", "https://putusan.mahkamahkonstitusi.go.id", "MK", 2),
+    # Repointed 2026-10: putusan.mahkamahkonstitusi.go.id is DNS dead; rulings moved to mkri.id
+    ("putusan-mk", "Putusan MK", "https://www.mkri.id/perkara/persidangan/putusan", "MK", 2),
     ("ksei", "KSEI Statistics", "https://www.ksei.co.id", "KSEI", 2),
     ("ppid", "e-PPID", "https://ppid.kemenkeu.go.id", "Kemenkeu", 2),
     ("pajak", "Pajak / DJP", "https://ereg.pajak.go.id", "DJP", 2),
     # Tier 3
-    ("jakarta", "Satu Data Jakarta", "https://data.jakarta.go.id", "DKI Jakarta", 3),
+    # Repointed 2026-10: Open Data portal moved to Satu Data Jakarta (Feb 2023)
+    ("jakarta", "Satu Data Jakarta", "https://satudata.jakarta.go.id", "DKI Jakarta", 3),
     ("jabar", "Open Data Jabar", "https://opendata.jabarprov.go.id", "Jawa Barat", 3),
     ("jatim", "Open Data Jatim", "https://data.jatimprov.go.id", "Jawa Timur", 3),
     ("surabaya", "Satu Data Surabaya", "https://data.surabaya.go.id", "Surabaya", 3),
@@ -57,7 +61,8 @@ PORTALS = [
     ("esdm", "ESDM Energy", "https://www.esdm.go.id", "ESDM", 4),
     ("kkp", "KKP Fisheries", "https://kkp.go.id", "KKP", 4),
     ("atr-bpn", "ATR/BPN Land", "https://www.atrbpn.go.id", "ATR/BPN", 4),
-    ("kemdikbud", "Kemendikdasmen", "https://dapo.kemdikbud.go.id", "Pendidikan", 4),
+    # Repointed 2026-10: dapo.kemdikbud.go.id is DNS dead after the 2024 Kemdikbud split
+    ("kemdikbud", "Dapodik Kemendikdasmen", "https://dapo.kemendikdasmen.go.id/pencarian", "Kemendikdasmen", 4),
     ("kemenkes", "Kemenkes Health", "https://sirs.kemkes.go.id", "Kemenkes", 4),
     ("kemenag", "Kemenag", "https://simas.kemenag.go.id", "Kemenag", 4),
     # Tier 5
@@ -83,7 +88,50 @@ PORTALS = [
     ("coretax", "CoreTax DJP", "https://coretaxdjp.pajak.go.id", "DJP", 8),
     ("satusehat", "SATUSEHAT", "https://satusehat.kemkes.go.id", "Kemenkes", 8),
     ("cmsbl-halal", "BPJPH Halal API", "https://cmsbl.halal.go.id", "BPJPH", 8),
+    # Tier 9: Procurement & program data (2026-10)
+    ("inaproc-api", "INAPROC Data API (docs)", "https://data.inaproc.id/docs/dokumentasi/guides/migration-from-isb", "LKPP", 9),
+    ("inaproc-satudata", "Satu Data eProc", "https://inaproc.id/satudata", "LKPP", 9),
+    ("sirup", "SIRUP / RUP", "https://sirup.inaproc.id", "LKPP", 9),
+    ("bgn-sppg", "SPPG Operasional (MBG)", "https://www.bgn.go.id/operasional-sppg", "BGN", 9),
+    ("cekbansos", "Cek Bansos", "https://cekbansos.kemensos.go.id/", "Kemensos", 9),
+    ("djpk-sikd", "Portal Data SIKD (APBD)", "https://djpk.kemenkeu.go.id/portal/data/apbd", "DJPK Kemenkeu", 9),
+    ("pihps", "PIHPS Harga Pangan", "https://www.bi.go.id/hargapangan", "BI", 9),
+    ("panelharga", "Panel Harga Pangan", "https://panelharga.badanpangan.go.id/", "Bapanas", 9),
+    # Tier 10: Machine-readable APIs & catalogues (2026-10)
+    ("sdi-ckan", "Satu Data CKAN API", "https://katalog.data.go.id/api/3/action/package_search?rows=0", "Bappenas", 10),
+    ("bmkg-forecast", "BMKG Forecast API", "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=31.71.03.1001", "BMKG", 10),
+    ("bnpb-ckan", "Satu Data Bencana (CKAN)", "https://data.bnpb.go.id/api/3/action/status_show", "BNPB", 10),
+    ("referensi-pendidikan", "Data Referensi Pendidikan", "https://referensi.data.kemendikdasmen.go.id/", "Kemendikdasmen", 10),
+    # Tier 11: Courts & law (2026-10). SIPP runs one instance per court; sample high-volume ones.
+    ("sipp-jakut", "SIPP PN Jakarta Utara", "https://sipp.pn-jakartautara.go.id/", "MA", 11),
+    ("sipp-sleman", "SIPP PN Sleman", "https://sipp.pn-sleman.go.id/", "MA", 11),
+    ("sipp-medan", "SIPP PN Medan", "https://sipp.pn-medankota.go.id/", "MA", 11),
+    ("sipp-palembang", "SIPP PN Palembang", "https://sipp.pn-palembang.go.id/", "MA", 11),
+    ("sipp-semarang", "SIPP PN Semarang", "https://sipp.pn-semarangkota.go.id/", "MA", 11),
+    ("jdihn", "JDIHN", "https://jdihn.go.id/", "BPHN", 11),
 ]
+
+# Optional content checks: a 2xx/3xx response only counts as "up" if the body
+# contains this text (case-insensitive). Catches error pages, challenge pages and
+# empty API responses served with HTTP 200. Misses are reported as "degraded".
+EXPECT = {
+    "big": '"services"',
+    "putusan-mk": "putusan",
+    "inaproc-api": "inaproc",
+    "inaproc-satudata": "daftar hitam",
+    "bgn-sppg": "sppg",
+    "cekbansos": "kemensos",
+    "djpk-sikd": "sikd",
+    "sdi-ckan": '"success": true',
+    "bmkg-forecast": '"lokasi"',
+    "bnpb-ckan": '"success": true',
+    "referensi-pendidikan": "npsn",
+    "sipp-jakut": "pembaharuan data",
+    "sipp-sleman": "pembaharuan data",
+    "sipp-medan": "pembaharuan data",
+    "sipp-palembang": "pembaharuan data",
+    "sipp-semarang": "pembaharuan data",
+}
 
 
 def classify(code: int) -> str:
@@ -97,12 +145,13 @@ def classify(code: int) -> str:
         return "error"
 
 
-def check_url_local(url: str, timeout: int = 10) -> dict:
-    """Check a URL from local machine (Sydney AU)."""
+def check_url_local(url: str, timeout: int = 10, expect: str | None = None) -> dict:
+    """Check a URL from the local runner. If `expect` is set, also check the body for it."""
+    body_file = tempfile.NamedTemporaryFile(delete=False) if expect else None
     try:
         r = subprocess.run(
             [
-                "curl", "-s", "-o", "/dev/null",
+                "curl", "-s", "-o", body_file.name if body_file else "/dev/null",
                 "-w", "%{http_code}|%{time_total}",
                 "-L", "--max-redirs", "3", "--max-time", str(timeout),
                 url,
@@ -115,7 +164,13 @@ def check_url_local(url: str, timeout: int = 10) -> dict:
     except Exception:
         code, latency = 0, 0
 
-    return {"http_code": code, "latency_ms": round(latency * 1000), "status": classify(code)}
+    result = {"http_code": code, "latency_ms": round(latency * 1000), "status": classify(code)}
+    if body_file:
+        body_file.close()
+        body = Path(body_file.name).read_bytes().decode("utf-8", errors="replace")
+        os.unlink(body_file.name)
+        result["content_ok"] = expect.lower() in body.lower()
+    return result
 
 
 def check_url_jakarta(url: str, timeout: int = 10) -> dict:
@@ -161,7 +216,10 @@ def main():
         "date": today,
         "checked_at": ts,
         "sources": {
-            "au": {"location": "Sydney, Australia", "type": "datacenter", "provider": "DigitalOcean"},
+            # Key stays "au" for history compatibility; label reflects where the check actually ran.
+            "au": ({"location": "GitHub Actions (US)", "type": "datacenter", "provider": "GitHub"}
+                   if os.environ.get("GITHUB_ACTIONS") == "true" else
+                   {"location": "Sydney, Australia", "type": "datacenter", "provider": "DigitalOcean"}),
             "id": {"location": "Jakarta, Indonesia", "type": "datacenter", "provider": "CloudKilat",
                     "available": jakarta_ok},
         },
@@ -171,7 +229,7 @@ def main():
     for pid, name, url, agency, tier in PORTALS:
         print(f"  {name}...", end=" ", flush=True)
 
-        au = check_url_local(url)
+        au = check_url_local(url, expect=EXPECT.get(pid))
         id_result = check_url_jakarta(url) if jakarta_ok else {"http_code": -1, "latency_ms": 0, "status": "skip"}
 
         # Determine overall status
@@ -203,6 +261,9 @@ def main():
         else:
             overall = "down"
 
+        if overall == "up" and au.get("content_ok") is False:
+            overall = "degraded"  # responds, but expected content is missing
+
         portal = {
             "name": name,
             "url": url,
@@ -218,7 +279,7 @@ def main():
         id_icon = {"up": "✅", "blocked": "⚠️", "dns_dead": "❌", "error": "❌", "skip": "⏭️"}.get(id_s, "?")
         overall_icon = {
             "up": "✅", "geo_blocked_intl": "🌏", "geo_blocked_id": "🔒",
-            "blocked": "⚠️", "dns_dead": "❌", "down": "❌",
+            "blocked": "⚠️", "dns_dead": "❌", "down": "❌", "degraded": "🟡",
         }.get(overall, "?")
         print(f"AU:{au_icon} ID:{id_icon} → {overall_icon} {overall}")
 
@@ -240,8 +301,9 @@ def main():
     blocked = statuses.count("blocked")
     dead = statuses.count("dns_dead")
     down = statuses.count("down")
+    degraded = statuses.count("degraded")
     total = len(statuses)
-    print(f"\n✅ {up} up | 🌏 {geo} geo-blocked | ⚠️ {blocked} CF challenge | ❌ {dead} DNS dead | ❌ {down} down | Total: {total}")
+    print(f"\n✅ {up} up | 🌏 {geo} geo-blocked | ⚠️ {blocked} CF challenge | ❌ {dead} DNS dead | ❌ {down} down | 🟡 {degraded} degraded | Total: {total}")
 
 
 if __name__ == "__main__":
