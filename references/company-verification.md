@@ -1,60 +1,39 @@
 # Company Verification (AHU / OpenCorporates / OCCRP)
 
-## OpenCorporates (Structured, Rate-Limited)
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-```python
-import requests
+## AHU Online — Company Registry
 
-resp = requests.get("https://api.opencorporates.com/v0.4/companies/search", params={
-    "q": "COMPANY_NAME",
-    "jurisdiction_code": "id",  # Indonesia
-    "api_token": "YOUR_TOKEN",  # Optional, higher limits
-}, timeout=30)
+A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls.
 
-for c in resp.json()["results"]["companies"]:
-    co = c["company"]
-    print(f"{co['name']} | {co['company_number']} | {co['current_status']}")
-```
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-- Free: 500 req/day. Indonesian data sourced from AHU.
-- Returns: name, status, officers, filings.
+[Canonical source documentation](../apis/tier2-scrapeable/ahu-company/README.md).
 
-## OCCRP Aleph (Beneficial Ownership + Leaks)
+## AHU-BO — Beneficial Ownership Registry
 
-```python
-API_KEY = "your-key"  # Free at aleph.occrp.org
-resp = requests.get("https://aleph.occrp.org/api/2/entities", params={
-    "q": "COMPANY_NAME",
-    "filter:schema": "Company",
-    "filter:countries": "id",
-}, headers={"Authorization": f"ApiKey {API_KEY}"}, timeout=30)
-```
+Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration.
 
-- 60 req/min. Contains Panama/Pandora Papers data.
-- Cross-ref with AHU for comprehensive due diligence.
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-## AHU Direct (Kemenkumham)
+[Canonical source documentation](../apis/tier5-transparency/ahu-bo/README.md).
 
-```python
-# ahu.go.id — has CAPTCHA, harder to automate
-# Beneficial ownership: bo.ahu.go.id — basic name search
-resp = requests.get("https://bo.ahu.go.id/search", params={"q": "COMPANY"},
-    headers={"User-Agent": "Mozilla/5.0"}, timeout=30)
-```
+## OpenCorporates — Global Company Registry
 
-- CAPTCHA on main AHU site — Selenium needed
-- BO portal has basic search, limited public fields
+Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration.
 
-## Verification Strategy
+Access/auth: API credentials, collection permissions and current service terms must be checked; not authenticated here.
 
-For thorough verification, cross-reference:
-1. **OpenCorporates** — is it registered?
-2. **OJK** — is it licensed (if financial)?
-3. **OCCRP Aleph** — any red flags in leaks?
-4. **AHU-BO** — who are the beneficial owners?
-5. **Satgas Waspada** — is it on the illegal list?
+[Canonical source documentation](../apis/tier5-transparency/opencorporates/README.md).
 
-## Gotchas
-- No single source is authoritative alone — always cross-reference
-- AHU data updates lag behind reality
-- CAPTCHA protection on ahu.go.id makes bulk access difficult
+## OCCRP Aleph — Global Beneficial Ownership & Leaks
+
+Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration.
+
+Access/auth: API credentials, collection permissions and current service terms must be checked; not authenticated here.
+
+[Canonical source documentation](../apis/tier5-transparency/occrp-aleph/README.md).
+
+Registration, sector licensing, beneficial ownership and allegations are different questions. Match official company identifiers and publication dates only when collection and use are permitted. Do not infer wrongdoing from a third-party match or legitimacy from alert absence. Do not automate CAPTCHA solving or join personal tax IDs.
+
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

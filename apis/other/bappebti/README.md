@@ -1,68 +1,20 @@
-# BAPPEBTI — Commodities Futures & Crypto Regulation
+# BAPPEBTI — Commodities Futures; Historical Crypto References
 
 **Agency:** Badan Pengawas Perdagangan Berjangka Komoditi
 **Portal:** https://bappebti.go.id
-**API type:** ❌ HTML scraping only
+**Kind:** government; **catalog ID:** `bappebti`; **tier:** other
+**Review date:** 2026-10-10; **review state:** primary_documentation_reviewed
 
-## Overview
+## Reviewed guidance
 
-BAPPEBTI regulates commodities futures trading and (since 2019) cryptocurrency exchanges in Indonesia. Maintains lists of licensed brokers and approved crypto assets.
+OJK records the crypto-regulation handover on January 10, 2025. BAPPEBTI crypto pages are historical references, not current licensing authority. Do not infer the transition is still ongoing from older repository notes.[9]
 
-## Licensed Futures Brokers
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
 
-```python
-import requests
-from bs4 import BeautifulSoup
+Additional Indonesia-related reference; unmonitored. Use the current regulator for current licensing decisions.
 
-resp = requests.get(
-    "https://bappebti.go.id/pialang_berjangka",
-    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
-    timeout=30,
-)
-soup = BeautifulSoup(resp.text, "html.parser")
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
 
-for row in soup.select("table tbody tr"):
-    cols = [td.text.strip() for td in row.find_all("td")]
-    if cols:
-        print(f"Broker: {cols[0]}")
-```
+## Evidence
 
-## Licensed Crypto Exchanges
-
-```python
-resp = requests.get(
-    "https://bappebti.go.id/pedagang_fisik_aset_kripto",
-    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"},
-    timeout=30,
-)
-# Parse table of licensed crypto exchanges
-```
-
-## Approved Crypto Assets
-
-BAPPEBTI publishes a list of cryptocurrencies approved for trading in Indonesia:
-
-```python
-resp = requests.get(
-    "https://bappebti.go.id/resources/docs/aset_kripto_yang_dapat_diperdagangkan.pdf",
-    timeout=30,
-)
-# Download PDF of approved crypto assets
-```
-
-## Key Pages
-
-| URL Path | Content |
-|----------|---------|
-| `/pialang_berjangka` | Licensed futures brokers |
-| `/pedagang_fisik_aset_kripto` | Licensed crypto exchanges |
-| `/bursa_berjangka` | Futures exchanges |
-| `/lembaga_kliring` | Clearing houses |
-
-## Gotchas
-
-1. **No API** — pure HTML scraping
-2. **Crypto regulation transferred** — as of 2025, crypto regulation is transitioning to OJK. Data may move.
-3. **PDF-heavy** — approved asset lists are PDFs
-4. **Infrequent updates** — lists change quarterly at most
-5. **Simple HTML** — no JavaScript rendering needed, `requests` + `BeautifulSoup` sufficient
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.

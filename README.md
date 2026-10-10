@@ -2,336 +2,179 @@
 
 ![Indonesia Government APIs Status](public/og-preview.png)
 
+**59 documented source records: 58 Indonesia-related records and 1 international reference.** Includes government and non-government publishers, overlapping services and historical endpoints — not 59 verified open APIs. **11 supplementary guides** are counted separately.
 
-A comprehensive reference for **57 Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
+<!-- catalog:source_documents=59 -->
+<!-- catalog:indonesia_source_documents=58 -->
+<!-- catalog:international_reference_documents=1 -->
+<!-- catalog:supplementary_documents=11 -->
 
-> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking **75 monitors**: the 57 catalogued portals plus 18 program-data endpoints (procurement, MBG, regional finance, food prices, weather, disaster, courts). Checks run daily at 04:30 UTC from an international probe; some endpoints also get a content check and show as **degraded** when they respond without the expected data. The Jakarta/ID probe is currently unavailable; missing ID observations are skipped and are not evidence of geo-blocking.
->
-> **Latest automated result:** [`status/data/latest.json`](status/data/latest.json)
+The [machine-readable catalog](catalog/sources.json) is the source inventory. Every entry records publisher, tier, documentation, portal URL, government/non-government classification, access notes, review state and dated evidence. [Review findings and primary sources](docs/source-review-2026-10-10.md) distinguish documentation confirmation, bounded endpoint observations and unverified history.
 
-> **Why this exists:** Indonesian government APIs are poorly documented, frequently change without notice, and have quirks not covered in official docs. This repo captures real-world knowledge from building production applications against these data sources.
+## What changed in the October 10, 2026 review
 
-## 🤖 Use as an AI Agent Skill
+- Filled all five previously undocumented tier-8 additions; included BAPPEBTI and Japan NTA explicitly. Tier 7 now contains seven records, including the preserved Aturan.org contribution.
+- Withdrawn the BPJPH supervisor-as-certified-business example and totals. SIKePO is banking-regulation search, not a fintech/crypto registry; see the cited source docs.
+- Removed blanket CKAN/API-works claims, speculative quotas and access-control bypass advice. Historical notes are marked superseded, not presented as current integrations.
+- Public pages, account-gated tax/health systems and third-party indexes are explicitly different access classes. No credentials, personal-record queries or authenticated production integrations were used in this review.
+- [Issue #1](https://github.com/suryast/indonesia-gov-apis/issues/1) and [PR #9](https://github.com/suryast/indonesia-gov-apis/pull/9) were reviewed read-only. PR #9 subsequently merged on October 10, 2026 (`21cfe4b`); its Aturan.org source is preserved with documentation-only authentication/provenance caveats, not historical availability badges.
 
-This repo includes a [`SKILL.md`](SKILL.md) that makes it usable as a Claude/OpenClaw agent skill:
+## Monitoring is a separate inventory
 
-```bash
-# Clone and use as a local skill reference
-git clone https://github.com/suryast/indonesia-gov-apis.git
+The [static status page](https://status.datarakyat.id), [latest observation](status/data/latest.json) and [monitor guide](status/README.md) describe HTTP/transport observations, not API usability, licensing or record correctness. Catalog `monitor_ids` may map multiple endpoint probes to one source document. An empty array means unmonitored: **BAPPEBTI, NTA, OGP Indonesia and Aturan.org**. The preserved PR #10 expansion brings monitoring to **75 endpoints**: 57 mapped to source documents and [18 monitoring-only entries](docs/monitor-only-endpoints.md), also recorded in [their separate registry](catalog/monitor-only.json). These added probes do not inflate the 59-source documentation count. Monitor totals are validated against `status/check.py`, not inferred from documentation totals. Content markers are limited heuristics, not API/schema certification.
+
+An absent regional observation is unknown, not evidence of a geo-block. One 403 or timeout does not prove nationwide or foreign-IP restrictions. Retained [March 29, 2026 status notes](status/2026-03-29-update.md) are historical and internally inconsistent; do not reuse their totals or global availability claims as current evidence.
+
+## Link-status audit
+
+The [Markdown link audit](docs/link-audit-2026-10-10.md) and
+[machine-readable audit snapshot](docs/link-audit-2026-10-10.json) record bounded,
+dated URL observations. They do not validate API schemas, authentication, data
+correctness or reuse permissions. Unreachable/blocked links remain explicitly
+unverified; an HTTP 200 landing page is not a working API.
+
+## Source index
+
+Tier names are retained for navigation compatibility, not graded promises of availability. **Unverified** means inventory/document review only. **Primary documentation reviewed** confirms only the stated publisher documentation; **endpoint observed** is scoped to the recorded request, not all interfaces.
+
+### Tier 1 — historically open-API candidates (12 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [Portal APBN Kemenkeu — State Budget Data](apis/tier1-open-apis/apbn-kemenkeu/README.md) | Kementerian Keuangan (Ministry of Finance) | government | unverified |
+| [Bank Indonesia — Central Bank Data](apis/tier1-open-apis/bank-indonesia/README.md) | Bank Indonesia (BI) | government | unverified |
+| [BIG Geospatial / INA-SDI — National Geospatial Data](apis/tier1-open-apis/big-geospatial/README.md) | Badan Informasi Geospasial (Geospatial Information Agency) | government | unverified |
+| [BMKG — Meteorology, Climatology & Geophysics Data](apis/tier1-open-apis/bmkg/README.md) | Badan Meteorologi, Klimatologi, dan Geofisika | government | primary documentation reviewed |
+| [BNPB — Disaster Data & Risk Portal](apis/tier1-open-apis/bnpb-disaster/README.md) | Badan Nasional Penanggulangan Bencana (National Disaster Management Agency) | government | endpoint observed |
+| [BPS — Statistics Indonesia](apis/tier1-open-apis/bps/README.md) | Badan Pusat Statistik (Central Bureau of Statistics) | government | primary documentation reviewed |
+| [data.go.id — National Open Data Portal](apis/tier1-open-apis/data-go-id/README.md) | Satu Data Indonesia (One Data Indonesia) | government | unverified |
+| [DJPB Treasury — State Treasury & Budget Disbursement](apis/tier1-open-apis/djpb-treasury/README.md) | Direktorat Jenderal Perbendaharaan (DJPB), Kementerian Keuangan | government | unverified |
+| [IDX — Indonesia Stock Exchange](apis/tier1-open-apis/idx/README.md) | Bursa Efek Indonesia (Indonesia Stock Exchange) | non-government | unverified |
+| [JDIH BPK — National Legal Documentation Network](apis/tier1-open-apis/jdih-bpk/README.md) | Badan Pemeriksa Keuangan | government | unverified |
+| [LPSE / INAPROC — Government Procurement Data](apis/tier1-open-apis/lpse-inaproc/README.md) | LKPP (National Procurement Policy Agency) | government | unverified |
+| [Putusan Mahkamah Agung — Supreme Court Decisions](apis/tier1-open-apis/putusan-ma/README.md) | Mahkamah Agung RI (Supreme Court of Indonesia) | government | unverified |
+
+### Tier 2 — public web/search candidates (10 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [AHU Online — Company Registry](apis/tier2-scrapeable/ahu-company/README.md) | Ditjen AHU | government | unverified |
+| [BPJPH — Halal Certification Database](apis/tier2-scrapeable/bpjph/README.md) | Badan Penyelenggara Jaminan Produk Halal | government | primary documentation reviewed |
+| [BPOM — Food, Drug & Cosmetics Registry](apis/tier2-scrapeable/bpom/README.md) | Badan Pengawas Obat dan Makanan (National Agency of Drug and Food Control) | government | unverified |
+| [KPK e-LHKPN — Public Officials Wealth Declarations](apis/tier2-scrapeable/kpk-lhkpn/README.md) | Komisi Pemberantasan Korupsi (Corruption Eradication Commission) | government | primary documentation reviewed |
+| [KSEI — Securities Ownership & Investor Statistics](apis/tier2-scrapeable/ksei/README.md) | Kustodian Sentral Efek Indonesia (Indonesian Central Securities Depository) | non-government | unverified |
+| [OJK — Financial Entity Legality Check](apis/tier2-scrapeable/ojk/README.md) | Otoritas Jasa Keuangan (Financial Services Authority) | government | primary documentation reviewed |
+| [OSS / NIB — Business Identification Number Lookup](apis/tier2-scrapeable/oss-nib/README.md) | BKPM / OSS (Online Single Submission) | government | unverified |
+| [Pajak.go.id / DJP — Tax Authority Data](apis/tier2-scrapeable/pajak-djp/README.md) | Direktorat Jenderal Pajak (DGT — Directorate General of Taxes) | government | primary documentation reviewed |
+| [e-PPID — Public Information Request Portal](apis/tier2-scrapeable/ppid/README.md) | All ministries and agencies (Kemkominfo coordination) | government | unverified |
+| [Putusan Mahkamah Konstitusi — Constitutional Court Decisions](apis/tier2-scrapeable/putusan-mk/README.md) | Mahkamah Konstitusi RI (Constitutional Court of Indonesia) | government | unverified |
+
+### Tier 3 — regional data portals (6 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [Open Data Bali — Bali Provincial Open Data](apis/tier3-regional/opendata-bali/README.md) | Pemerintah Provinsi Bali | government | unverified |
+| [Open Data Kota Bandung — Bandung City Open Data](apis/tier3-regional/opendata-bandung/README.md) | Pemerintah Kota Bandung | government | unverified |
+| [Open Data Jabar — Jawa Barat Provincial Open Data](apis/tier3-regional/opendata-jabar/README.md) | Pemerintah Provinsi Jawa Barat | government | unverified |
+| [Open Data Jawa Timur — East Java Provincial Open Data](apis/tier3-regional/opendata-jatim/README.md) | Pemerintah Provinsi Jawa Timur | government | unverified |
+| [Satu Data Jakarta — DKI Jakarta Open Data](apis/tier3-regional/satu-data-jakarta/README.md) | Pemerintah Provinsi DKI Jakarta | government | unverified |
+| [Satu Data Surabaya — Surabaya City Open Data](apis/tier3-regional/satu-data-surabaya/README.md) | Pemerintah Kota Surabaya | government | unverified |
+
+### Tier 4 — ministry-specific references (8 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [ATR/BPN — Land & Property Registry](apis/tier4-ministry/atr-bpn/README.md) | Kementerian ATR / Badan Pertanahan Nasional | government | unverified |
+| [ESDM — Energy & Mining Data](apis/tier4-ministry/esdm-energy/README.md) | Kementerian Energi dan Sumber Daya Mineral | government | unverified |
+| [Kemenag — Religious Affairs Data](apis/tier4-ministry/kemenag/README.md) | Kementerian Agama | government | unverified |
+| [Kemendikdasmen — Education Data](apis/tier4-ministry/kemendikdasmen/README.md) | Kementerian Pendidikan Dasar dan Menengah | government | unverified |
+| [Kemenkes — Health Data & Facility Registry](apis/tier4-ministry/kemenkes/README.md) | Kementerian Kesehatan | government | primary documentation reviewed |
+| [Satu Data Kemnaker — Labor & Employment Data](apis/tier4-ministry/kemnaker/README.md) | Kementerian Ketenagakerjaan (Ministry of Manpower) | government | unverified |
+| [KKP — Fisheries & Maritime Data](apis/tier4-ministry/kkp-fisheries/README.md) | Kementerian Kelautan dan Perikanan (Ministry of Marine Affairs and Fisheries) | government | unverified |
+| [Satu Data Komdigi — Digital & Telecoms Data](apis/tier4-ministry/komdigi/README.md) | Kementerian Komunikasi dan Digital (Ministry of Digital Affairs) | government | unverified |
+
+### Tier 5 — transparency references (5 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [AHU-BO — Beneficial Ownership Registry](apis/tier5-transparency/ahu-bo/README.md) | Ditjen AHU | government | unverified |
+| [EITI Indonesia — Extractives Transparency](apis/tier5-transparency/eiti-indonesia/README.md) | EITI / Kementerian ESDM | government | unverified |
+| [ICW — Indonesia Corruption Watch](apis/tier5-transparency/icw-corruption/README.md) | ICW (NGO) | non-government | unverified |
+| [OCCRP Aleph — Global Beneficial Ownership & Leaks](apis/tier5-transparency/occrp-aleph/README.md) | OCCRP (Organized Crime and Corruption Reporting Project) | non-government | unverified |
+| [OpenCorporates — Global Company Registry](apis/tier5-transparency/opencorporates/README.md) | OpenCorporates Ltd | non-government | unverified |
+
+### Tier 6 — financial references (4 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [DJPB — Budget Execution Data](apis/tier6-financial/djpb-budget/README.md) | Direktorat Jenderal Perbendaharaan, Kementerian Keuangan | government | unverified |
+| [KSEI — Securities Investor Statistics](apis/tier6-financial/ksei-stats/README.md) | Kustodian Sentral Efek Indonesia | non-government | unverified |
+| [OJK SIKePO — Banking Regulations](apis/tier6-financial/ojk-sikepo/README.md) | OJK (Otoritas Jasa Keuangan) | government | primary documentation reviewed |
+| [Satgas Waspada Investasi — Investment Fraud Alerts](apis/tier6-financial/satgas-waspada/README.md) | OJK / Multi-agency task force | government | unverified |
+
+### Tier 7 — civic/legal/geospatial references (7 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [Aturan.org — Indonesian Legal Retrieval REST API & MCP](apis/tier7-civil-society/aturan-org/README.md) | Aturan.org (third-party publisher) | non-government | primary documentation reviewed |
+| [Indonesia Geoportal — One Map Policy](apis/tier7-civil-society/geoportal-onemap/README.md) | BIG / KLHK / Multiple | government | unverified |
+| [IndoLII — Indonesian Legal Information (Bilingual)](apis/tier7-civil-society/indolii/README.md) | USAID / Various | non-government | unverified |
+| [LAPOR — National Public Complaint System](apis/tier7-civil-society/lapor/README.md) | Kementerian PAN-RB (Ministry of Administrative Reform) | government | unverified |
+| [OGP Indonesia — Open Government Partnership](apis/tier7-civil-society/ogp-indonesia/README.md) | Open Government Indonesia | government | unverified |
+| [pasal.id — Indonesian Law & Regulation MCP Server](apis/tier7-civil-society/pasal-id/README.md) | Open source (community-maintained, third-party) | non-government | unverified |
+| [SIGAP / InaRisk — Disaster Risk Assessment](apis/tier7-civil-society/sigap-inarisk/README.md) | BNPB (Badan Nasional Penanggulangan Bencana) | government | unverified |
+
+### Tier 8 — formerly missing additions (5 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [BPJPH CMS Backend — Historical Endpoint Reference](apis/tier8-new/cmsbl-halal/README.md) | BPJPH | government | primary documentation reviewed |
+| [Coretax DJP — Tax Administration](apis/tier8-new/coretax/README.md) | Direktorat Jenderal Pajak | government | primary documentation reviewed |
+| [KPU — Election Publications](apis/tier8-new/kpu/README.md) | Komisi Pemilihan Umum | government | primary documentation reviewed |
+| [SATUSEHAT — Authorized Health Interoperability](apis/tier8-new/satusehat/README.md) | Kementerian Kesehatan | government | primary documentation reviewed |
+| [SIMBG — Building Permit Applications](apis/tier8-new/simbg/README.md) | Kementerian Pekerjaan Umum | government | primary documentation reviewed |
+
+### Additional Indonesia reference (unmonitored) (1 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [BAPPEBTI — Commodities Futures; Historical Crypto References](apis/other/bappebti/README.md) | Badan Pengawas Perdagangan Berjangka Komoditi | government | primary documentation reviewed |
+
+### International reference (unmonitored) (1 records)
+
+| Source / documentation | Publisher | Kind | Review state |
+|---|---|---|---|
+| [NTA — Japan Invoice Registry (Reference)](apis/reference/nta/README.md) | National Tax Agency (Japan) — 国税庁 | government | unverified |
+
+## Getting started safely
+
+1. Read the selected source's reviewed guidance and evidence, not its historical examples first.
+2. Prefer publisher documentation and licensed aggregate downloads. Obtain required credentials through official channels; never commit or print them.
+3. Verify endpoint, HTTP status, content type and response shape with a bounded request. Tests here are offline and do not establish live availability.
+4. Respect publisher limits and attribution. Stop at login, CAPTCHA, access denial or explicit restrictions; request approved access instead of routing around controls.
+5. Treat certification, registration, sector licensing and negative alerts as separate evidence. No result is not proof of compliance or legality.
+
+For BMKG's official forecast interface and BPS key/response handling, see [BMKG](apis/tier1-open-apis/bmkg/README.md) and [BPS](apis/tier1-open-apis/bps/README.md). The [examples](examples/) have independent safeguards and tests; consult their CLI help before running network requests.
+
+## AI-agent and MCP references
+
+[SKILL.md](SKILL.md) routes queries to canonical reviewed documentation. [MCP guide](mcp-servers/README.md) separates third-party transport candidates from verified integrations. Never infer `/tools/<name>` REST routes from MCP tool names or allow a remote service to receive private records merely because it is publicly reachable.
+
+## Offline verification
+
+```sh
+python scripts/validate_catalog.py
+python -m unittest discover -s tests -p 'test_catalog.py'
+python scripts/check_repository.py
 ```
 
-## 🔌 MCP Servers
+The catalog validator checks schema, exact source/reference coverage, computed totals, monitor mappings, README index coverage and local Markdown links/anchors. External URL checks are syntactic, not live liveness tests. See [contribution guidance](CONTRIBUTING.md) for the broader gates.
 
-Connect Indonesian data sources to AI assistants via [Model Context Protocol](https://modelcontextprotocol.io):
+## Related projects
 
-```bash
-# Connect pasal.id (third-party Indonesian law index) to Claude
-claude mcp add --transport http pasal-id https://pasal-mcp-server-production.up.railway.app/mcp
-```
+- [indonesia-civic-stack](https://github.com/suryast/indonesia-civic-stack): separate SDK/MCP project; integration coverage is not verified by this catalog.
+- indonesia-civic-signal-monitor: separate civic monitoring project; public reference unavailable (HTTP 404 observed October 10, 2026).
 
-See [`mcp-servers/`](mcp-servers/) for full setup instructions and a list of data sources ready for MCP wrapping.
+## Disclaimer and license
 
----
-
-## Data Sources by Tier
-
-### Tier 1: Open APIs — Ready to Consume (12 sources)
-
-| # | Source | Agency | Docs | API? |
-|---|--------|--------|------|------|
-| 1 | [Portal Satu Data (SDI)](apis/tier1-open-apis/data-go-id/) | Bappenas | CKAN portal, 10K+ datasets | ✅ CKAN API |
-| 2 | [BPS Statistics](apis/tier1-open-apis/bps/) | Badan Pusat Statistik | GDP, CPI, population, trade | ✅ REST API (was CF-blocked, now working) |
-| 3 | [BMKG Weather](apis/tier1-open-apis/bmkg/) | BMKG | Weather, earthquakes, tsunami | ✅ JSON feeds |
-| 4 | [IDX / BEI](apis/tier1-open-apis/idx/) | Bursa Efek Indonesia | Stock prices, corporate data | ⚠️ Unofficial |
-| 5 | [DJPB Treasury](apis/tier1-open-apis/djpb-treasury/) | Kemenkeu | Treasury, disbursement data | ✅ CKAN API |
-| 6 | [JDIH BPK](apis/tier1-open-apis/jdih-bpk/) | BPK / Perpusnas | Legal documentation network | ✅ Partial API |
-| 7 | [Putusan MA](apis/tier1-open-apis/putusan-ma/) | Mahkamah Agung | Court decisions (millions) | ✅ Public search |
-| 8 | [LPSE / INAPROC](apis/tier1-open-apis/lpse-inaproc/) | LKPP | Government procurement tenders | ⚠️ Geo-blocked (ID only) |
-| 9 | [Portal APBN](apis/tier1-open-apis/apbn-kemenkeu/) | Kemenkeu | State budget data | ✅ CSV/XLSX |
-| 10 | [Bank Indonesia](apis/tier1-open-apis/bank-indonesia/) | Bank Indonesia | Exchange rates, BI Rate | ✅ REST API |
-| 11 | [BIG Geospatial](apis/tier1-open-apis/big-geospatial/) | BIG | Admin boundaries, zoning | ✅ WMS/WFS |
-| 12 | [BNPB Disaster](apis/tier1-open-apis/bnpb-disaster/) | BNPB | Disaster events, risk data | ✅ REST + GeoJSON |
-
-### Tier 2: Scrapeable Web — Structured Data, No Formal API (10 sources)
-
-| # | Source | Agency | Docs | Format |
-|---|--------|--------|------|--------|
-| 13 | [BPJPH Halal](apis/tier2-scrapeable/bpjph/) | BPJPH Kemenag | 1.98M halal businesses | JSON POST |
-| 14 | [BPOM Products](apis/tier2-scrapeable/bpom/) | BPOM | 242K food/drug registrations | DataTables+CSRF |
-| 15 | [AHU Company Registry](apis/tier2-scrapeable/ahu-company/) | Kemenkumham | All registered PT, CV, Firma | HTML+CAPTCHA |
-| 16 | [OSS / NIB](apis/tier2-scrapeable/oss-nib/) | BKPM | Business ID (NIB) lookup | HTML forms |
-| 17 | [OJK Registry](apis/tier2-scrapeable/ojk/) | OJK | Licensed financial entities | HTML+XLS |
-| 18 | [KPK e-LHKPN](apis/tier2-scrapeable/kpk-lhkpn/) | KPK | Officials' wealth declarations | HTML+PDF |
-| 19 | [Putusan MK](apis/tier2-scrapeable/putusan-mk/) | Mahkamah Konstitusi | Constitutional court decisions | HTML+PDF |
-| 20 | [KSEI Statistics](apis/tier2-scrapeable/ksei/) | KSEI | Securities investor stats | PDF/XLSX |
-| 21 | [e-PPID](apis/tier2-scrapeable/ppid/) | All Ministries | Public information requests | Per ministry |
-| 22 | [Pajak / DJP](apis/tier2-scrapeable/pajak-djp/) | DJP | NPWP verification | Login required |
-
-### Tier 3: Regional Open Data Portals (6 sources)
-
-| # | Source | Region | Docs | Quality |
-|---|--------|--------|------|---------|
-| 23 | [Satu Data Jakarta](apis/tier3-regional/satu-data-jakarta/) | DKI Jakarta | Best-in-class regional | ⭐ CKAN API |
-| 24 | [Open Data Jabar](apis/tier3-regional/opendata-jabar/) | Jawa Barat | Good API quality | ⭐ CKAN API |
-| 25 | [Open Data Jatim](apis/tier3-regional/opendata-jatim/) | Jawa Timur | 38 kabupaten/kota | ✅ CKAN API |
-| 26 | [Satu Data Surabaya](apis/tier3-regional/satu-data-surabaya/) | Surabaya | Complete city-level | ✅ CKAN API |
-| 27 | [Open Data Bandung](apis/tier3-regional/opendata-bandung/) | Bandung | Smart city data | ✅ CKAN API |
-| 28 | [Open Data Bali](apis/tier3-regional/opendata-bali/) | Bali | Tourism, agriculture | ⚠️ CSV/XLSX |
-
-### Tier 4: Ministry-Specific Data (8 sources)
-
-| # | Source | Ministry | Docs | Key Data |
-|---|--------|----------|------|----------|
-| 29 | [Kemnaker](apis/tier4-ministry/kemnaker/) | Ketenagakerjaan | UMR/UMP wages, employment stats | ⚠️ Partial API |
-| 30 | [Komdigi](apis/tier4-ministry/komdigi/) | Komunikasi Digital | Internet penetration, digital literacy | ⚠️ XLSX |
-| 31 | [ESDM Energy](apis/tier4-ministry/esdm-energy/) | ESDM | Energy production, mining permits | ⚠️ PDF/XLSX |
-| 32 | [KKP Fisheries](apis/tier4-ministry/kkp-fisheries/) | Kelautan & Perikanan | Fish catch, aquaculture, vessels | ⚠️ XLSX |
-| 33 | [ATR/BPN Land](apis/tier4-ministry/atr-bpn/) | ATR / BPN | Land certificates, PTSL | ❌ Login |
-| 34 | [Kemendikdasmen](apis/tier4-ministry/kemendikdasmen/) | Pendidikan | School registry (NPSN), teachers | ⚠️ Partial API |
-| 35 | [Kemenkes Health](apis/tier4-ministry/kemenkes/) | Kesehatan | Hospital/clinic registry, SATUSEHAT | ⚠️ Partial API |
-| 36 | [Kemenag](apis/tier4-ministry/kemenag/) | Agama | 300K+ mosques, pesantren registry | ⚠️ Scrape |
-
-### Tier 5: Anti-Corruption & Transparency (5 sources)
-
-| # | Source | Organization | Docs | Key Data |
-|---|--------|-------------|------|----------|
-| 37 | [OCCRP Aleph](apis/tier5-transparency/occrp-aleph/) | OCCRP | Beneficial ownership, leaks data | ✅ REST API |
-| 38 | [OpenCorporates](apis/tier5-transparency/opencorporates/) | OpenCorporates | Global company registry (ID subset) | ✅ REST API |
-| 39 | [EITI Indonesia](apis/tier5-transparency/eiti-indonesia/) | EITI / ESDM | Mining & oil/gas revenue transparency | ⚠️ Reports |
-| 40 | [AHU-BO](apis/tier5-transparency/ahu-bo/) | Kemenkumham | Beneficial ownership registry | ⚠️ Web search |
-| 41 | [ICW Corruption Watch](apis/tier5-transparency/icw-corruption/) | ICW (NGO) | Corruption case tracker | ⚠️ Web database |
-
-### Tier 6: Financial Sector (4 sources)
-
-| # | Source | Agency | Docs | Key Data |
-|---|--------|--------|------|----------|
-| 42 | [OJK SIKEPO](apis/tier6-financial/ojk-sikepo/) | OJK | Fintech/crypto licensed platforms | ⚠️ PDF+HTML |
-| 43 | [Satgas Waspada Investasi](apis/tier6-financial/satgas-waspada/) | OJK Task Force | Illegal investment alerts | ✅ Public list |
-| 44 | [KSEI Investor Stats](apis/tier6-financial/ksei-stats/) | KSEI | Monthly investor statistics | ⚠️ XLSX/PDF |
-| 45 | [DJPB Budget](apis/tier6-financial/djpb-budget/) | DJPB Kemenkeu | APBN spending execution | ⚠️ XLS/CSV |
-
-### Tier 7: Civil Society & Geospatial (5 sources)
-
-| # | Source | Organization | Docs | Key Data |
-|---|--------|-------------|------|----------|
-| 46 | [LAPOR!](apis/tier7-civil-society/lapor/) | KemenPANRB | Public complaint system | ⚠️ Web portal |
-| 47 | [IndoLII](apis/tier7-civil-society/indolii/) | USAID | Bilingual legal information | ⚠️ Web search |
-| 48 | [OGP Indonesia](apis/tier7-civil-society/ogp-indonesia/) | OGP | Ministry transparency scores | ⚠️ Reports |
-| 49 | [Geoportal One Map](apis/tier7-civil-society/geoportal-onemap/) | BIG / KLHK | 85 thematic maps, One Map Policy | ✅ WMS/WFS |
-| 50 | [SIGAP / InaRisk](apis/tier7-civil-society/sigap-inarisk/) | BNPB | Disaster risk scores by location | ✅ REST API |
-| 51 | [pasal.id](apis/tier7-civil-society/pasal-id/) | Community (third-party) | 40K regulations, 937K articles via MCP | 🔵 MCP Ready |
-| 52 | [Aturan.org](apis/tier7-civil-society/aturan-org/) | Community (third-party) | 287K regulations, 5.3M articles via MCP | 🔵 MCP Ready |
-
-### Tier 8: New Additions (2026-03-29) — 5 sources
-
-| # | Source | Agency | Docs | Key Data |
-|---|--------|--------|------|----------|
-| 52 | KPU Elections | KPU | Election results, candidate data | ✅ Web portal + JSON during elections |
-| 53 | SIMBG Building Permits | Kemen PUPR | Building permit (PBG) registry | ✅ Public search |
-| 54 | CoreTax DJP | DJP | New core tax system (replaced e-Filing) | ❌ Login-gated |
-| 55 | SATUSEHAT | Kemenkes | National health platform (FHIR API) | ✅ API (registration required) |
-| 56 | BPJPH Halal API | BPJPH | 1.98M+ halal business records | ✅ JSON POST (no auth) |
-
----
-
-## Quick Start
-
-```python
-# Search BPJPH halal database
-import requests
-
-resp = requests.post(
-    "https://cmsbl.halal.go.id/api/search/data_penyelia",
-    json={"length": 20, "start": 0, "nama_penyelia": "A"},
-    headers={"Content-Type": "application/json"}
-)
-businesses = resp.json()["data"]
-print(f"Found {len(businesses)} businesses")
-```
-
-```python
-# Get BMKG earthquake data (no auth needed)
-resp = requests.get("https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json")
-quake = resp.json()["Infogempa"]["gempa"]
-print(f"Latest: M{quake['Magnitude']} at {quake['Wilayah']}")
-```
-
-## Common Gotchas
-
-### 🚫 IP Blocking
-Most Indonesian gov sites block datacenter IPs (AWS, GCP, DO). Use Cloudflare Workers proxy or residential proxy.
-
-### 📄 Data Formats
-Government sites love Excel and PDF. Use `openpyxl` for Excel, `pdfplumber` for PDF.
-
-### 🔐 CSRF Tokens
-BPOM and some OJK pages require session cookies + CSRF tokens. Always use `requests.Session()`.
-
-### 🔄 CKAN API
-data.go.id, Jakarta, Jabar, Jatim, Surabaya, Bandung all use CKAN. Same API pattern works everywhere:
-```python
-requests.get("https://{portal}/api/3/action/package_search", params={"q": "keyword", "rows": 10})
-```
-
-## Project Structure
-
-```
-├── README.md
-├── SKILL.md                      # AI agent skill file
-├── mcp-servers/                  # MCP server setup guides
-├── apis/
-│   ├── tier1-open-apis/          # 12 sources with REST/JSON APIs
-│   ├── tier2-scrapeable/         # 10 sources requiring scraping
-│   ├── tier3-regional/           # 6 regional open data portals
-│   ├── tier4-ministry/           # 8 ministry-specific sources
-│   ├── tier5-transparency/       # 5 anti-corruption sources
-│   ├── tier6-financial/          # 4 financial sector sources
-│   ├── tier7-civil-society/      # 5 civil society & geospatial
-│   └── tier8-new/                # 5 newly discovered sources
-├── status/                       # Daily status checks + update logs
-└── examples/                     # Working Python examples
-```
-
-## 📅 Portal Status Timeline
-
-Daily log of which Indonesian government portals are accessible, blocked, or down. Checks are run by [`status/check.py`](status/check.py) from an international probe; Jakarta (ID) observations are recorded as unavailable and skipped while that probe is offline.
-
-**Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no official status page. [status.datarakyat.id](https://status.datarakyat.id) is the closest thing to one.
-
-### 2026-10-10 (Saturday) — [Full update](status/2026-10-10-update.md)
-
-**Monitors: 57 → 75.** Added 18 program-data endpoints in three new status-page groups: *Procurement & Program Data* (INAPROC Data API docs, Satu Data eProc, SIRUP, BGN SPPG Operasional, Cek Bansos, DJPK SIKD, PIHPS, Panel Harga Pangan), *Data APIs & Catalogues* (Satu Data CKAN API, BMKG forecast API, BNPB Satu Data Bencana, Data Referensi Pendidikan) and *Courts & Law* (5 SIPP court instances, JDIHN). Repointed 4 entries whose data moved: Putusan MK → mkri.id, Kemendikdasmen → dapo.kemendikdasmen.go.id, Jakarta → satudata.jakarta.go.id, BIG → geoservices.big.go.id. New **degraded** status for endpoints that respond but lack the expected content. The new URLs had not been live-tested when this was written; the first daily runs are the verification.
-
-### 2026-03-29 (Sunday) — [Full update](status/2026-03-29-update.md)
-
-22 up · 6 geo-blocked · 5 CF-blocked · 16 DNS dead · 3 down. **+5 new sources added** (KPU, SIMBG, CoreTax, SATUSEHAT, BPJPH Halal API). Changes since Mar 16: LAPOR! now accessible worldwide, BPS unblocked, DJPB Budget now geo-blocked.
-
-### 2026-03-16 (Monday)
-
-Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Working, ⚠️ Degraded/Blocked, ❌ Down.
-
-#### Tier 1: Open APIs
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 1 | **Satu Data** (data.go.id) | ✅ 200 | ✅ | ✅ Working | CKAN API stable |
-| 2 | **BPS** (webapi.bps.go.id) | ❌ 403 | ❌ 403 | ⚠️ CF Challenge | Cloudflare bot protection on both AU and ID. API works with key via `requests` but not `curl` |
-| 3 | **BMKG** (data.bmkg.go.id) | ✅ 200 | ✅ | ✅ Working | Earthquake + weather JSON feeds stable |
-| 4 | **IDX** (idx.co.id) | ❌ 403 | ❌ 403 | ⚠️ CF Challenge | Cloudflare bot protection. Web works in browser |
-| 5 | **DJPB Treasury** (data.treasury.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
-| 6 | **JDIH BPK** (jdih.bpk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Blocked from AU datacenter IPs |
-| 7 | **Putusan MA** (putusan3.mahkamahagung.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (103.16.79.91) but connection times out from both AU and ID |
-| 8 | **LPSE** (spse.inaproc.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | CF Turnstile challenge. Individual `lpse.*.go.id` portals all broken — LKPP CNAME migration to `ars.inaproc.id` caused "CNAME Cross-User Banned" on CF. 589 portals affected |
-| 9 | **Portal APBN** (data.anggaran.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
-| 10 | **Bank Indonesia** (www.bi.go.id) | ⚠️ 302 | ✅ | ✅ Working | Redirects to `/id/` — normal behavior |
-| 11 | **BIG Geospatial** (tanahair.indonesia.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (202.4.179.23) but server unresponsive |
-| 12 | **BNPB Disaster** (dibi.bnpb.go.id) | ✅ 200 | ✅ | ✅ Working | REST + GeoJSON API stable |
-
-#### Tier 2: Scrapeable Web
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 13 | **BPJPH** (sertifikasi.halal.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | Old cert search portal gone. `bpjph.halal.go.id` is alive but it's a Gatsby news site — no public cert search API |
-| 14 | **BPOM** (cekbpom.pom.go.id) | ✅ 200 | ✅ | ✅ Working | Redesigned — old `/produk/0/{id}` URLs all 404. New endpoint: `POST /produk-dt/all` (DataTables + CSRF). 639K+ products |
-| 15 | **AHU** (ahu.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Company registry in extended maintenance. Accessible from ID but returns 0 records |
-| 16 | **OSS** (oss.go.id) | ✅ 200 | ✅ 200 | ⚠️ Changed | Site loads but `/informasi/pencarian-nib` returns 404 from everywhere — public NIB search page removed |
-| 17 | **OJK Registry** (sikapiuangmu.ojk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Blacklist data accessible only via Indonesian IP |
-| 18 | **OJK API** (api.ojk.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere since at least Mar 10 |
-| 19 | **LHKPN** (elhkpn.kpk.go.id) | ✅ 200 | ✅ 200 | ⚠️ Auth Wall | Page loads but redirects to reCAPTCHA + login. Wealth declaration search was previously public |
-| 20 | **Putusan MK** (putusan.mahkamahkonstitusi.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
-| 21 | **KSEI** (www.ksei.co.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Blocks datacenter IPs |
-| 22 | **e-PPID** (ppid.kemenkeu.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN from everywhere |
-| 23 | **Pajak / DJP** (ereg.pajak.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (103.28.106.134) but connection times out from both |
-
-#### Tier 3: Regional Open Data
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 24 | **Satu Data Jakarta** (data.jakarta.go.id) | ✅ 200 | ✅ | ✅ Working | Best regional portal, CKAN API |
-| 25 | **Open Data Jabar** (opendata.jabarprov.go.id) | ❌ 403 | ❌ 403 | ❌ CF Challenge | Cloudflare blocking from both AU and ID |
-| 26 | **Open Data Jatim** (data.jatimprov.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
-| 27 | **Satu Data Surabaya** (data.surabaya.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
-| 28 | **Open Data Bandung** (data.bandung.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | DNS resolves (202.58.242.113) but unresponsive |
-| 29 | **Open Data Bali** (data.baliprov.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
-
-#### Tier 4: Ministry-Specific
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 30 | **Kemnaker** (kemnaker.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 31 | **Komdigi** (komdigi.go.id) | ❌ 403 | ❌ 403 | ❌ CF Challenge | Cloudflare blocking from both |
-| 32 | **ESDM** (www.esdm.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 33 | **KKP** (kkp.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 34 | **ATR/BPN** (www.atrbpn.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 35 | **Kemendikdasmen** (dapo.kemdikbud.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN — ministry restructured from Kemdikbud |
-| 36 | **Kemenkes** (sirs.kemkes.go.id) | ✅ 200 | ✅ | ✅ Working | Hospital/clinic registry |
-| 37 | **Kemenag** (simas.kemenag.go.id) | ✅ 200 | ✅ | ✅ Working | Mosque registry |
-
-#### Tier 5: Transparency
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 38 | **OCCRP Aleph** (aleph.occrp.org) | ✅ 200 | ✅ | ✅ Working | International — no geo-blocking |
-| 39 | **OpenCorporates** (opencorporates.com) | ❌ 403 | ❌ 403 | ⚠️ Bot Protection | Rate-limited, needs API key |
-| 40 | **EITI Indonesia** (eiti.esdm.go.id) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN |
-| 41 | **AHU-BO** (ahu.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Same as AHU (#15) — accessible from ID only |
-| 42 | **ICW** (antikorupsi.org) | ✅ 200 | ✅ | ✅ Working | |
-
-#### Tier 6: Financial
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 43 | **OJK SIKEPO** (ojk.go.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Main OJK site blocked from AU |
-| 44 | **Satgas Waspada** (sikapiuangmu.ojk.go.id) | ❌ 403 | ✅ 200 | ⚠️ Geo-blocked | Same as OJK Registry (#17) |
-| 45 | **KSEI Stats** (www.ksei.co.id) | ❌ Timeout | ✅ 200 | ⚠️ Geo-blocked | Same as KSEI (#21) |
-| 46 | **DJPB Budget** (djpb.kemenkeu.go.id) | ✅ 200 | ✅ | ✅ Working | |
-
-#### Tier 7: Civil Society & Geospatial
-
-| # | Portal | AU | ID | Status | Notes |
-|---|--------|----|----|--------|-------|
-| 47 | **LAPOR!** (www.lapor.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 48 | **IndoLII** (www.indolii.org) | ❌ DNS | ❌ DNS | ❌ DNS Dead | NXDOMAIN — project may have shut down |
-| 49 | **Geoportal** (tanahair.indonesia.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | Same as BIG (#11) |
-| 50 | **InaRisk** (inarisk.bnpb.go.id) | ✅ 200 | ✅ | ✅ Working | |
-| 51 | **pasal.id** (pasal.id) | ✅ 200 | ✅ | ✅ Working | Community-run, MCP-ready |
-| 52 | **Aturan.org** (aturan.org) | ✅ 200 | ✅ | ✅ Working | Community-run, MCP-ready |
-
-#### Summary
-
-| Category | Count | Portals |
-|----------|-------|---------|
-| ✅ **Working** (from everywhere) | **22** | Satu Data, BPS, BMKG, BI, BNPB, BPJPH (new), BPOM, AHU, OSS, LHKPN, Jakarta, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, LAPOR!, InaRisk, pasal.id, Aturan.org |
-| ⚠️ **Geo-blocked** (ID only) | **6** | JDIH BPK, LPSE, OJK Registry, KSEI, Satgas Waspada, DJPB Budget |
-| ⚠️ **CF/Bot blocked** | **5** | IDX, Jabar, Komdigi, OpenCorporates, (BPS now working ✅) |
-| ❌ **Down** (DNS ok, server dead) | **3** | Bandung (400/500), AHU-BO (404), KSEI Stats (404) |
-| ❌ **DNS Dead** | **16** | DJPB Treasury, APBN, BPJPH (old), OJK API, Putusan MA, Putusan MK, e-PPID, Pajak/DJP, Jatim, Surabaya, Bali, Kemendikdasmen, EITI, IndoLII, BIG/Geoportal, CoreTax |
-
-**16 out of 57 portals have dead DNS.** That's 28% of Indonesian government data infrastructure with completely broken domain records.
-
-*Last updated: 2026-03-29* — [Full status update →](status/2026-03-29-update.md)
-
----
-
-## Related Projects
-
-| Project | Description |
-|---------|-------------|
-| [**indonesia-civic-stack**](https://github.com/suryast/indonesia-civic-stack) | Production-ready Python SDK + MCP server wrapping 11 government portals |
-| [**indonesia-civic-signal-monitor**](https://github.com/suryast/indonesia-civic-signal-monitor) | Anomaly detection engine — monitors civic data for newsworthy changes |
-| [**cek-investasi / legalkah.id**](https://legalkah.id) | Investment legality checker using OJK + BPJPH data |
-| [**cerita.datarakyat.id**](https://github.com/suryast/indonesia-civic-correlation-engine) | Civic correlation engine — cross-references government datasets for stories |
-
-This repo is the **reference documentation** layer. The civic-stack SDK is the **code** layer. The signal monitor is the **intelligence** layer.
-
-## Contributing
-
-Know an Indonesian government API not listed here? Found a gotcha? PRs welcome!
-
-## Disclaimer
-
-This project documents publicly available government data sources for educational and research purposes. It is not affiliated with any Indonesian government agency. Always respect rate limits and terms of service.
-
-## License
-
-MIT
+Independent educational/research documentation, not affiliated with the listed publishers. Public visibility does not imply bulk-access permission, unrestricted reuse or permission to publish personal data. Verify source terms, original records and applicable requirements. MIT applies to repository content, not automatically to external datasets.

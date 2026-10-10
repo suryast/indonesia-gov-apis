@@ -1,0 +1,8 @@
+{
+  "name": "indonesia-gov-apis-browser-tests",
+  "private": true,
+  "version": "0.0.0",
+  "description": "Isolated read-only Playwright regression tooling; not an application framework",
+  "engines": {"node": ">=24"},
+  "devDependencies": {"playwright": "1.64.0"}
+}

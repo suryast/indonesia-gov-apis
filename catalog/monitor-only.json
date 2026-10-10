@@ -1,0 +1,295 @@
+{
+  "schema_version": 1,
+  "upstream_commit": "0508c7b",
+  "source_document": "status/2026-10-10-update.md",
+  "endpoints": [
+    {
+      "id": "inaproc-api",
+      "name": "INAPROC Data API (docs)",
+      "url": "https://data.inaproc.id/docs/dokumentasi/guides/migration-from-isb",
+      "agency": "LKPP",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "inaproc-satudata",
+      "name": "Satu Data eProc",
+      "url": "https://inaproc.id/satudata",
+      "agency": "LKPP",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sirup",
+      "name": "SIRUP / RUP",
+      "url": "https://sirup.inaproc.id",
+      "agency": "LKPP",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "bgn-sppg",
+      "name": "SPPG Operasional (MBG)",
+      "url": "https://www.bgn.go.id/operasional-sppg",
+      "agency": "BGN",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "cekbansos",
+      "name": "Cek Bansos",
+      "url": "https://cekbansos.kemensos.go.id/",
+      "agency": "Kemensos",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "djpk-sikd",
+      "name": "Portal Data SIKD (APBD)",
+      "url": "https://djpk.kemenkeu.go.id/portal/data/apbd",
+      "agency": "DJPK Kemenkeu",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "pihps",
+      "name": "PIHPS Harga Pangan",
+      "url": "https://www.bi.go.id/hargapangan",
+      "agency": "BI",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "panelharga",
+      "name": "Panel Harga Pangan",
+      "url": "https://panelharga.badanpangan.go.id/",
+      "agency": "Bapanas",
+      "tier": 9,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sdi-ckan",
+      "name": "Satu Data CKAN API",
+      "url": "https://katalog.data.go.id/api/3/action/package_search?rows=0",
+      "agency": "Bappenas",
+      "tier": 10,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "bmkg-forecast",
+      "name": "BMKG Forecast API",
+      "url": "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=31.71.03.1001",
+      "agency": "BMKG",
+      "tier": 10,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "bnpb-ckan",
+      "name": "Satu Data Bencana (CKAN)",
+      "url": "https://data.bnpb.go.id/api/3/action/status_show",
+      "agency": "BNPB",
+      "tier": 10,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "referensi-pendidikan",
+      "name": "Data Referensi Pendidikan",
+      "url": "https://referensi.data.kemendikdasmen.go.id/",
+      "agency": "Kemendikdasmen",
+      "tier": 10,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sipp-jakut",
+      "name": "SIPP PN Jakarta Utara",
+      "url": "https://sipp.pn-jakartautara.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sipp-sleman",
+      "name": "SIPP PN Sleman",
+      "url": "https://sipp.pn-sleman.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sipp-medan",
+      "name": "SIPP PN Medan",
+      "url": "https://sipp.pn-medankota.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sipp-palembang",
+      "name": "SIPP PN Palembang",
+      "url": "https://sipp.pn-palembang.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "sipp-semarang",
+      "name": "SIPP PN Semarang",
+      "url": "https://sipp.pn-semarangkota.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    },
+    {
+      "id": "jdihn",
+      "name": "JDIHN",
+      "url": "https://jdihn.go.id/",
+      "agency": "BPHN",
+      "tier": 11,
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified"
+      },
+      "access": {
+        "mode": "public-GET-only",
+        "notes": "Public GET of the configured URL only; no login, complaint submission, beneficiary/personal-record search, CAPTCHA bypass or bulk collection. Authentication, quotas, licensing and API contract unverified; obey publisher access limits."
+      },
+      "source_document_status": "monitoring-only; no canonical source document claimed"
+    }
+  ]
+}

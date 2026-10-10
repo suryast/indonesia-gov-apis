@@ -1,61 +1,21 @@
 # BPJPH Halal Certification
 
-## Endpoints
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-| Endpoint | URL | Method | Auth |
-|----------|-----|--------|------|
-| Penyelia Search | `https://cmsbl.halal.go.id/api/search/data_penyelia` | POST | None |
-| General Search | `https://cmsbl.halal.go.id/api/search` | POST | None |
-| Certificate List | `https://prod-api-si.halal.go.id/api/v2/dashboard/halal-certificate-list` | GET | None |
+## BPJPH — Halal Certification Database
 
-## Search
+A halal supervisor (penyelia) is a role in the assurance process, not a certified product or business. The earlier supervisor endpoint example, invented business-shaped response, business counts and bulk pagination guidance are withdrawn. BPJPH now describes itself as a non-ministerial agency, not a Kemenag unit.[1][2]
 
-```python
-import requests
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-resp = requests.post("https://cmsbl.halal.go.id/api/search/data_penyelia", json={
-    "nama_penyelia": "Ahmad",  # Supervisor name prefix filter
-    "start": 0,
-    "length": 100,             # Max 100
-}, headers={"Content-Type": "application/json"}, timeout=30)
+[Canonical source documentation](../apis/tier2-scrapeable/bpjph/README.md).
 
-data = resp.json()
-# data["recordsTotal"] = total matching
-# data["data"] = list of businesses
-```
+## BPJPH CMS Backend — Historical Endpoint Reference
 
-## Response Fields
+This record preserves the historical CMS backend reference separately from the BPJPH portal. `data_penyelia` refers to halal supervisors, not a validated product or business certification database. Do not use record totals as certification counts. Public API authorization and contract remain unverified.[1]
 
-| Field | Description |
-|-------|-------------|
-| `nama` | Business name |
-| `alamat` | Address |
-| `propinsi` | Province |
-| `kota_kab` | City/regency |
-| `nama_penyelia_halal` | Halal supervisor |
-| `nomor_sertifikat` | Certificate number |
-| `berlaku_sampai` | Expiry date |
+Access/auth: Backend access and response schema unverified; no personal-record query performed.
 
-## Bulk Scraping
+[Canonical source documentation](../apis/tier8-new/cmsbl-halal/README.md).
 
-Use letter prefixes for `nama_penyelia` (A-Z) to partition the dataset. General search degrades at offset >100K.
-
-```python
-import string, time
-for letter in string.ascii_uppercase:
-    offset = 0
-    while True:
-        resp = requests.post(url, json={"nama_penyelia": letter, "start": offset, "length": 100}, ...)
-        records = resp.json().get("data", [])
-        if not records: break
-        offset += len(records)
-        time.sleep(1)
-```
-
-Rate: ~116K records/hour. Total dataset: ~1.98M businesses.
-
-## Gotchas
-- No auth needed
-- Duplicates exist — deduplicate by certificate number
-- Some records have encoding issues
-- Data can lag behind actual certification status
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

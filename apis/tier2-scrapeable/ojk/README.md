@@ -2,6 +2,30 @@
 
 **Agency:** Otoritas Jasa Keuangan (Financial Services Authority)
 **Portal:** https://ojk.go.id
+**Kind:** government; **catalog ID:** `ojk`; **tier:** tier2
+**Review date:** 2026-10-10; **review state:** primary_documentation_reviewed
+
+## Reviewed guidance
+
+SIKePO is banking-regulation search, not a platform license registry. Use dated OJK sector-specific licensing publications. OJK records the crypto-regulation handover on January 10, 2025; older BAPPEBTI lists are historical. Alert absence does not prove legality. Global geo-restriction and universal proxy recommendations are withdrawn.[3][9]
+
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
+
+A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls.
+
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
+
+## Evidence
+
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.
+
+<details>
+<summary>Historical repository notes — unverified and superseded</summary>
+
+The following pre-review notes are retained for endpoint discovery and parsing context only. Counts, timing, names, response shapes, API claims, auth assumptions and examples below were NOT revalidated. They must not override the reviewed guidance above; verify before use.
+
+**Agency:** Otoritas Jasa Keuangan (Financial Services Authority)
+**Portal:** https://ojk.go.id
 **API type:** ❌ No unified API — HTML scraping + Excel/PDF downloads
 
 ## Overview
@@ -98,16 +122,17 @@ BAPPEBTI Website ↗
 
 ### Geo-Restriction
 
-`www.ojk.go.id` is strictly geo-restricted to Indonesian IPs. Singapore gets 403, Australia gets 403. Only Jakarta (Indonesian IP) returns 200. Use an Indonesian VPS/proxy.
 
 ## Gotchas
 
 1. **No stable API** — OJK frequently redesigns their website; `api.ojk.go.id` was retired without notice
 2. **Mixed formats** — some data is Excel, some PDF, some HTML
 3. **ASP.NET ViewState** — some pages require session + ViewState token
-4. **Rate limiting** — be gentle, 2-5s between requests
+> Historical access/limit assertion withdrawn; verify publisher guidance.
 5. **Geo-blocking** — `www.ojk.go.id` blocks non-Indonesian IPs (403)
 6. **Stale data** — illegal entity list updated irregularly
 7. **P2P lending list** is a PDF that changes URL each update
 8. **BAPPEBTI is separate from OJK** but covers crypto/futures regulation
 9. **AlertPortal is JS-rendered** — `/FrontEnd/AlertPortal/Negative` needs browser/Playwright
+
+</details>

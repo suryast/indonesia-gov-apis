@@ -1,39 +1,21 @@
 # InaRisk — Disaster Risk by Location
 
-## Risk Score by Coordinates
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-```python
-import requests
+## SIGAP / InaRisk — Disaster Risk Assessment
 
-resp = requests.get("https://inarisk.bnpb.go.id/api/risk/score", params={
-    "lat": -6.2088,   # Jakarta
-    "lon": 106.8456,
-}, timeout=30)
-risk = resp.json()
-# Returns risk scores per hazard type:
-# flood, earthquake, tsunami, volcano, landslide, drought, forest fire
-```
+No official contract for the historical `/api/risk/score` route or its illustrative response was established. Do not convert a map-layer legend into a property-level safety score. Verify layer date, scale, methodology and permissions; disaster-risk information is not a real-time emergency warning.
 
-## Historical Disaster Events
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-```python
-resp = requests.get("https://data.bnpb.go.id/api/3/action/package_search", params={
-    "q": "banjir",  # flood
-    "rows": 10,
-}, timeout=30)
-# CKAN-based portal — same pattern as data.go.id
-```
+[Canonical source documentation](../apis/tier7-civil-society/sigap-inarisk/README.md).
 
-## WMS Layers
+## BNPB — Disaster Data & Risk Portal
 
-InaRisk also serves WMS map layers for visualization:
-- Flood risk zones
-- Earthquake-prone areas
-- Tsunami evacuation routes
-- Volcanic hazard zones
+One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 200, ckan_shape_observed. A JSON CKAN success/result/results shape was observed for dataset search only; datastore access and the separate risk-score routes are unverified.[26]
 
-## Gotchas
-- No auth needed for REST API
-- Coordinate-based queries — lat/lon in decimal degrees
-- Complements BMKG for real-time vs. historical risk
-- data.bnpb.go.id uses CKAN (same API pattern as data.go.id)
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
+
+[Canonical source documentation](../apis/tier1-open-apis/bnpb-disaster/README.md).
+
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

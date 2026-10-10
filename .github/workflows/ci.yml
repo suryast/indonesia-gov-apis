@@ -1,0 +1,62 @@
+name: Repository checks
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+permissions:
+  contents: read
+concurrency:
+  group: ci-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+jobs:
+  python:
+    name: Python ${{ matrix.python }} offline gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    strategy:
+      fail-fast: false
+      matrix:
+        python: ['3.11', '3.12', '3.13', '3.14', '3.15']
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: ${{ matrix.python }}
+      - run: python -m pip install -r requirements-dev.txt
+      - run: python -m pip check
+      - run: python scripts/check_repository.py
+      - name: Audit runtime and developer locks
+        if: matrix.python == '3.15'
+        run: |
+          python -m pip_audit -r requirements.txt --no-deps --disable-pip
+          python -m pip_audit -r requirements-dev.txt --no-deps --disable-pip
+  browser:
+    name: Read-only dashboard browser gates
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
+        with:
+          python-version: '3.15'
+      - name: Install isolated browser test tooling
+        run: |
+          npm ci --prefix .github/browser-tests --ignore-scripts
+          npm audit --prefix .github/browser-tests
+          .github/browser-tests/node_modules/.bin/playwright install --with-deps chromium
+      - name: Read-only dashboard layout gate
+        env:
+          PLAYWRIGHT_MODULE: ${{ github.workspace }}/.github/browser-tests/node_modules/playwright
+        run: |
+          export CHROMIUM_PATH="$(node -e 'console.log(require(process.env.PLAYWRIGHT_MODULE).chromium.executablePath())')"
+          node scripts/test_status_layout.cjs
+          python -m unittest discover -s tests -p test_status_dashboard.py

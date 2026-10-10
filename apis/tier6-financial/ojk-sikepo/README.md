@@ -1,18 +1,20 @@
-# OJK SIKEPO — Fintech & Crypto Registry
+# OJK SIKePO — Banking Regulations
+
 **Agency:** OJK (Otoritas Jasa Keuangan)
-**Portal:** https://ojk.go.id
-**API type:** ⚠️ PDF press releases + HTML scraping
+**Portal:** https://sikepo.ojk.go.id
+**Kind:** government; **catalog ID:** `ojk-sikepo`; **tier:** tier6
+**Review date:** 2026-10-10; **review state:** primary_documentation_reviewed
 
-## Overview
-Licensed P2P lending platforms, licensed crypto exchanges (OJK 2025+), securities crowdfunding. Updated via press releases — needs PDF scraping.
+## Reviewed guidance
 
-## Key Sources
-- Licensed fintech: published as press releases with PDF attachments
-- Crypto exchanges: regulation transitioning from BAPPEBTI to OJK (2025+)
-- Securities crowdfunding platforms
+SIKePO means Sistem Informasi Ketentuan Perbankan Online: a banking-regulation search application. It is not the fintech/crypto licensed-platform registry. Use OJK sector-specific publications for licensing; no SIKePO API contract was verified.[3]
 
-## Gotchas
-1. Licensed platform lists are in PDF press releases
-2. Crypto regulation transfer from BAPPEBTI to OJK is ongoing
-3. Lists change monthly — need periodic re-scraping
-4. See also: `apis/tier2-scrapeable/ojk/` for the main OJK docs
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
+
+Financial publications and alerts are time-specific. Confirm licensing with the relevant regulator; no alert match is not evidence of authorization or safety.
+
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
+
+## Evidence
+
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.

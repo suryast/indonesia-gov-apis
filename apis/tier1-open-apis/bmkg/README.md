@@ -2,76 +2,35 @@
 
 **Agency:** Badan Meteorologi, Klimatologi, dan Geofisika
 **Portal:** https://data.bmkg.go.id
-**API type:** ✅ REST JSON + XML (no auth required)
+**Kind:** government; **catalog ID:** `bmkg`; **tier:** tier1
+**Review date:** 2026-10-10; **review state:** primary_documentation_reviewed
 
-## Overview
+## Reviewed guidance
 
-BMKG provides real-time public feeds for weather forecasts, earthquake events, and tsunami alerts. No API key or registration required.
+Official weather documentation uses JSON at `https://api.bmkg.go.id/publik/prakiraan-cuaca` with `adm4`. It publishes three-day forecasts, updated twice daily, with a 60 requests/minute/IP limit and required BMKG attribution. Earthquake feeds have separate official documentation; felt earthquakes are not synonymous with M5+.[5][6]
 
-## Earthquake Data
+**Access/auth:** Public feeds documented; publisher limits and attribution apply.
 
-```python
-import requests
+Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration.
 
-# Latest significant earthquake
-resp = requests.get("https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json", timeout=10)
-quake = resp.json()["Infogempa"]["gempa"]
-print(f"M{quake['Magnitude']} — {quake['Wilayah']} @ {quake['Tanggal']} {quake['Jam']}")
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
 
-# Last 15 earthquakes (M >= 5.0)
-resp15 = requests.get("https://data.bmkg.go.id/DataMKG/TEWS/gempaterkini.json", timeout=10)
-for q in resp15.json()["Infogempa"]["gempa"]:
-    print(f"{q['Tanggal']} {q['Jam']} — M{q['Magnitude']} {q['Wilayah']}")
-```
-
-### Earthquake Response Fields
-
-| Field | Description |
-|-------|-------------|
-| `Tanggal` | Date (WIB) |
-| `Jam` | Time (WIB) |
-| `Magnitude` | Richter magnitude |
-| `Kedalaman` | Depth (km) |
-| `Lintang` / `Bujur` | Latitude / Longitude |
-| `Wilayah` | Region description |
-| `Potensi` | Tsunami potential |
-
-## Weather Forecast (3-Day by Province)
+## Official forecast pattern (documentation-derived, not executed here)
 
 ```python
 import requests
-import xml.etree.ElementTree as ET
 
-# Province slug examples: DKIJakarta, JawaBarat, JawaTimur, Bali, Aceh, ...
-# Full list: 34 provinces in camelCase with no spaces
-province = "DKIJakarta"
-url = f"https://data.bmkg.go.id/DataMKG/MEWS/DigitalForecast/DigitalForecast-{province}.xml"
-
-resp = requests.get(url, timeout=15)
-root = ET.fromstring(resp.content)
-
-for area in root.findall(".//area"):
-    name = area.get("description")
-    temps = [p for p in area.findall("parameter") if p.get("id") == "t"]
-    if temps:
-        values = [v.text for v in temps[0].findall("timerange/value")]
-        print(f"{name}: {values}")
+response = requests.get(
+    "https://api.bmkg.go.id/publik/prakiraan-cuaca",
+    params={"adm4": "31.71.03.1001"}, timeout=30,
+)
+response.raise_for_status()
+forecast = response.json()
+# Verify the current schema; display BMKG attribution with derived output.
 ```
 
-## Endpoints Summary
+Legacy province XML examples are historical, not the recommended current interface.
 
-| Endpoint | Data | Update |
-|----------|------|--------|
-| `/DataMKG/TEWS/autogempa.json` | Latest earthquake | Real-time |
-| `/DataMKG/TEWS/gempaterkini.json` | Last 15 earthquakes ≥M5 | Real-time |
-| `/DataMKG/TEWS/tsunamigempa.json` | Active tsunami alert | Real-time |
-| `/DataMKG/MEWS/DigitalForecast/DigitalForecast-{Province}.xml` | 3-day forecast | 6-hourly |
+## Evidence
 
-## Gotchas
-
-1. **No auth required** — fully public feeds
-2. **XML for forecasts, JSON for earthquakes** — different formats per data type
-3. **Times are WIB (UTC+7)** — convert to UTC if needed
-4. **Province names are camelCase** — `DKIJakarta`, `JawaBarat`, not `DKI Jakarta`
-5. **Tsunami feed returns `{}` when no alert** — check before parsing
-6. **Forecast XML can be large** — 100KB+ per province; filter by area if possible
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.

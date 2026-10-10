@@ -2,6 +2,30 @@
 
 **Agency:** Satu Data Indonesia (One Data Indonesia)
 **Portal:** https://data.go.id
+**Kind:** government; **catalog ID:** `data-go-id`; **tier:** tier1
+**Review date:** 2026-10-10; **review state:** unverified
+
+## Reviewed guidance
+
+One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 404, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[19]
+
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
+
+Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration.
+
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
+
+## Evidence
+
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.
+
+<details>
+<summary>Historical repository notes — unverified and superseded</summary>
+
+The following pre-review notes are retained for endpoint discovery and parsing context only. Counts, timing, names, response shapes, API claims, auth assumptions and examples below were NOT revalidated. They must not override the reviewed guidance above; verify before use.
+
+**Agency:** Satu Data Indonesia (One Data Indonesia)
+**Portal:** https://data.go.id
 **API type:** ✅ CKAN-based API (standard CKAN endpoints, no auth)
 
 ## Overview
@@ -104,9 +128,11 @@ for resource in dataset["resources"]:
 1. **Data quality varies wildly** — some datasets are just links to PDFs
 2. **Many datasets are stale** — last updated 2020-2022
 3. **Indonesian language only** — search queries should be in Indonesian
-4. **No auth required** — fully public API
+> Historical access/limit assertion withdrawn; verify publisher guidance.
 5. **CKAN standard** — any CKAN tutorial/library works
 6. **Large result sets** — use `start` + `rows` for pagination
 7. **Some download URLs are broken** — resources may link to dead pages
 8. **Encoding** — most files are UTF-8 but some older CSVs are Windows-1252
 9. **Rate limiting** — not aggressive, but be polite
+
+</details>

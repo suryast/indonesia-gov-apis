@@ -1,45 +1,15 @@
 # pasal.id — Indonesian Law MCP Server
 
-## MCP Setup
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-### Claude Desktop
-```json
-{
-  "mcpServers": {
-    "pasal-id": {
-      "command": "npx",
-      "args": ["-y", "@anthropic-ai/mcp-proxy", "https://pasal-mcp-server-production.up.railway.app/mcp"]
-    }
-  }
-}
-```
+## pasal.id — Indonesian Law & Regulation MCP Server
 
-### Claude CLI
-```bash
-claude mcp add --transport http pasal-id https://pasal-mcp-server-production.up.railway.app/mcp
-```
+Community legal index, not a government service. Counts, sync frequency, tool list and the guessed HTTP `/tools/*` routes are unverified historical claims. An MCP transport endpoint does not imply REST endpoints with tool names. Check the actual tool schema and original official legal document; no MCP session was executed.
 
-## Available Tools
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-| Tool | Description | Example |
-|------|-------------|---------|
-| `search_laws` | Full-text search across 40K regulations | "cari UU tentang perlindungan data" |
-| `get_pasal` | Get specific article by reference | "Pasal 5 UU 27/2022" |
-| `get_law_status` | Check if regulation is active/amended/revoked | "status PP 71/2019" |
-| `get_law_content` | Get full regulation text | "isi lengkap UU 11/2020" |
+[Canonical source documentation](../apis/tier7-civil-society/pasal-id/README.md).
 
-## Coverage
-- 40,143 regulations
-- 937,155 structured articles (pasal)
-- Covers: UU, PP, Perpres, Permen, Perda
-- Source: peraturan.go.id PDFs with Claude Vision OCR correction
-- Weekly sync
+MCP tools must be discovered through the protocol. The former npm proxy package, guessed REST routes and tool/coverage claims were not verified and are not setup instructions. Review third-party server privacy and authority before connecting.
 
-## Example Queries
-- "What does UU Perlindungan Data Pribadi say about consent?"
-- "Is PP 71/2019 still active?"
-- "Find regulations about halal certification"
-- "Pasal berapa yang mengatur tentang NPWP?"
-
-## GitHub
-[ilhamfp/pasal](https://github.com/ilhamfp/pasal) — open source, FastMCP + Supabase + Next.js
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

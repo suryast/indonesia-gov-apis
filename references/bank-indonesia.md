@@ -1,39 +1,15 @@
 # Bank Indonesia — Exchange Rates & Monetary Data
 
-## Exchange Rates (Web Scraping)
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-```python
-import requests
-from bs4 import BeautifulSoup
+## Bank Indonesia — Central Bank Data
 
-resp = requests.get("https://www.bi.go.id/id/statistik/informasi-kurs/transaksi-bi/Default.aspx",
-    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}, timeout=30)
-table = BeautifulSoup(resp.text, "html.parser").find("table", class_="table1")
-for row in table.find_all("tr")[1:]:
-    cols = [td.text.strip() for td in row.find_all("td")]
-    if len(cols) >= 3: print(f"{cols[0]}: Buy {cols[1]} / Sell {cols[2]}")
-```
+Use official BI statistical publications, separating JISDOR from transaction exchange rates. The old guessed `dataapi.bi.go.id/dataexchange/v1/*` routes, 10:00 publication-time claim and payment-transfer sandbox example are withdrawn: no statistics API contract was established in this review.[16]
 
-## BI API Sandbox
+Direct statistics-documentation retrieval timed out; the historical API contract remains unverified.
 
-```python
-# OAuth2 registration required at api-sandbox.bi.go.id
-resp = requests.get("https://api-sandbox.bi.go.id/openapi/snap/v1/transfer-interbank",
-    headers={"Authorization": "Bearer ACCESS_TOKEN"}, timeout=30)
-```
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-## Key Data
+[Canonical source documentation](../apis/tier1-open-apis/bank-indonesia/README.md).
 
-| Data | Update | Source |
-|------|--------|--------|
-| JISDOR (USD/IDR) | Daily 10:00 WIB | Kurs page |
-| BI 7-Day RR Rate | Monthly | Monetary page |
-| Inflation | Monthly | Statistics section |
-| M1/M2 Money Supply | Monthly | Excel download |
-
-## Gotchas
-- JISDOR published 10:00 WIB (03:00 UTC) business days only
-- No weekend/holiday rates
-- Web scraping needs ASP.NET ViewState handling for some pages
-- API sandbox requires partnership for production access
-- Excel downloads for detailed statistical data
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

@@ -1,40 +1,69 @@
 #!/usr/bin/env python3
-"""Get inflation data from BPS (Statistics Indonesia)."""
+"""Fetch a user-verified BPS indicator; variable IDs are not assumed to mean inflation."""
+import argparse
+import json
+import os
+import re
+import sys
+from urllib.parse import quote
 
 import requests
-import sys
-import os
+
+BASE = "https://webapi.bps.go.id/v1/api"
 
 
-def get_inflation(api_key: str):
-    """Fetch CPI/inflation data from BPS API."""
-    base = "https://webapi.bps.go.id/v1/api"
-    
+def positive_timeout(value):
+    value = int(value)
+    if not 0 < value <= 120:
+        raise argparse.ArgumentTypeError("timeout must be between 1 and 120 seconds")
+    return value
+
+
+def get_inflation(api_key, variable, domain="0000", timeout=30):
+    """Return BPS JSON unchanged, including datacontent and dimension metadata.
+
+    Select and verify an inflation/CPI variable in the official developer portal first.
+    The historical filename does not make an arbitrary variable an inflation series.
+    """
+    if not re.fullmatch(r"[0-9]+", variable) or not re.fullmatch(r"[0-9]{4}", domain):
+        raise ValueError("variable must be numeric and domain must contain four digits")
+    if not api_key or not api_key.strip():
+        raise ValueError("BPS_API_KEY is required")
     resp = requests.get(
-        f"{base}/list/model/data/domain/0000/var/1/key/{api_key}",
-        timeout=30,
+        f"{BASE}/list/model/data/domain/{domain}/var/{variable}/key/{quote(api_key, safe='')}",
+        timeout=timeout,
     )
     resp.raise_for_status()
-    data = resp.json()
-    
-    if "data" not in data:
-        print(f"Unexpected response: {data}")
-        return
-    
-    print(f"{'Year':<8} {'Value':>10}")
-    print("-" * 20)
-    
-    for item in data["data"]:
-        year = item.get("tahun", "N/A")
-        value = item.get("data_content", "N/A")
-        print(f"{year:<8} {value:>10}")
+    if "application/json" not in resp.headers.get("Content-Type", "").lower():
+        raise ValueError("BPS did not return JSON")
+    payload = resp.json()
+    if not isinstance(payload, dict) or payload.get("status") != "OK":
+        raise ValueError("BPS returned an error or an unknown response shape")
+    if not isinstance(payload.get("datacontent"), dict):
+        raise ValueError("BPS response has no datacontent mapping")
+    return payload
+
+
+def main(argv=None):
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--variable", required=True,
+                        help="BPS variable ID confirmed in the developer portal (no assumed default)")
+    parser.add_argument("--domain", default="0000", help="four-digit BPS domain")
+    parser.add_argument("--timeout", type=positive_timeout, default=30)
+    args = parser.parse_args(argv)
+    key = os.environ.get("BPS_API_KEY")
+    if not key:
+        parser.error("set BPS_API_KEY in your environment; register at https://webapi.bps.go.id/developer/")
+    try:
+        payload = get_inflation(key, args.variable, args.domain, args.timeout)
+        print(json.dumps(payload, ensure_ascii=False, indent=2))
+    except (requests.RequestException, ValueError):
+        # BPS embeds the key in the URL. Never print exception/request URLs or raw errors.
+        print("BPS request or response validation failed; check your key and selected indicator.",
+              file=sys.stderr)
+        return 1
+    return 0
 
 
 if __name__ == "__main__":
-    api_key = os.environ.get("BPS_API_KEY") or (sys.argv[1] if len(sys.argv) > 1 else None)
-    if not api_key:
-        print("Usage: BPS_API_KEY=xxx python bps_inflation.py")
-        print("   or: python bps_inflation.py <api_key>")
-        print("\nRegister for free at: https://webapi.bps.go.id/developer/")
-        sys.exit(1)
-    get_inflation(api_key)
+    raise SystemExit(main())

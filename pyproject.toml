@@ -1,0 +1,14 @@
+[project]
+name = "indonesia-gov-apis-examples"
+version = "0.1.0"
+description = "Conservative examples for Indonesian public-data sources"
+requires-python = ">=3.11"
+dependencies = ["requests==2.34.2", "beautifulsoup4==4.15.0"]
+
+[tool.ruff]
+target-version = "py311"
+line-length = 100
+include = ["examples/**/*.py", "tests/test_examples.py", "scripts/check_repository.py"]
+
+[tool.ruff.lint]
+select = ["E4", "E7", "E9", "F", "I"]

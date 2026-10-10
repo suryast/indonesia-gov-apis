@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://status.datarakyat.id/">
 <meta name="description" content="Daily uptime monitoring of Indonesian government data portals and APIs.">
 <meta property="og:title" content="Indonesia Gov Portal Status">
-<meta property="og:description" content="Daily uptime monitoring of Indonesian government data portals and APIs.">
+<meta property="og:description" content="Daily uptime monitoring of Indonesian government data portals and APIs. Probe sources are recorded with each observation.">
 <meta property="og:image" content="https://status.datarakyat.id/og-image.png">
 <meta property="og:url" content="https://status.datarakyat.id">
 <meta property="og:type" content="website">
@@ -82,7 +82,7 @@
   .summary-card .label { font-size: .7rem; color: var(--text-dim); text-transform: uppercase; letter-spacing: .08em; font-weight: 600; margin-top: .125rem; }
   .num.up { color: var(--up); } .num.warn { color: var(--warn); } .num.down { color: var(--down); }
 
-  .last-check { font-size: .8rem; color: var(--text-muted); margin-bottom: 2rem; font-family: var(--font-mono); }
+  .last-check { overflow-wrap: anywhere; font-size: .8rem; color: var(--text-muted); margin-bottom: 2rem; font-family: var(--font-mono); }
 
   /* Tier groups */
   .tier-group { margin-bottom: 1.75rem; }
@@ -108,7 +108,7 @@
   .portal-name { font-size: .875rem; font-weight: 600; }
   .portal-name a { color: var(--text); text-decoration: none; transition: color .15s; }
   .portal-name a:hover { color: var(--red); }
-  .portal-sub { font-size: .75rem; color: var(--text-dim); display: flex; align-items: center; gap: .375rem; margin-top: 1px; }
+  .portal-sub { font-size: .75rem; color: var(--text-dim); display: flex; flex-wrap: wrap; align-items: center; gap: .375rem; margin-top: 1px; }
 
   /* Source pills */
   .pill {
@@ -131,10 +131,10 @@
     transition: opacity .15s; cursor: default; position: relative;
   }
   .spark-bar.up { background: var(--up); }
-  .spark-bar.geo_blocked_intl, .spark-bar.geo_blocked_id { background: var(--warn); }
-  .spark-bar.blocked { background: var(--warn); opacity: .6; }
+  .spark-bar.mixed, .spark-bar.geo_blocked_intl, .spark-bar.geo_blocked_id { background: var(--warn); }
   .spark-bar.degraded { background: var(--warn); opacity: .85; }
-  .spark-bar.error, .spark-bar.down { background: var(--down); }
+  .spark-bar.blocked { background: var(--warn); opacity: .6; }
+  .spark-bar.dns_error, .spark-bar.timeout, .spark-bar.tls_error, .spark-bar.network_error, .spark-bar.proxy_error, .spark-bar.redirect_error, .spark-bar.http_error, .spark-bar.probe_error, .spark-bar.error, .spark-bar.down { background: var(--down); }
   .spark-bar.dns_dead { background: var(--down); opacity: .5; }
   .spark-bar.empty { background: var(--border); opacity: .15; }
   .spark-bar:hover { opacity: .6; }
@@ -158,8 +158,8 @@
     text-transform: uppercase; letter-spacing: .03em;
   }
   .badge.up { background: var(--up-dim); color: var(--up); }
-  .badge.blocked, .badge.degraded, .badge.geo_blocked_intl, .badge.geo_blocked_id { background: var(--warn-dim); color: var(--warn); }
-  .badge.error, .badge.dns_dead, .badge.down { background: var(--down-dim); color: var(--down); }
+  .badge.degraded, .badge.mixed, .badge.blocked, .badge.geo_blocked_intl, .badge.geo_blocked_id { background: var(--warn-dim); color: var(--warn); }
+  .badge.dns_error, .badge.timeout, .badge.tls_error, .badge.network_error, .badge.proxy_error, .badge.redirect_error, .badge.http_error, .badge.probe_error, .badge.skip, .badge.error, .badge.dns_dead, .badge.down { background: var(--down-dim); color: var(--down); }
 
   /* Footer */
   footer {
@@ -200,23 +200,22 @@
     <div style="font-weight:600;font-size:.8rem;color:var(--text-dim);text-transform:uppercase;letter-spacing:.05em;margin-bottom:.75rem;">Status Legend</div>
     <div style="display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:.5rem .75rem;font-size:.8rem;">
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);margin-right:.5rem;vertical-align:middle;"></span><strong>Up</strong> — Portal responding normally</div>
-      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-right:.5rem;vertical-align:middle;"></span><strong>🇮🇩 Only</strong> — Geo-blocked outside Indonesia</div>
-      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.6;margin-right:.5rem;vertical-align:middle;"></span><strong>CF Challenge</strong> — Cloudflare bot protection active</div>
-      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.85;margin-right:.5rem;vertical-align:middle;"></span><strong>Degraded</strong> — Responds, but expected content is missing</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-right:.5rem;vertical-align:middle;"></span><strong>Mixed / legacy geo label</strong> — Unequal probe observations; cause unknown</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.6;margin-right:.5rem;vertical-align:middle;"></span><strong>HTTP 403</strong> — Request refused; cause unknown</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>Down</strong> — Portal unreachable or erroring</div>
-      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>DNS Dead</strong> — Domain no longer resolves</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>DNS error</strong> — Probe could not resolve the host; not proof of permanent failure</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--up);width:14px;height:8px;margin-right:.5rem;vertical-align:middle;"></span><strong>Spark bars</strong> — <span id="history-window">Daily history</span>, one bar per day</div>
     </div>
     <div style="margin-top:.75rem;font-size:.75rem;color:var(--text-muted);">
-      Portals are checked daily at 04:30 UTC from an international runner and, when available, a <strong>Jakarta</strong> probe (currently offline).
-      Some endpoints also get a content check: an HTTP 200 without the expected text counts as degraded.
-      Geo-blocked portals may work fine from within Indonesia but return 403/timeout from international IPs.
+      Degraded means a complete bounded response lacked its configured public marker; it is a heuristic, not an API correctness claim. Unverified content checks retain HTTP status.
+      Transport errors distinguish DNS, timeout, TLS, network, proxy and redirect failures. HTTP responses do not establish API correctness or access rights.
+      Unequal reachability does not establish geographic blocking. Sources and check time are taken from the selected snapshot.
     </div>
   </div>
 
   <footer>
     <p>
-      Checked daily · Jakarta/ID 🇮🇩 probe when available ·
+      Public endpoint observations ·
       <a href="https://github.com/suryast/indonesia-gov-apis">Source</a> ·
       <span class="brand">Data Rakyat</span>
     </p>
@@ -232,12 +231,29 @@ const TIER_NAMES = {
   5: "Transparency",
   6: "Financial Sector",
   7: "Civil Society & Geospatial",
-  8: "Service Portals",
+  8: "Additional Public Portals",
   9: "Procurement & Program Data",
   10: "Data APIs & Catalogues",
   11: "Courts & Law",
 };
 
+const LABELS = Object.freeze({
+  degraded: "degraded", up: "up", blocked: "HTTP 403", error: "error", dns_dead: "legacy DNS",
+  geo_blocked_intl: "legacy geo", geo_blocked_id: "legacy geo", down: "down",
+  mixed: "mixed", dns_error: "DNS error", timeout: "timeout", tls_error: "TLS error",
+  network_error: "network", proxy_error: "proxy", redirect_error: "redirect",
+  http_error: "HTTP error", probe_error: "probe error", skip: "skip", empty: "empty"
+});
+const escapeHTML = value => String(value ?? "").replace(/[&<>"']/g, c => ({
+  "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;"
+}[c]));
+const statusKey = value => Object.hasOwn(LABELS, value) ? value : "probe_error";
+function safeURL(value) {
+  try {
+    const url = new URL(value);
+    return ["https:", "http:"].includes(url.protocol) && !url.username && !url.password ? url.href : "#";
+  } catch { return "#"; }
+}
 const MAX_DAYS = 90;
 const MIN_DAYS = 7;
 document.getElementById("history-window").textContent = `Last ${MAX_DAYS} days`;
@@ -245,6 +261,7 @@ document.getElementById("history-window").textContent = `Last ${MAX_DAYS} days`;
 async function load() {
   try {
     const historyRes = await fetch("data/history.json");
+    if (!historyRes.ok) throw new Error("History unavailable");
     const dayData = await historyRes.json();
     const allDays = Object.keys(dayData).sort();
     const DAYS = Math.max(MIN_DAYS, Math.min(MAX_DAYS, allDays.length));
@@ -258,31 +275,31 @@ async function load() {
     document.getElementById("portal-count").textContent = `${portals.length} `;
     const description = `Daily uptime monitoring of ${portals.length} Indonesian government data portals and APIs.`;
     document.querySelector('meta[name="description"]').content = description;
-    document.querySelector('meta[property="og:description"]').content = description;
+    document.querySelector('meta[property="og:description"]').content = `${description} Probe sources are recorded with each observation.`;
     const up = portals.filter(p => p.status === "up").length;
-    const geo = portals.filter(p => p.status === "geo_blocked_intl" || p.status === "geo_blocked_id").length;
+    const geo = portals.filter(p => ["mixed", "geo_blocked_intl", "geo_blocked_id"].includes(p.status)).length;
     const blocked = portals.filter(p => p.status === "blocked").length;
     const degraded = portals.filter(p => p.status === "degraded").length;
-    const down = portals.filter(p => ["error", "dns_dead", "down"].includes(p.status)).length;
+    const down = portals.length - up - geo - blocked - degraded;
 
     document.getElementById("summary").innerHTML = `
       <div class="summary-card"><div class="num up">${up}</div><div class="label">Up</div></div>
-      <div class="summary-card"><div class="num warn">${geo}</div><div class="label">Geo-blocked</div></div>
-      <div class="summary-card"><div class="num warn">${blocked}</div><div class="label">CF Challenge</div></div>
+      <div class="summary-card"><div class="num warn">${geo}</div><div class="label">Mixed / Legacy</div></div>
+      <div class="summary-card"><div class="num warn">${blocked}</div><div class="label">HTTP 403</div></div>
       <div class="summary-card"><div class="num warn">${degraded}</div><div class="label">Degraded</div></div>
-      <div class="summary-card"><div class="num down">${down}</div><div class="label">Down / Dead</div></div>
+      <div class="summary-card"><div class="num down">${down}</div><div class="label">Errors / Unknown</div></div>
     `;
 
     const checkedAt = new Date(latest.checked_at);
-    const sources = latest.sources;
-    const srcText = sources
-      ? Object.values(sources).filter(s => s.available !== false).map(s => s.location).join(" + ")
-      : "Sydney, AU";
-    document.getElementById("last-check").textContent = `${checkedAt.toISOString().slice(0,16).replace('T',' ')} UTC · ${srcText}`;
+    const sources = latest.sources || {};
+    const srcText = Object.entries(sources).map(([key, source]) =>
+      `${key}: ${source.location || "Not configured"} / ${source.provider || "Not configured"} / ${source.type || "Not configured"}${source.available === false ? " (unavailable)" : ""}`
+    ).join(" + ") || "Source metadata not recorded";
+    document.getElementById("last-check").textContent = `${Number.isNaN(checkedAt.getTime()) ? 'Check time not recorded' : checkedAt.toISOString().slice(0,16).replace('T',' ') + ' UTC'} · ${srcText}`;
 
-    const tiers = {};
+    const tiers = Object.create(null);
     for (const [pid, info] of Object.entries(latest.portals)) {
-      const t = info.tier || 1;
+      const t = Number.isInteger(info.tier) && info.tier > 0 ? info.tier : 1;
       if (!tiers[t]) tiers[t] = [];
       tiers[t].push({ ...info, pid });
     }
@@ -296,7 +313,7 @@ async function load() {
         for (let i = 0; i < DAYS; i++) {
           const dayKey = days[days.length - DAYS + i];
           if (dayKey && dayData[dayKey] && dayData[dayKey].portals[portal.pid]) {
-            const s = dayData[dayKey].portals[portal.pid].status;
+            const s = statusKey(dayData[dayKey].portals[portal.pid].status);
             padded.push({ status: s, date: dayKey });
           } else {
             padded.push({ status: "empty", date: "" });
@@ -304,29 +321,30 @@ async function load() {
         }
 
         const sparkBars = padded.map(d =>
-          `<div class="spark-bar ${d.status}"><div class="tooltip">${d.date || "—"} · ${d.status}</div></div>`
+          `<div class="spark-bar ${d.status}"><div class="tooltip">${escapeHTML(d.date || "—")} · ${escapeHTML(LABELS[d.status])}</div></div>`
         ).join("");
 
-        const labels = {
-          up: "up", blocked: "cf", error: "down", dns_dead: "dns dead",
-          geo_blocked_intl: "🇮🇩 only", geo_blocked_id: "intl only", down: "down",
-          degraded: "degraded",
-        };
-
-        const au = portal.au || {};
-        const id = portal.id || {};
-        const pc = (s) => s === "up" ? "up" : (s === "blocked" ? "warn" : "down");
-        const auPill = au.status ? `<span class="pill ${pc(au.status)}">AU ${au.http_code || "—"}</span>` : "";
-        const idPill = id.status && id.status !== "skip" ? `<span class="pill ${pc(id.status)}">ID ${id.http_code || "—"}</span>` : "";
+        const status = statusKey(portal.status);
+        // Schema 2 uses observation keys; retained snapshots use au/id.
+        const observations = portal.observations || Object.fromEntries(
+          ["au", "id"].filter(key => portal[key]).map(key => [key, portal[key]])
+        );
+        const sourcePills = Object.entries(observations).filter(([, value]) => value && value.status !== "skip").map(([key, value]) => {
+          const state = statusKey(value.status);
+          const color = state === "up" ? "up" : ["blocked", "degraded"].includes(state) ? "warn" : "down";
+          const code = Number.isInteger(value.http_code) && value.http_code > 0 ? ` ${value.http_code}` : "";
+          const title = `${key}: ${sources[key]?.location || "Not recorded"} · ${LABELS[state]}`;
+          return `<span class="pill ${color}" title="${escapeHTML(title)}">${escapeHTML(key)} ${escapeHTML(LABELS[state])}${code}</span>`;
+        }).join("");
 
         html += `
           <div class="portal-row">
             <div>
-              <div class="portal-name"><a href="${portal.url}" target="_blank" rel="noopener">${portal.name}</a></div>
-              <div class="portal-sub">${portal.agency} ${auPill}${idPill}</div>
+              <div class="portal-name"><a href="${escapeHTML(safeURL(portal.url))}" target="_blank" rel="noopener noreferrer">${escapeHTML(portal.name)}</a></div>
+              <div class="portal-sub">${escapeHTML(portal.agency)} ${sourcePills}</div>
             </div>
             <div class="spark">${sparkBars}</div>
-            <div class="portal-meta"><span class="badge ${portal.status}">${labels[portal.status] || portal.status}</span></div>
+            <div class="portal-meta"><span class="badge ${status}">${LABELS[status]}</span></div>
           </div>`;
       }
       html += `</div>`;
@@ -334,7 +352,7 @@ async function load() {
 
     document.getElementById("portals").innerHTML = html;
   } catch (e) {
-    document.getElementById("portals").innerHTML = `<p style="color:var(--down)">Error: ${e.message}</p>`;
+    document.getElementById("portals").textContent = "Unable to load status history. Please try again later.";
   }
 }
 

@@ -1,53 +1,37 @@
 # OJK Financial Entity Legality
 
-## Quick Check — SikapiUangmu Search
+**Reviewed:** 2026-10-10. Supplementary guide, not an additional source or live API test.
 
-```python
-import requests
-from bs4 import BeautifulSoup
+## OJK — Financial Entity Legality Check
 
-resp = requests.get("https://sikapiuangmu.ojk.go.id/FrontEnd/AlertPortal/Search",
-    params={"q": "COMPANY_NAME"},
-    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}, timeout=30)
-soup = BeautifulSoup(resp.text, "html.parser")
-for row in soup.select("table tbody tr"):
-    cols = [td.text.strip() for td in row.find_all("td")]
-    if cols: print(f"⚠️ {' | '.join(cols)}")
-```
+SIKePO is banking-regulation search, not a platform license registry. Use dated OJK sector-specific licensing publications. OJK records the crypto-regulation handover on January 10, 2025; older BAPPEBTI lists are historical. Alert absence does not prove legality. Global geo-restriction and universal proxy recommendations are withdrawn.[3][9]
 
-**Important:** No result does NOT mean legal — the entity may not be in the database.
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-## Illegal Investment Alert List (Satgas Waspada)
+[Canonical source documentation](../apis/tier2-scrapeable/ojk/README.md).
 
-```python
-resp = requests.get("https://waspadainvestasi.ojk.go.id/",
-    headers={"User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64)"}, timeout=30)
-# Parse the alert list table
-```
+## OJK SIKePO — Banking Regulations
 
-Updated weekly. Covers: illegal P2P, unlicensed MLM, robot trading scams, crypto fraud.
+SIKePO means Sistem Informasi Ketentuan Perbankan Online: a banking-regulation search application. It is not the fintech/crypto licensed-platform registry. Use OJK sector-specific publications for licensing; no SIKePO API contract was verified.[3]
 
-## Licensed Entity Sources
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
 
-| Type | URL | Format |
-|------|-----|--------|
-| Fintech P2P | `ojk.go.id/id/kanal/iknb/.../fintech/` | PDF |
-| Investment Managers | `reksadana.ojk.go.id/Public/ManajerInvestasiList.aspx` | HTML |
-| Securities | `ojk.go.id/id/kanal/pasar-modal/.../data-perusahaan-efek/` | Excel |
-| Insurance | `ojk.go.id/id/kanal/iknb/.../asuransi/` | HTML |
-| Pension Funds | `ojk.go.id/id/kanal/iknb/.../dana-pensiun/` | HTML |
-| Multi-finance | `ojk.go.id/id/kanal/iknb/.../perusahaan-pembiayaan/` | HTML |
+[Canonical source documentation](../apis/tier6-financial/ojk-sikepo/README.md).
 
-## Recommended Architecture
+## Satgas Waspada Investasi — Investment Fraud Alerts
 
-No unified API exists. Build your own:
-1. Scrape all sources periodically (weekly)
-2. Normalize into local database
-3. Build search API on top
+Financial publications and alerts are time-specific. Confirm licensing with the relevant regulator; no alert match is not evidence of authorization or safety.
 
-## Gotchas
-- No stable API — OJK redesigns frequently
-- ASP.NET ViewState on some pages
-- P2P lending list is a PDF that changes URL each update
-- Datacenter IPs may be blocked — use 2-5s delays
-- BAPPEBTI (separate agency) covers crypto/futures
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
+
+[Canonical source documentation](../apis/tier6-financial/satgas-waspada/README.md).
+
+## BAPPEBTI — Commodities Futures; Historical Crypto References
+
+OJK records the crypto-regulation handover on January 10, 2025. BAPPEBTI crypto pages are historical references, not current licensing authority. Do not infer the transition is still ongoing from older repository notes.[9]
+
+Access/auth: Current auth/API contract unverified; use only explicitly permitted public material.
+
+[Canonical source documentation](../apis/other/bappebti/README.md).
+
+Stop at login, CAPTCHA, 403 or other access-denial controls. Do not bypass restrictions or publish credentials/PII. For evidence and outstanding validation, see the [source review](../docs/source-review-2026-10-10.md).

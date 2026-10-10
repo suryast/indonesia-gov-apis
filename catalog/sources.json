@@ -1,0 +1,2007 @@
+{
+  "schema_version": 1,
+  "review_date": "2026-10-10",
+  "counting_policy": "One source entry per apis/**/README.md, including overlapping portal/backend references. These are documentary records, not unique agencies or guaranteed working APIs. references/**/*.md are supplementary guides, not additional sources. monitor_ids map endpoint observations independently.",
+  "totals": {
+    "source_documents": 59,
+    "indonesia_source_documents": 58,
+    "international_reference_documents": 1,
+    "supplementary_documents": 11,
+    "by_tier": {
+      "other": 1,
+      "reference": 1,
+      "tier1": 12,
+      "tier2": 10,
+      "tier3": 6,
+      "tier4": 8,
+      "tier5": 5,
+      "tier6": 4,
+      "tier7": 7,
+      "tier8": 5
+    }
+  },
+  "sources": [
+    {
+      "id": "bappebti",
+      "name": "BAPPEBTI — Commodities Futures; Historical Crypto References",
+      "agency": "Badan Pengawas Perdagangan Berjangka Komoditi",
+      "tier": "other",
+      "documentation": "apis/other/bappebti/README.md",
+      "portal_url": "https://bappebti.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "OJK records the crypto-regulation handover on January 10, 2025. BAPPEBTI crypto pages are historical references, not current licensing authority. Do not infer the transition is still ongoing from older repository notes.[9]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/Bappebti-Transfers-Regulation-and-Supervision-Duties-on-Digital-Financial-Assets-Crypto-Assets-and-Derivatives-to-OJK-BI.aspx",
+            "method": "primary_documentation",
+            "observation": "OJK records the crypto-regulation handover on January 10, 2025. BAPPEBTI crypto pages are historical references, not current licensing authority. Do not infer the transition is still ongoing from older repository notes.[9]",
+            "acquisition": "search_indexed_primary_text"
+          },
+          {
+            "url": "https://ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/Nota-Kesepahaman-OJK-Bappebti-2026.aspx",
+            "method": "primary_documentation",
+            "acquisition": "search_indexed_primary_text",
+            "observation": "Indexed OJK release dated January 20, 2026 states end of transition. No licensing query executed."
+          }
+        ]
+      },
+      "monitor_ids": [],
+      "related_sources": []
+    },
+    {
+      "id": "nta",
+      "name": "NTA — Japan Invoice Registry (Reference)",
+      "agency": "National Tax Agency (Japan) — 国税庁",
+      "tier": "reference",
+      "documentation": "apis/reference/nta/README.md",
+      "portal_url": "https://www.invoice-kohyo.nta.go.jp/",
+      "kind": "government",
+      "country": "JP",
+      "access": {
+        "auth": "Application ID historically documented; current approval and quota not verified.",
+        "notes": "Japan reference only. The old fixed approval duration, strictly enforced one-request/second quota and registration-number parameter assumptions remain unverified historical notes, not current official guarantees."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.invoice-kohyo.nta.go.jp/",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [],
+      "related_sources": []
+    },
+    {
+      "id": "apbn-kemenkeu",
+      "name": "Portal APBN Kemenkeu — State Budget Data",
+      "agency": "Kementerian Keuangan (Ministry of Finance)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/apbn-kemenkeu/README.md",
+      "portal_url": "https://data-apbn.kemenkeu.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://data-apbn.kemenkeu.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://djpb.kemenkeu.go.id/portal/id/berita/lainnya/realisasi-apbn.html",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://djpb.kemenkeu.go.id/portal/id/data/apbn-realisasi.html",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "apbn"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "bank-indonesia",
+      "name": "Bank Indonesia — Central Bank Data",
+      "agency": "Bank Indonesia (BI)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/bank-indonesia/README.md",
+      "portal_url": "https://www.bi.go.id/id/statistik/",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Use official BI statistical publications, separating JISDOR from transaction exchange rates. The old guessed `dataapi.bi.go.id/dataexchange/v1/*` routes, 10:00 publication-time claim and payment-transfer sandbox example are withdrawn: no statistics API contract was established in this review.[16]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.bi.go.id/en/statistik/informasi-kurs/jisdor/Default.aspx",
+            "method": "http_probe",
+            "observation": "Direct documentation retrieval timed out from this host. No statistics API contract or publication time was validated."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bi"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "big-geospatial",
+      "name": "BIG Geospatial / INA-SDI — National Geospatial Data",
+      "agency": "Badan Informasi Geospasial (Geospatial Information Agency)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/big-geospatial/README.md",
+      "portal_url": "https://tanahair.indonesia.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://tanahair.indonesia.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "big"
+      ],
+      "related_sources": [
+        "geoportal-onemap"
+      ]
+    },
+    {
+      "id": "bmkg",
+      "name": "BMKG — Meteorology, Climatology & Geophysics Data",
+      "agency": "Badan Meteorologi, Klimatologi, dan Geofisika",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/bmkg/README.md",
+      "portal_url": "https://data.bmkg.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Public feeds documented; publisher limits and attribution apply.",
+        "notes": "Official weather documentation uses JSON at `https://api.bmkg.go.id/publik/prakiraan-cuaca` with `adm4`. It publishes three-day forecasts, updated twice daily, with a 60 requests/minute/IP limit and required BMKG attribution. Earthquake feeds have separate official documentation; felt earthquakes are not synonymous with M5+.[5][6]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://data.bmkg.go.id/prakiraan-cuaca/",
+            "method": "primary_documentation",
+            "observation": "Official weather documentation uses JSON at `https://api.bmkg.go.id/publik/prakiraan-cuaca` with `adm4`. It publishes three-day forecasts, updated twice daily, with a 60 requests/minute/IP limit and required BMKG attribution. Earthquake feeds have separate official documentation; felt earthquakes are not synonymous with M5+.[5][6]",
+            "acquisition": "direct_public_documentation_fetch"
+          },
+          {
+            "url": "https://data.bmkg.go.id/gempabumi/",
+            "method": "primary_documentation",
+            "observation": "Official weather documentation uses JSON at `https://api.bmkg.go.id/publik/prakiraan-cuaca` with `adm4`. It publishes three-day forecasts, updated twice daily, with a 60 requests/minute/IP limit and required BMKG attribution. Earthquake feeds have separate official documentation; felt earthquakes are not synonymous with M5+.[5][6]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bmkg"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "bnpb-disaster",
+      "name": "BNPB — Disaster Data & Risk Portal",
+      "agency": "Badan Nasional Penanggulangan Bencana (National Disaster Management Agency)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/bnpb-disaster/README.md",
+      "portal_url": "https://data.bnpb.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 200, ckan_shape_observed. A JSON CKAN success/result/results shape was observed for dataset search only; datastore access and the separate risk-score routes are unverified.[26]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "endpoint_observed",
+        "evidence": [
+          {
+            "url": "https://data.bnpb.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"content_type\": \"application/json;charset=utf-8\", \"date\": \"2026-10-10\", \"final_url\": \"https://data.bnpb.go.id/api/3/action/package_search?rows=0\", \"http_status\": 200, \"method\": \"GET\", \"status\": \"ckan_shape_observed\", \"url\": \"https://data.bnpb.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bnpb"
+      ],
+      "related_sources": [
+        "sigap-inarisk"
+      ]
+    },
+    {
+      "id": "bps",
+      "name": "BPS — Statistics Indonesia",
+      "agency": "Badan Pusat Statistik (Central Bureau of Statistics)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/bps/README.md",
+      "portal_url": "https://www.bps.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "BPS API key token required; authenticated calls not executed.",
+        "notes": "Indexed official WebAPI documentation confirms key-token identification and JSON responses. Full direct documentation retrieval timed out; exact dynamic-table schema, variable mappings and quota were not validated here. Discover identifiers from current official metadata rather than guessing var=1 means CPI. The old fixed indicator table and 100/day claim are withdrawn.[4]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://webapi.bps.go.id/documentation/",
+            "method": "primary_documentation",
+            "observation": "Indexed official WebAPI documentation confirms key-token identification and JSON responses. Full direct documentation retrieval timed out; exact dynamic-table schema, variable mappings and quota were not validated here. Discover identifiers from current official metadata rather than guessing var=1 means CPI. The old fixed indicator table and 100/day claim are withdrawn.[4]",
+            "acquisition": "search_indexed_primary_text"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bps"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "data-go-id",
+      "name": "data.go.id — National Open Data Portal",
+      "agency": "Satu Data Indonesia (One Data Indonesia)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/data-go-id/README.md",
+      "portal_url": "https://data.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 404, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[19]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://data.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"http_status\": 404, \"method\": \"GET\", \"status\": \"http_error\", \"url\": \"https://data.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "data-go-id"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "djpb-treasury",
+      "name": "DJPB Treasury — State Treasury & Budget Disbursement",
+      "agency": "Direktorat Jenderal Perbendaharaan (DJPB), Kementerian Keuangan",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/djpb-treasury/README.md",
+      "portal_url": "https://djpb.kemenkeu.go.id/portal/id/",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://djpb.kemenkeu.go.id/portal/id/",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "djpb-treasury"
+      ],
+      "related_sources": [
+        "djpb-budget"
+      ]
+    },
+    {
+      "id": "idx",
+      "name": "IDX — Indonesia Stock Exchange",
+      "agency": "Bursa Efek Indonesia (Indonesia Stock Exchange)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/idx/README.md",
+      "portal_url": "https://www.idx.co.id",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.idx.co.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "idx"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "jdih-bpk",
+      "name": "JDIH BPK — National Legal Documentation Network",
+      "agency": "Badan Pemeriksa Keuangan",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/jdih-bpk/README.md",
+      "portal_url": "https://jdih.bpk.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "BPK legal documentation and Perpusnas are different publishers. Do not treat their sites or metadata/search routes as one interchangeable API. Old example routes are unverified; identify the original official legal text before relying on a third-party index."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://jdih.bpk.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "jdih-bpk"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "lpse-inaproc",
+      "name": "LPSE / INAPROC — Government Procurement Data",
+      "agency": "LKPP (National Procurement Policy Agency)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/lpse-inaproc/README.md",
+      "portal_url": "https://inaproc.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Retain procurement discovery as historical context only. Transport success is not evidence of a functioning tender API, and a 403/timeout from one host does not prove an Indonesia-only restriction. Proxy, anti-detection and personal supplier-tax-ID examples have been removed. No procurement route was authenticated or exercised."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://inaproc.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "lpse"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "putusan-ma",
+      "name": "Putusan Mahkamah Agung — Supreme Court Decisions",
+      "agency": "Mahkamah Agung RI (Supreme Court of Indonesia)",
+      "tier": "tier1",
+      "documentation": "apis/tier1-open-apis/putusan-ma/README.md",
+      "portal_url": "https://putusan3.mahkamahagung.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://putusan3.mahkamahagung.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "putusan-ma"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ahu-company",
+      "name": "AHU Online — Company Registry",
+      "agency": "Ditjen AHU",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/ahu-company/README.md",
+      "portal_url": "https://ahu.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://ahu.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ahu"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "bpjph",
+      "name": "BPJPH — Halal Certification Database",
+      "agency": "Badan Penyelenggara Jaminan Produk Halal",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/bpjph/README.md",
+      "portal_url": "https://bpjph.halal.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A halal supervisor (penyelia) is a role in the assurance process, not a certified product or business. The earlier supervisor endpoint example, invented business-shaped response, business counts and bulk pagination guidance are withdrawn. BPJPH now describes itself as a non-ministerial agency, not a Kemenag unit.[1][2]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://bpjph.halal.go.id/read/bpjph-penyelia-profesi-baru-penguat-ekosistem-halal-indonesia",
+            "method": "primary_documentation",
+            "observation": "A halal supervisor (penyelia) is a role in the assurance process, not a certified product or business. The earlier supervisor endpoint example, invented business-shaped response, business counts and bulk pagination guidance are withdrawn. BPJPH now describes itself as a non-ministerial agency, not a Kemenag unit.[1][2]",
+            "acquisition": "direct_public_documentation_fetch"
+          },
+          {
+            "url": "https://bpjph.halal.go.id/read/tentang-bpjph",
+            "method": "primary_documentation",
+            "observation": "A halal supervisor (penyelia) is a role in the assurance process, not a certified product or business. The earlier supervisor endpoint example, invented business-shaped response, business counts and bulk pagination guidance are withdrawn. BPJPH now describes itself as a non-ministerial agency, not a Kemenag unit.[1][2]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bpjph-old",
+        "bpjph-new"
+      ],
+      "related_sources": [
+        "cmsbl-halal"
+      ]
+    },
+    {
+      "id": "bpom",
+      "name": "BPOM — Food, Drug & Cosmetics Registry",
+      "agency": "Badan Pengawas Obat dan Makanan (National Agency of Drug and Food Control)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/bpom/README.md",
+      "portal_url": "https://cekbpom.pom.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Use the official product-search UI to confirm a registration. Historical DataTables/session examples are unverified, not a supported API contract. Product registration is not proof of halal certification. Personal identifiers and tax-ID joins should not be collected or printed; no personal-record queries were run."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://cekbpom.pom.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bpom"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kpk-lhkpn",
+      "name": "KPK e-LHKPN — Public Officials Wealth Declarations",
+      "agency": "Komisi Pemberantasan Korupsi (Corruption Eradication Commission)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/kpk-lhkpn/README.md",
+      "portal_url": "https://elhkpn.kpk.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Public announcement and authenticated filing are separate; manual CAPTCHA/form may apply.",
+        "notes": "Issue #1 (opened March 11, 2026) reports the old script returns 404; a linked community replacement is not verified here. KPK distinguishes public e-Announcement from authenticated e-Filing. Search-indexed official portal guidance describes CAPTCHA and a downloader form; direct portal retrieval failed on this host. Do not claim that the whole announcement service became login-only, or that the old routes work. No declaration download or CAPTCHA completion was attempted.[7][17]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://elhkpn.kpk.go.id/portal/user/login",
+            "method": "primary_documentation",
+            "observation": "Official search-indexed portal FAQ describes public e-Announcement filters, CAPTCHA, Preview Cetak Pengumuman and Siapakah Anda download form; separate e-Filing activation/login. Direct portal retrieval failed with URLError; current HTML/hash and JSON routes not validated.",
+            "acquisition": "search_indexed_primary_text"
+          },
+          {
+            "url": "https://github.com/suryast/indonesia-gov-apis/issues/1",
+            "method": "repository_issue",
+            "observation": "Open issue reports 404 for the old script; linked replacement was not validated."
+          },
+          {
+            "url": "https://github.com/nichsedge/lhkpn/blob/master/lhkpn_scraper.py",
+            "method": "repository_issue",
+            "observation": "Issue-linked third-party source inspected read-only; advertises Playwright stealth and fragment-based UI. Not executed or adopted; not official API evidence."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "lhkpn"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ksei",
+      "name": "KSEI — Securities Ownership & Investor Statistics",
+      "agency": "Kustodian Sentral Efek Indonesia (Indonesian Central Securities Depository)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/ksei/README.md",
+      "portal_url": "https://www.ksei.co.id",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.ksei.co.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://web.ksei.co.id/publications/Data_Statistik_KSEI",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://www.ksei.co.id/publikasi/statistik",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ksei"
+      ],
+      "related_sources": [
+        "ksei-stats"
+      ]
+    },
+    {
+      "id": "ojk",
+      "name": "OJK — Financial Entity Legality Check",
+      "agency": "Otoritas Jasa Keuangan (Financial Services Authority)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/ojk/README.md",
+      "portal_url": "https://ojk.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "SIKePO is banking-regulation search, not a platform license registry. Use dated OJK sector-specific licensing publications. OJK records the crypto-regulation handover on January 10, 2025; older BAPPEBTI lists are historical. Alert absence does not prove legality. Global geo-restriction and universal proxy recommendations are withdrawn.[3][9]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://play.google.com/store/apps/details?hl=id&id=com.ojk.sikepo",
+            "method": "primary_documentation",
+            "observation": "SIKePO is banking-regulation search, not a platform license registry. Use dated OJK sector-specific licensing publications. OJK records the crypto-regulation handover on January 10, 2025; older BAPPEBTI lists are historical. Alert absence does not prove legality. Global geo-restriction and universal proxy recommendations are withdrawn.[3][9]",
+            "acquisition": "direct_public_documentation_fetch"
+          },
+          {
+            "url": "https://ojk.go.id/en/berita-dan-kegiatan/siaran-pers/Pages/Bappebti-Transfers-Regulation-and-Supervision-Duties-on-Digital-Financial-Assets-Crypto-Assets-and-Derivatives-to-OJK-BI.aspx",
+            "method": "primary_documentation",
+            "observation": "SIKePO is banking-regulation search, not a platform license registry. Use dated OJK sector-specific licensing publications. OJK records the crypto-regulation handover on January 10, 2025; older BAPPEBTI lists are historical. Alert absence does not prove legality. Global geo-restriction and universal proxy recommendations are withdrawn.[3][9]",
+            "acquisition": "search_indexed_primary_text"
+          },
+          {
+            "url": "https://ojk.go.id/id/berita-dan-kegiatan/siaran-pers/Pages/Nota-Kesepahaman-OJK-Bappebti-2026.aspx",
+            "method": "primary_documentation",
+            "acquisition": "search_indexed_primary_text",
+            "observation": "Indexed OJK release dated January 20, 2026 states end of transition. No licensing query executed."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ojk-registry",
+        "ojk-api"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "oss-nib",
+      "name": "OSS / NIB — Business Identification Number Lookup",
+      "agency": "BKPM / OSS (Online Single Submission)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/oss-nib/README.md",
+      "portal_url": "https://oss.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://oss.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://oss.go.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://oss.go.id/informasi/cari-nib",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "oss"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "pajak-djp",
+      "name": "Pajak.go.id / DJP — Tax Authority Data",
+      "agency": "Direktorat Jenderal Pajak (DGT — Directorate General of Taxes)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/pajak-djp/README.md",
+      "portal_url": "https://pajak.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Account/authorization required for private records; no public lookup API verified.",
+        "notes": "Use official DJP/Coretax account workflows for tax administration. The old anonymous NPWP lookup, taxpayer-type heuristic and claims about corporate ID lengths were not verified and are withdrawn. Format plausibility is not registration or tax-compliance verification. Coretax administration is described by DJP from January 2025 onward.[15]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://pajak.go.id/id/coretaxdjp",
+            "method": "primary_documentation",
+            "observation": "Use official DJP/Coretax account workflows for tax administration. The old anonymous NPWP lookup, taxpayer-type heuristic and claims about corporate ID lengths were not verified and are withdrawn. Format plausibility is not registration or tax-compliance verification. Coretax administration is described by DJP from January 2025 onward.[15]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "pajak"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ppid",
+      "name": "e-PPID — Public Information Request Portal",
+      "agency": "All ministries and agencies (Kemkominfo coordination)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/ppid/README.md",
+      "portal_url": "https://ppid.kominfo.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://ppid.kominfo.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ppid"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "putusan-mk",
+      "name": "Putusan Mahkamah Konstitusi — Constitutional Court Decisions",
+      "agency": "Mahkamah Konstitusi RI (Constitutional Court of Indonesia)",
+      "tier": "tier2",
+      "documentation": "apis/tier2-scrapeable/putusan-mk/README.md",
+      "portal_url": "https://mkri.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "A public webpage does not authorize bulk extraction. Use permitted public searches only; stop at login, CAPTCHA or access-denial screens. CSRF/session handling is not permission to bypass controls."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://mkri.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "putusan-mk"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "opendata-bali",
+      "name": "Open Data Bali — Bali Provincial Open Data",
+      "agency": "Pemerintah Provinsi Bali",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/opendata-bali/README.md",
+      "portal_url": "https://data.baliprov.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed transport_error. This does not establish a working CKAN API or prove that the portal has no other API.[25]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://data.baliprov.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"error_type\": \"URLError\", \"method\": \"GET\", \"status\": \"transport_error\", \"url\": \"https://data.baliprov.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bali"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "opendata-bandung",
+      "name": "Open Data Kota Bandung — Bandung City Open Data",
+      "agency": "Pemerintah Kota Bandung",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/opendata-bandung/README.md",
+      "portal_url": "https://opendata.bandung.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 404, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[24]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://opendata.bandung.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"http_status\": 404, \"method\": \"GET\", \"status\": \"http_error\", \"url\": \"https://opendata.bandung.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "bandung"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "opendata-jabar",
+      "name": "Open Data Jabar — Jawa Barat Provincial Open Data",
+      "agency": "Pemerintah Provinsi Jawa Barat",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/opendata-jabar/README.md",
+      "portal_url": "https://opendata.jabarprov.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 403, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[21]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://opendata.jabarprov.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"http_status\": 403, \"method\": \"GET\", \"status\": \"http_error\", \"url\": \"https://opendata.jabarprov.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "jabar"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "opendata-jatim",
+      "name": "Open Data Jawa Timur — East Java Provincial Open Data",
+      "agency": "Pemerintah Provinsi Jawa Timur",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/opendata-jatim/README.md",
+      "portal_url": "https://opendata.jatimprov.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 403, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[22]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://opendata.jatimprov.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"http_status\": 403, \"method\": \"GET\", \"status\": \"http_error\", \"url\": \"https://opendata.jatimprov.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "jatim"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "satu-data-jakarta",
+      "name": "Satu Data Jakarta — DKI Jakarta Open Data",
+      "agency": "Pemerintah Provinsi DKI Jakarta",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/satu-data-jakarta/README.md",
+      "portal_url": "https://satudata.jakarta.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 200, not_json. This does not establish a working CKAN API or prove that the portal has no other API.[20]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://satudata.jakarta.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"content_type\": \"text/html\", \"date\": \"2026-10-10\", \"final_url\": \"https://satudata.jakarta.go.id/api/3/action/package_search?rows=0\", \"http_status\": 200, \"method\": \"GET\", \"status\": \"not_json\", \"url\": \"https://satudata.jakarta.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "jakarta"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "satu-data-surabaya",
+      "name": "Satu Data Surabaya — Surabaya City Open Data",
+      "agency": "Pemerintah Kota Surabaya",
+      "tier": "tier3",
+      "documentation": "apis/tier3-regional/satu-data-surabaya/README.md",
+      "portal_url": "https://satudata.surabaya.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 404, http_error. This does not establish a working CKAN API or prove that the portal has no other API.[23]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://satudata.surabaya.go.id/api/3/action/package_search?rows=0",
+            "method": "http_probe",
+            "observation": "{\"date\": \"2026-10-10\", \"http_status\": 404, \"method\": \"GET\", \"status\": \"http_error\", \"url\": \"https://satudata.surabaya.go.id/api/3/action/package_search?rows=0\"}"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "surabaya"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "atr-bpn",
+      "name": "ATR/BPN — Land & Property Registry",
+      "agency": "Kementerian ATR / Badan Pertanahan Nasional",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/atr-bpn/README.md",
+      "portal_url": "https://atrbpn.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Account/authorization required for private records; no public lookup API verified.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://atrbpn.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "atr-bpn"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "esdm-energy",
+      "name": "ESDM — Energy & Mining Data",
+      "agency": "Kementerian Energi dan Sumber Daya Mineral",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/esdm-energy/README.md",
+      "portal_url": "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization. Official HEESI publication/download index (HTTP 200 HTML) with annual handbook PDF links. Individual downloads, reuse rights and mining APIs remain unverified."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.esdm.go.id/id/statistik-dan-riset",
+            "method": "http_probe",
+            "observation": "Historical route: HTTP 404 observed in repository link audit on 2026-10-10; unavailable and withdrawn from current recommendations."
+          },
+          {
+            "url": "https://www.esdm.go.id/en/publikasi/handbook-of-energy-economic-statistics-of-indonesia",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Official HEESI publication/download index (HTTP 200 HTML) with annual handbook PDF links. Individual downloads, reuse rights and mining APIs remain unverified."
+          },
+          {
+            "url": "https://www.esdm.go.id/id/statistik-dan-riset/publikasi/handbook-of-energy",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "esdm"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kemenag",
+      "name": "Kemenag — Religious Affairs Data",
+      "agency": "Kementerian Agama",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/kemenag/README.md",
+      "portal_url": "https://simas.kemenag.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://simas.kemenag.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://simas.kemenag.go.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://simas.kemenag.go.id/search",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kemenag"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kemendikdasmen",
+      "name": "Kemendikdasmen — Education Data",
+      "agency": "Kementerian Pendidikan Dasar dan Menengah",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/kemendikdasmen/README.md",
+      "portal_url": "https://data.kemendikdasmen.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://data.kemendikdasmen.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kemdikbud"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kemenkes",
+      "name": "Kemenkes — Health Data & Facility Registry",
+      "agency": "Kementerian Kesehatan",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/kemenkes/README.md",
+      "portal_url": "https://yankes.kemkes.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Public facility information and SATUSEHAT health interoperability are different access classes. SATUSEHAT requires approved partner credentials and organization-specific authorization; the old anonymous `/api/fasyankes` example is not a verified API contract.[8]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://satusehat.kemkes.go.id/platform/docs/id/api-catalogue/authentication/",
+            "method": "primary_documentation",
+            "observation": "Public facility information and SATUSEHAT health interoperability are different access classes. SATUSEHAT requires approved partner credentials and organization-specific authorization; the old anonymous `/api/fasyankes` example is not a verified API contract.[8]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kemenkes"
+      ],
+      "related_sources": [
+        "satusehat"
+      ]
+    },
+    {
+      "id": "kemnaker",
+      "name": "Satu Data Kemnaker — Labor & Employment Data",
+      "agency": "Kementerian Ketenagakerjaan (Ministry of Manpower)",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/kemnaker/README.md",
+      "portal_url": "https://satudata.kemnaker.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://satudata.kemnaker.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kemnaker"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kkp-fisheries",
+      "name": "KKP — Fisheries & Maritime Data",
+      "agency": "Kementerian Kelautan dan Perikanan (Ministry of Marine Affairs and Fisheries)",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/kkp-fisheries/README.md",
+      "portal_url": "https://satudata.kkp.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://satudata.kkp.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://kkp.go.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://kkp.go.id/djprl/p4k/page/3-data-kawasan-konservasi",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kkp"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "komdigi",
+      "name": "Satu Data Komdigi — Digital & Telecoms Data",
+      "agency": "Kementerian Komunikasi dan Digital (Ministry of Digital Affairs)",
+      "tier": "tier4",
+      "documentation": "apis/tier4-ministry/komdigi/README.md",
+      "portal_url": "https://data.komdigi.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Distinguish public aggregate publications from ministry operational systems. No account-gated, student, patient, employee or land-owner records should be extracted without authorization. Publisher portal only (HTTP 200 HTML shell); specific open-data/download and desa-broadband routes unavailable/unverified. Navigate the official portal or request publisher assistance; no replacement data API is verified."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://data.komdigi.go.id/opendata",
+            "method": "http_probe",
+            "observation": "Historical route: HTTP 404 observed in repository link audit on 2026-10-10; unavailable and withdrawn from current recommendations."
+          },
+          {
+            "url": "https://data.komdigi.go.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher portal only (HTTP 200 HTML shell); specific open-data/download and desa-broadband routes unavailable/unverified. Navigate the official portal or request publisher assistance; no replacement data API is verified."
+          },
+          {
+            "url": "https://data.komdigi.go.id/opendata/desa-broadband",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "komdigi"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ahu-bo",
+      "name": "AHU-BO — Beneficial Ownership Registry",
+      "agency": "Ditjen AHU",
+      "tier": "tier5",
+      "documentation": "apis/tier5-transparency/ahu-bo/README.md",
+      "portal_url": "https://bo.ahu.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://bo.ahu.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ahu-bo"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "eiti-indonesia",
+      "name": "EITI Indonesia — Extractives Transparency",
+      "agency": "EITI / Kementerian ESDM",
+      "tier": "tier5",
+      "documentation": "apis/tier5-transparency/eiti-indonesia/README.md",
+      "portal_url": "https://eiti.org/indonesia",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://eiti.org/indonesia",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "eiti"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "icw-corruption",
+      "name": "ICW — Indonesia Corruption Watch",
+      "agency": "ICW (NGO)",
+      "tier": "tier5",
+      "documentation": "apis/tier5-transparency/icw-corruption/README.md",
+      "portal_url": "https://antikorupsi.org",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://antikorupsi.org",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "icw"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "occrp-aleph",
+      "name": "OCCRP Aleph — Global Beneficial Ownership & Leaks",
+      "agency": "OCCRP (Organized Crime and Corruption Reporting Project)",
+      "tier": "tier5",
+      "documentation": "apis/tier5-transparency/occrp-aleph/README.md",
+      "portal_url": "https://aleph.occrp.org",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "API credentials, collection permissions and current service terms must be checked; not authenticated here.",
+        "notes": "Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://aleph.occrp.org",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "occrp"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "opencorporates",
+      "name": "OpenCorporates — Global Company Registry",
+      "agency": "OpenCorporates Ltd",
+      "tier": "tier5",
+      "documentation": "apis/tier5-transparency/opencorporates/README.md",
+      "portal_url": "https://opencorporates.com",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "API credentials, collection permissions and current service terms must be checked; not authenticated here.",
+        "notes": "Record the original publisher and publication date. Third-party company or leak indexes are research leads, not findings of wrongdoing or current proof of registration."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://opencorporates.com",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "opencorporates"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "djpb-budget",
+      "name": "DJPB — Budget Execution Data",
+      "agency": "Direktorat Jenderal Perbendaharaan, Kementerian Keuangan",
+      "tier": "tier6",
+      "documentation": "apis/tier6-financial/djpb-budget/README.md",
+      "portal_url": "https://djpb.kemenkeu.go.id/portal/id/berita/lainnya/realisasi-apbn.html",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Financial publications and alerts are time-specific. Confirm licensing with the relevant regulator; no alert match is not evidence of authorization or safety. Official Realisasi APBN / i Account publication index (HTTP 200 HTML), linked by DJPB navigation. Reports are dated publications, not a real-time data API; download formats and freshness require individual verification."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://djpb.kemenkeu.go.id/portal/id/data/apbn-realisasi",
+            "method": "http_probe",
+            "observation": "Historical route: HTTP 404 observed in repository link audit on 2026-10-10; unavailable and withdrawn from current recommendations."
+          },
+          {
+            "url": "https://djpb.kemenkeu.go.id/portal/id/berita/lainnya/realisasi-apbn.html",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Official Realisasi APBN / i Account publication index (HTTP 200 HTML), linked by DJPB navigation. Reports are dated publications, not a real-time data API; download formats and freshness require individual verification."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "djpb-budget"
+      ],
+      "related_sources": [
+        "djpb-treasury",
+        "apbn-kemenkeu"
+      ]
+    },
+    {
+      "id": "ksei-stats",
+      "name": "KSEI — Securities Investor Statistics",
+      "agency": "Kustodian Sentral Efek Indonesia",
+      "tier": "tier6",
+      "documentation": "apis/tier6-financial/ksei-stats/README.md",
+      "portal_url": "https://web.ksei.co.id/publications/Data_Statistik_KSEI",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Financial publications and alerts are time-specific. Confirm licensing with the relevant regulator; no alert match is not evidence of authorization or safety. Official Data Statistik KSEI publication index (HTTP 200 HTML) with monthly PDF links. This is a reachable publisher archive, not a verified API or guarantee of current-period coverage."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://ksei.co.id/publikasi/statistik",
+            "method": "http_probe",
+            "observation": "Historical route: HTTP 404 observed in repository link audit on 2026-10-10; unavailable and withdrawn from current recommendations."
+          },
+          {
+            "url": "https://web.ksei.co.id/publications/Data_Statistik_KSEI",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Official Data Statistik KSEI publication index (HTTP 200 HTML) with monthly PDF links. This is a reachable publisher archive, not a verified API or guarantee of current-period coverage."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ksei-stats"
+      ],
+      "related_sources": [
+        "ksei"
+      ]
+    },
+    {
+      "id": "ojk-sikepo",
+      "name": "OJK SIKePO — Banking Regulations",
+      "agency": "OJK (Otoritas Jasa Keuangan)",
+      "tier": "tier6",
+      "documentation": "apis/tier6-financial/ojk-sikepo/README.md",
+      "portal_url": "https://sikepo.ojk.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "SIKePO means Sistem Informasi Ketentuan Perbankan Online: a banking-regulation search application. It is not the fintech/crypto licensed-platform registry. Use OJK sector-specific publications for licensing; no SIKePO API contract was verified.[3]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://play.google.com/store/apps/details?hl=id&id=com.ojk.sikepo",
+            "method": "primary_documentation",
+            "observation": "SIKePO means Sistem Informasi Ketentuan Perbankan Online: a banking-regulation search application. It is not the fintech/crypto licensed-platform registry. Use OJK sector-specific publications for licensing; no SIKePO API contract was verified.[3]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "ojk-sikepo"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "satgas-waspada",
+      "name": "Satgas Waspada Investasi — Investment Fraud Alerts",
+      "agency": "OJK / Multi-agency task force",
+      "tier": "tier6",
+      "documentation": "apis/tier6-financial/satgas-waspada/README.md",
+      "portal_url": "https://waspadainvestasi.ojk.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Financial publications and alerts are time-specific. Confirm licensing with the relevant regulator; no alert match is not evidence of authorization or safety."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://waspadainvestasi.ojk.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "satgas-waspada"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "aturan-org",
+      "name": "Aturan.org — Indonesian Legal Retrieval REST API & MCP",
+      "agency": "Aturan.org (third-party publisher)",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/aturan-org/README.md",
+      "portal_url": "https://aturan.org",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "REST Bearer API key; MCP OAuth or API key documented; no authenticated execution.",
+        "notes": "Third-party legal retrieval, not a government service. Verify original publisher documents, privacy and terms. Corpus counts, freshness and accuracy unverified; no installed or working integration claimed."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://aturan.org",
+            "method": "primary_documentation",
+            "acquisition": "direct_public_documentation_fetch",
+            "observation": "HTTP 200 HTML publisher page read; legal retrieval described, corpus counts not independently verified."
+          },
+          {
+            "url": "https://aturan.org/api",
+            "method": "primary_documentation",
+            "acquisition": "direct_public_documentation_fetch",
+            "observation": "HTTP 200 HTML REST docs read: Bearer API key and discovery-before-reading documented; no query executed."
+          },
+          {
+            "url": "https://aturan.org/mcp",
+            "method": "primary_documentation",
+            "acquisition": "direct_public_documentation_fetch",
+            "observation": "HTTP 200 HTML MCP docs read: Streamable HTTP, OAuth/API-key options and tool descriptions; no initialization or tool execution."
+          },
+          {
+            "url": "https://mcp.aturan.org/mcp",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded unauthenticated GET returned HTTP 401; no successful MCP session established."
+          },
+          {
+            "url": "https://peraturan.bpk.go.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded unauthenticated GET returned HTTP 403; corrected BPK portal domain retained but portal content and Aturan corpus provenance not independently verified in this final check."
+          }
+        ]
+      },
+      "monitor_ids": [],
+      "related_sources": [
+        "jdih-bpk"
+      ]
+    },
+    {
+      "id": "geoportal-onemap",
+      "name": "Indonesia Geoportal — One Map Policy",
+      "agency": "BIG / KLHK / Multiple",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/geoportal-onemap/README.md",
+      "portal_url": "https://geoportal.indonesia.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "An HTML `/home` page is not a verified WMS endpoint. Discover services from publisher metadata and GetCapabilities before using layer names, permissions, axis order or projections. The old 85-layer count is historical and unverified."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://geoportal.indonesia.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "geoportal"
+      ],
+      "related_sources": [
+        "big-geospatial"
+      ]
+    },
+    {
+      "id": "indolii",
+      "name": "IndoLII — Indonesian Legal Information (Bilingual)",
+      "agency": "USAID / Various",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/indolii/README.md",
+      "portal_url": "https://indolii.or.id",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Third-party legal reference. The historical USAID association, English-translation coverage and current portal availability were not independently established. Do not infer project closure from a single DNS or transport failure."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://indolii.or.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "indolii"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "lapor",
+      "name": "LAPOR — National Public Complaint System",
+      "agency": "Kementerian PAN-RB (Ministry of Administrative Reform)",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/lapor/README.md",
+      "portal_url": "https://www.lapor.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Public complaint browsing and authenticated submission are separate workflows. Do not infer that all complaints are public, that all are login-gated, or that no API exists merely from this documentation. Complaint text may expose personal details; use only authorized public material and redact identifiers."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://www.lapor.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "lapor"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "ogp-indonesia",
+      "name": "OGP Indonesia — Open Government Partnership",
+      "agency": "Open Government Indonesia",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/ogp-indonesia/README.md",
+      "portal_url": "https://opengovindonesia.org",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Unmonitored governance reference. Action-plan commitments and assessment reports are not automatically numeric ministry transparency scores. Current portal ownership, coverage and machine interfaces remain unverified."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://opengovindonesia.org",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [],
+      "related_sources": []
+    },
+    {
+      "id": "pasal-id",
+      "name": "pasal.id — Indonesian Law & Regulation MCP Server",
+      "agency": "Open source (community-maintained, third-party)",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/pasal-id/README.md",
+      "portal_url": "https://pasal.id",
+      "kind": "non-government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "Community legal index, not a government service. Counts, sync frequency, tool list and the guessed HTTP `/tools/*` routes are unverified historical claims. An MCP transport endpoint does not imply REST endpoints with tool names. Check the actual tool schema and original official legal document; no MCP session was executed."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://pasal.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          },
+          {
+            "url": "https://pasal.id",
+            "method": "http_probe",
+            "observation": "2026-10-10 bounded verified-TLS GET: HTTP 200 HTML landing/publication index; Publisher navigation only; historical specific route unavailable and no replacement API/search contract verified."
+          },
+          {
+            "url": "https://pasal-mcp-server-production.up.railway.app",
+            "method": "http_probe",
+            "observation": "Historical failed route: HTTP 404 in repository link audit on 2026-10-10; not a working recipe."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "pasal-id"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "sigap-inarisk",
+      "name": "SIGAP / InaRisk — Disaster Risk Assessment",
+      "agency": "BNPB (Badan Nasional Penanggulangan Bencana)",
+      "tier": "tier7",
+      "documentation": "apis/tier7-civil-society/sigap-inarisk/README.md",
+      "portal_url": "https://sigap.bnpb.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Current auth/API contract unverified; use only explicitly permitted public material.",
+        "notes": "No official contract for the historical `/api/risk/score` route or its illustrative response was established. Do not convert a map-layer legend into a property-level safety score. Verify layer date, scale, methodology and permissions; disaster-risk information is not a real-time emergency warning."
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "unverified",
+        "evidence": [
+          {
+            "url": "https://sigap.bnpb.go.id",
+            "method": "document_inventory",
+            "observation": "URL and publisher label retained from existing repository documentation; not fetched or independently validated in this review."
+          }
+        ]
+      },
+      "monitor_ids": [
+        "inarisk"
+      ],
+      "related_sources": [
+        "bnpb-disaster"
+      ]
+    },
+    {
+      "id": "cmsbl-halal",
+      "name": "BPJPH CMS Backend — Historical Endpoint Reference",
+      "agency": "BPJPH",
+      "tier": "tier8",
+      "documentation": "apis/tier8-new/cmsbl-halal/README.md",
+      "portal_url": "https://cmsbl.halal.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Backend access and response schema unverified; no personal-record query performed.",
+        "notes": "This record preserves the historical CMS backend reference separately from the BPJPH portal. `data_penyelia` refers to halal supervisors, not a validated product or business certification database. Do not use record totals as certification counts. Public API authorization and contract remain unverified.[1]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://bpjph.halal.go.id/read/bpjph-penyelia-profesi-baru-penguat-ekosistem-halal-indonesia",
+            "method": "primary_documentation",
+            "observation": "This record preserves the historical CMS backend reference separately from the BPJPH portal. `data_penyelia` refers to halal supervisors, not a validated product or business certification database. Do not use record totals as certification counts. Public API authorization and contract remain unverified.[1]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "cmsbl-halal"
+      ],
+      "related_sources": [
+        "bpjph"
+      ]
+    },
+    {
+      "id": "coretax",
+      "name": "Coretax DJP — Tax Administration",
+      "agency": "Direktorat Jenderal Pajak",
+      "tier": "tier8",
+      "documentation": "apis/tier8-new/coretax/README.md",
+      "portal_url": "https://coretaxdjp.pajak.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Taxpayer login and authorization; not an anonymous tax-ID lookup.",
+        "notes": "DJP describes Coretax administration from January 2025 onward. Do not use the older 2024 migration claim. No authenticated account workflow or public validation API was exercised. Never enumerate NIK/NPWP or publish taxpayer details.[15]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://pajak.go.id/id/coretaxdjp",
+            "method": "primary_documentation",
+            "observation": "DJP describes Coretax administration from January 2025 onward. Do not use the older 2024 migration claim. No authenticated account workflow or public validation API was exercised. Never enumerate NIK/NPWP or publish taxpayer details.[15]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "coretax"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "kpu",
+      "name": "KPU — Election Publications",
+      "agency": "Komisi Pemilihan Umum",
+      "tier": "tier8",
+      "documentation": "apis/tier8-new/kpu/README.md",
+      "portal_url": "https://www.kpu.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Public publications; election-specific JSON routes not verified.",
+        "notes": "Use the KPU publication portal for election information. Do not equate provisional dashboard data with certified results, or collect individual voter records. No general public election API contract was verified.[13]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://infopemilu.kpu.go.id/",
+            "method": "primary_documentation",
+            "observation": "Use the KPU publication portal for election information. Do not equate provisional dashboard data with certified results, or collect individual voter records. No general public election API contract was verified.[13]",
+            "acquisition": "search_indexed_primary_text"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "kpu"
+      ],
+      "related_sources": []
+    },
+    {
+      "id": "satusehat",
+      "name": "SATUSEHAT — Authorized Health Interoperability",
+      "agency": "Kementerian Kesehatan",
+      "tier": "tier8",
+      "documentation": "apis/tier8-new/satusehat/README.md",
+      "portal_url": "https://satusehat.kemkes.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "OAuth2 client_credentials for approved partners; no credentials used.",
+        "notes": "Official authentication documentation requires approved access and organization-scoped credentials. This is not an open patient-record API. Keep credentials private and use only authorized sandbox data; no token exchange or patient-data request was performed.[8]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://satusehat.kemkes.go.id/platform/docs/id/api-catalogue/authentication/",
+            "method": "primary_documentation",
+            "observation": "Official authentication documentation requires approved access and organization-scoped credentials. This is not an open patient-record API. Keep credentials private and use only authorized sandbox data; no token exchange or patient-data request was performed.[8]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "satusehat"
+      ],
+      "related_sources": [
+        "kemenkes"
+      ]
+    },
+    {
+      "id": "simbg",
+      "name": "SIMBG — Building Permit Applications",
+      "agency": "Kementerian Pekerjaan Umum",
+      "tier": "tier8",
+      "documentation": "apis/tier8-new/simbg/README.md",
+      "portal_url": "https://simbg.pu.go.id",
+      "kind": "government",
+      "country": "ID",
+      "access": {
+        "auth": "Account and authorized application workflow; public API not verified.",
+        "notes": "A direct official dashboard fetch returned an HTML application shell. Application processing and account requirements from older notes were not independently exercised. This is not evidence of a public building-permit lookup API. Applicant documents, contact details and property records must not be harvested.[14]"
+      },
+      "review": {
+        "date": "2026-10-10",
+        "status": "primary_documentation_reviewed",
+        "evidence": [
+          {
+            "url": "https://simbg.pu.go.id/dashboard",
+            "method": "primary_documentation",
+            "observation": "A direct official dashboard fetch returned an HTML application shell. Application processing and account requirements from older notes were not independently exercised. This is not evidence of a public building-permit lookup API. Applicant documents, contact details and property records must not be harvested.[14]",
+            "acquisition": "direct_public_documentation_fetch"
+          }
+        ]
+      },
+      "monitor_ids": [
+        "simbg"
+      ],
+      "related_sources": []
+    }
+  ],
+  "supplementary_documents": [
+    {
+      "documentation": "references/bank-indonesia.md",
+      "source_ids": [
+        "bank-indonesia"
+      ]
+    },
+    {
+      "documentation": "references/bmkg-weather.md",
+      "source_ids": [
+        "bmkg"
+      ]
+    },
+    {
+      "documentation": "references/bpjph-halal.md",
+      "source_ids": [
+        "bpjph",
+        "cmsbl-halal"
+      ]
+    },
+    {
+      "documentation": "references/bpom-products.md",
+      "source_ids": [
+        "bpom"
+      ]
+    },
+    {
+      "documentation": "references/bps-statistics.md",
+      "source_ids": [
+        "bps"
+      ]
+    },
+    {
+      "documentation": "references/ckan-portals.md",
+      "source_ids": [
+        "data-go-id",
+        "satu-data-jakarta",
+        "opendata-jabar",
+        "opendata-jatim",
+        "satu-data-surabaya",
+        "opendata-bandung",
+        "opendata-bali",
+        "bnpb-disaster"
+      ]
+    },
+    {
+      "documentation": "references/company-verification.md",
+      "source_ids": [
+        "ahu-company",
+        "ahu-bo",
+        "opencorporates",
+        "occrp-aleph"
+      ]
+    },
+    {
+      "documentation": "references/idx-stocks.md",
+      "source_ids": [
+        "idx"
+      ]
+    },
+    {
+      "documentation": "references/inarisk-disaster.md",
+      "source_ids": [
+        "sigap-inarisk",
+        "bnpb-disaster"
+      ]
+    },
+    {
+      "documentation": "references/ojk-legality.md",
+      "source_ids": [
+        "ojk",
+        "ojk-sikepo",
+        "satgas-waspada",
+        "bappebti"
+      ]
+    },
+    {
+      "documentation": "references/pasal-id-law.md",
+      "source_ids": [
+        "pasal-id"
+      ]
+    }
+  ]
+}

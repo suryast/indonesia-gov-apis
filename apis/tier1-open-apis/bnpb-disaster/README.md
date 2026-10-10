@@ -1,6 +1,30 @@
 # BNPB — Disaster Data & Risk Portal
 
 **Agency:** Badan Nasional Penanggulangan Bencana (National Disaster Management Agency)
+**Portal:** https://data.bnpb.go.id
+**Kind:** government; **catalog ID:** `bnpb-disaster`; **tier:** tier1
+**Review date:** 2026-10-10; **review state:** endpoint_observed
+
+## Reviewed guidance
+
+One bounded GET of the historical CKAN search route on 2026-10-10 observed HTTP 200, ckan_shape_observed. A JSON CKAN success/result/results shape was observed for dataset search only; datastore access and the separate risk-score routes are unverified.[26]
+
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
+
+Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration.
+
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
+
+## Evidence
+
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.
+
+<details>
+<summary>Historical repository notes — unverified and superseded</summary>
+
+The following pre-review notes are retained for endpoint discovery and parsing context only. Counts, timing, names, response shapes, API claims, auth assumptions and examples below were NOT revalidated. They must not override the reviewed guidance above; verify before use.
+
+**Agency:** Badan Nasional Penanggulangan Bencana (National Disaster Management Agency)
 **Data Portal:** https://data.bnpb.go.id
 **InaRisk:** https://inarisk.bnpb.go.id
 **API type:** ✅ REST JSON + CKAN-based data portal
@@ -27,20 +51,8 @@ print(risk)
 
 ### Risk Score Response
 
-```json
-{
-  "location": {"lat": -6.2088, "lon": 106.8456},
-  "risks": {
-    "banjir": {"score": 3, "class": "Tinggi"},
-    "gempa": {"score": 2, "class": "Sedang"},
-    "tsunami": {"score": 1, "class": "Rendah"},
-    "longsor": {"score": 1, "class": "Rendah"},
-    "gunung_api": {"score": 0, "class": "Tidak Ada"}
-  },
-  "kabupaten": "Jakarta Selatan",
-  "provinsi": "DKI Jakarta"
-}
-```
+> Historical illustrative JSON response removed: not independently observed.
+
 
 ## IRBI — Disaster Risk Index by Kabupaten (Annual)
 
@@ -81,5 +93,7 @@ for ds in resp.json()["result"]["results"]:
 1. **Two separate systems** — InaRisk API and data.bnpb.go.id CKAN are unrelated
 2. **IRBI is annual** — updated once a year, covers all 514 kabupaten/kota
 3. **CKAN API** — standard CKAN toolkit applies for the data portal
-4. **No auth required** for public endpoints
+> Historical access/limit assertion withdrawn; verify publisher guidance.
 5. **GeoJSON downloads** available for hazard zone polygons via data portal
+
+</details>

@@ -2,9 +2,33 @@
 
 **Agency:** Badan Informasi Geospasial (Geospatial Information Agency)
 **Portal:** https://tanahair.indonesia.go.id
+**Kind:** government; **catalog ID:** `big-geospatial`; **tier:** tier1
+**Review date:** 2026-10-10; **review state:** unverified
+
+## Reviewed guidance
+
+Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration.
+
+**Access/auth:** Current auth/API contract unverified; use only explicitly permitted public material.
+
+Tier 1 is a historical routing group, not an assurance of an open API. Confirm the publisher, license, endpoint and response shape before integration.
+
+No current working-API claim is made unless explicitly scoped above. A successful portal response is not a successful data query. Stop at access controls; do not use proxies, anti-detection or CAPTCHA solving to evade them. Never publish credentials or personal identifiers.
+
+## Evidence
+
+See the [dated source review](../../../docs/source-review-2026-10-10.md) for numbered primary references and limitations. The [catalog](../../../catalog/sources.json) records this entry's exact evidence and monitor mapping.
+
+<details>
+<summary>Historical repository notes — unverified and superseded</summary>
+
+The following pre-review notes are retained for endpoint discovery and parsing context only. Counts, timing, names, response shapes, API claims, auth assumptions and examples below were NOT revalidated. They must not override the reviewed guidance above; verify before use.
+
+**Agency:** Badan Informasi Geospasial (Geospatial Information Agency)
+**Portal:** https://tanahair.indonesia.go.id
 **WFS Endpoint:** https://map.big.go.id/wfs
 **INA-SDI:** https://geoservices.ina-sdi.or.id
-**API type:** ✅ OGC WMS/WFS standard services (no auth required)
+> Historical access/limit assertion withdrawn; verify publisher guidance.
 
 ## Overview
 
@@ -82,9 +106,11 @@ with open("map.png", "wb") as f:
 
 ## Gotchas
 
-1. **No auth required** for WFS/WMS
+> Historical access/limit assertion withdrawn; verify publisher guidance.
 2. **CRS is EPSG:4326** — standard WGS84 lat/lon
 3. **Large datasets** — use `count` and `CQL_FILTER` to limit response size
 4. **RTRW data gaps** — not all kabupaten/kota have digitized zoning data yet
 5. **Slow for province-level polygons** — can take 10-30s; cache results
 6. **Layer names may change** — run `GetCapabilities` to verify current layers
+
+</details>
