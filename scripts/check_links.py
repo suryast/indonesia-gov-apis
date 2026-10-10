@@ -658,8 +658,8 @@ def render_markdown(report: dict) -> str:
     lines = [
         "# Repository Markdown link audit",
         "",
-        f"Generated: `{report['generated_at']}`. First-pass reachability observations; "
-        "rerun against final documentation before publishing.",
+        f"Generated: `{report['generated_at']}`. Bounded reachability observations; "
+        "compare the source hashes with final documentation before publishing.",
         "",
         f"- Markdown sources: **{counts['markdown_files']}**",
         f"- Exact external URL identities: **{counts['unique_external_urls']}** "

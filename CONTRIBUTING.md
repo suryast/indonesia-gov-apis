@@ -2,8 +2,8 @@
 
 ## Local setup and offline checks
 
-Python 3.11–3.15 are tested in CI; `.python-version` selects 3.15, the current
-stable series verified from python.org on 2026-10-10. curl is required for the
+Python 3.11–3.14 are tested in CI; `.python-version` selects 3.14, a supported
+GitHub-hosted Linux runtime verified on 2026-10-10. curl is required for the
 monitor, not for mocked example tests. The site has no framework/build pipeline.
 
 ```sh

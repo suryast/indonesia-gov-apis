@@ -17,7 +17,7 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        python: ['3.11', '3.12', '3.13', '3.14', '3.15']
+        python: ['3.11', '3.12', '3.13', '3.14']
     steps:
       - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
         with:
@@ -29,7 +29,7 @@ jobs:
       - run: python -m pip check
       - run: python scripts/check_repository.py
       - name: Audit runtime and developer locks
-        if: matrix.python == '3.15'
+        if: matrix.python == '3.14'
         run: |
           python -m pip_audit -r requirements.txt --no-deps --disable-pip
           python -m pip_audit -r requirements-dev.txt --no-deps --disable-pip
@@ -47,7 +47,7 @@ jobs:
           package-manager-cache: false
       - uses: actions/setup-python@5fda3b95a4ea91299a34e894583c3862153e4b97 # v7.0.0
         with:
-          python-version: '3.15'
+          python-version: '3.14'
       - name: Install isolated browser test tooling
         run: |
           npm ci --prefix .github/browser-tests --ignore-scripts

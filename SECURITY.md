@@ -3,7 +3,7 @@
 ## Supported code
 
 Security fixes target the default branch. Python examples and development gates
-support Python 3.11–3.15; the static status dashboard has no application framework.
+support Python 3.11–3.14; the static status dashboard has no application framework.
 Dependencies/actions are pinned and reviewed through Dependabot and CI audits.
 Catalog entries can change outside this repository; published links or a successful
 HTTP probe are not a security, certification, licensing or endorsement guarantee.

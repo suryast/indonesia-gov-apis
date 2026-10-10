@@ -23,7 +23,7 @@ the catalog or dashboard; the optional layout test uses isolated Playwright.
 
 ## Development
 
-Use Python 3.11–3.15 (preferred version in `.python-version`). Install
+Use Python 3.11–3.14 (preferred version in `.python-version`). Install
 `requirements-dev.txt` in a virtual environment. Run:
 
 ```sh

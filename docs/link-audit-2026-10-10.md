@@ -1,6 +1,6 @@
 # Repository Markdown link audit
 
-Generated: `2026-10-10T11:40:48.667967+00:00`. First-pass reachability observations; rerun against final documentation before publishing.
+Generated: `2026-10-10T11:40:48.667967+00:00`. Final documentation reachability observations. Source hashes refreshed at `2026-10-10T11:49:22.646889+00:00` after runtime-wording corrections; all link targets and positions were verified unchanged, and original network observations were retained.
 
 - Markdown sources: **81**
 - Exact external URL identities: **201** (287 occurrences)
@@ -163,10 +163,10 @@ Complete occurrences, skipped reasons, redirect observations and exact SHA-256 s
 
 | Source | SHA-256 |
 | --- | --- |
-| AGENTS.md | `26c25949a4e9c2ede83755a122d845f3fe8d93a753f56e1601bfcce6ec89f9f5` |
-| CONTRIBUTING.md | `efa4bfbdb36baba8297fcc50b9c184f88faff364042a1b08755fdac9ca4286dd` |
+| AGENTS.md | `5275de4105ce786603e36880d5a122e61ee6b272120e7dfe42b87c91d7805bda` |
+| CONTRIBUTING.md | `c230caae2740bad27aad76c019a9326ac25def7744043386096ce3feac6eca2f` |
 | README.md | `1ace5c7fc87a8621b7e807f52d3e76591afa38cf9493a0518e6348f5b955bb5c` |
-| SECURITY.md | `d3abedce2e91618e06db8e53a07bc4dee3d652bc82b3e611633a7133794212f8` |
+| SECURITY.md | `b0cae30f38dc9c8e81171ad5cf8af1317ef1ccbfca4ae89d46bf02eeaaff785a` |
 | SKILL.md | `52a72b40494dd94fa17d81e63c12575f038024b8ece3452fefbe6850617c5b83` |
 | apis/other/bappebti/README.md | `8bbf38c1b6ba164ad45e30d70404603471d95f497f589cd7114d56e19e3ccfab` |
 | apis/reference/nta/README.md | `36c07b572f44476622043206b2082656f8ae3e7fbbe058b955cf63524e3f5bae` |
