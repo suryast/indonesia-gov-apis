@@ -7,7 +7,7 @@
 <link rel="canonical" href="https://status.datarakyat.id/">
 <meta name="description" content="Daily uptime monitoring of Indonesian government data portals and APIs.">
 <meta property="og:title" content="Indonesia Gov Portal Status">
-<meta property="og:description" content="Daily uptime monitoring of Indonesian government data portals and APIs. Checked from US and Jakarta.">
+<meta property="og:description" content="Daily uptime monitoring of Indonesian government data portals and APIs.">
 <meta property="og:image" content="https://status.datarakyat.id/og-image.png">
 <meta property="og:url" content="https://status.datarakyat.id">
 <meta property="og:type" content="website">
@@ -69,7 +69,7 @@
   header a:hover { text-decoration: underline; }
 
   /* Summary cards */
-  .summary { display: grid; grid-template-columns: repeat(4, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
+  .summary { display: grid; grid-template-columns: repeat(5, 1fr); gap: .75rem; margin-bottom: 1.5rem; }
   .summary-card {
     background: var(--surface);
     border: 1px solid var(--border);
@@ -133,6 +133,7 @@
   .spark-bar.up { background: var(--up); }
   .spark-bar.geo_blocked_intl, .spark-bar.geo_blocked_id { background: var(--warn); }
   .spark-bar.blocked { background: var(--warn); opacity: .6; }
+  .spark-bar.degraded { background: var(--warn); opacity: .85; }
   .spark-bar.error, .spark-bar.down { background: var(--down); }
   .spark-bar.dns_dead { background: var(--down); opacity: .5; }
   .spark-bar.empty { background: var(--border); opacity: .15; }
@@ -157,7 +158,7 @@
     text-transform: uppercase; letter-spacing: .03em;
   }
   .badge.up { background: var(--up-dim); color: var(--up); }
-  .badge.blocked, .badge.geo_blocked_intl, .badge.geo_blocked_id { background: var(--warn-dim); color: var(--warn); }
+  .badge.blocked, .badge.degraded, .badge.geo_blocked_intl, .badge.geo_blocked_id { background: var(--warn-dim); color: var(--warn); }
   .badge.error, .badge.dns_dead, .badge.down { background: var(--down-dim); color: var(--down); }
 
   /* Footer */
@@ -201,19 +202,21 @@
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--up);margin-right:.5rem;vertical-align:middle;"></span><strong>Up</strong> — Portal responding normally</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);margin-right:.5rem;vertical-align:middle;"></span><strong>🇮🇩 Only</strong> — Geo-blocked outside Indonesia</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.6;margin-right:.5rem;vertical-align:middle;"></span><strong>CF Challenge</strong> — Cloudflare bot protection active</div>
+      <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--warn);opacity:.85;margin-right:.5rem;vertical-align:middle;"></span><strong>Degraded</strong> — Responds, but expected content is missing</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>Down</strong> — Portal unreachable or erroring</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:50%;background:var(--down);margin-right:.5rem;vertical-align:middle;"></span><strong>DNS Dead</strong> — Domain no longer resolves</div>
       <div><span style="display:inline-block;width:10px;height:10px;border-radius:2px;background:var(--up);width:14px;height:8px;margin-right:.5rem;vertical-align:middle;"></span><strong>Spark bars</strong> — <span id="history-window">Daily history</span>, one bar per day</div>
     </div>
     <div style="margin-top:.75rem;font-size:.75rem;color:var(--text-muted);">
-      Portals are checked from <strong>US</strong> (international accessibility) and <strong>Jakarta</strong> (via SOCKS5 proxy) daily at 04:30 UTC.
+      Portals are checked daily at 04:30 UTC from an international runner and, when available, a <strong>Jakarta</strong> probe (currently offline).
+      Some endpoints also get a content check: an HTTP 200 without the expected text counts as degraded.
       Geo-blocked portals may work fine from within Indonesia but return 403/timeout from international IPs.
     </div>
   </div>
 
   <footer>
     <p>
-      Checked daily from Sydney/AU + Jakarta/ID 🇮🇩 ·
+      Checked daily · Jakarta/ID 🇮🇩 probe when available ·
       <a href="https://github.com/suryast/indonesia-gov-apis">Source</a> ·
       <span class="brand">Data Rakyat</span>
     </p>
@@ -229,6 +232,10 @@ const TIER_NAMES = {
   5: "Transparency",
   6: "Financial Sector",
   7: "Civil Society & Geospatial",
+  8: "Service Portals",
+  9: "Procurement & Program Data",
+  10: "Data APIs & Catalogues",
+  11: "Courts & Law",
 };
 
 const MAX_DAYS = 90;
@@ -251,16 +258,18 @@ async function load() {
     document.getElementById("portal-count").textContent = `${portals.length} `;
     const description = `Daily uptime monitoring of ${portals.length} Indonesian government data portals and APIs.`;
     document.querySelector('meta[name="description"]').content = description;
-    document.querySelector('meta[property="og:description"]').content = `${description} Checked from US and Jakarta.`;
+    document.querySelector('meta[property="og:description"]').content = description;
     const up = portals.filter(p => p.status === "up").length;
     const geo = portals.filter(p => p.status === "geo_blocked_intl" || p.status === "geo_blocked_id").length;
     const blocked = portals.filter(p => p.status === "blocked").length;
+    const degraded = portals.filter(p => p.status === "degraded").length;
     const down = portals.filter(p => ["error", "dns_dead", "down"].includes(p.status)).length;
 
     document.getElementById("summary").innerHTML = `
       <div class="summary-card"><div class="num up">${up}</div><div class="label">Up</div></div>
       <div class="summary-card"><div class="num warn">${geo}</div><div class="label">Geo-blocked</div></div>
       <div class="summary-card"><div class="num warn">${blocked}</div><div class="label">CF Challenge</div></div>
+      <div class="summary-card"><div class="num warn">${degraded}</div><div class="label">Degraded</div></div>
       <div class="summary-card"><div class="num down">${down}</div><div class="label">Down / Dead</div></div>
     `;
 
@@ -301,6 +310,7 @@ async function load() {
         const labels = {
           up: "up", blocked: "cf", error: "down", dns_dead: "dns dead",
           geo_blocked_intl: "🇮🇩 only", geo_blocked_id: "intl only", down: "down",
+          degraded: "degraded",
         };
 
         const au = portal.au || {};
