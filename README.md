@@ -120,6 +120,7 @@ See [`mcp-servers/`](mcp-servers/) for full setup instructions and a list of dat
 | 49 | [Geoportal One Map](apis/tier7-civil-society/geoportal-onemap/) | BIG / KLHK | 85 thematic maps, One Map Policy | ✅ WMS/WFS |
 | 50 | [SIGAP / InaRisk](apis/tier7-civil-society/sigap-inarisk/) | BNPB | Disaster risk scores by location | ✅ REST API |
 | 51 | [pasal.id](apis/tier7-civil-society/pasal-id/) | Community (third-party) | 40K regulations, 937K articles via MCP | 🔵 MCP Ready |
+| 52 | [Aturan.org](apis/tier7-civil-society/aturan-org/) | Community (third-party) | 287K regulations, 5.3M articles via MCP | 🔵 MCP Ready |
 
 ### Tier 8: New Additions (2026-03-29) — 5 sources
 
@@ -290,12 +291,13 @@ Checked from Sydney, Australia (AU) and Jakarta, Indonesia (ID). Status: ✅ Wor
 | 49 | **Geoportal** (tanahair.indonesia.go.id) | ❌ Timeout | ❌ Timeout | ❌ Down | Same as BIG (#11) |
 | 50 | **InaRisk** (inarisk.bnpb.go.id) | ✅ 200 | ✅ | ✅ Working | |
 | 51 | **pasal.id** (pasal.id) | ✅ 200 | ✅ | ✅ Working | Community-run, MCP-ready |
+| 52 | **Aturan.org** (aturan.org) | ✅ 200 | ✅ | ✅ Working | Community-run, MCP-ready |
 
 #### Summary
 
 | Category | Count | Portals |
 |----------|-------|---------|
-| ✅ **Working** (from everywhere) | **22** | Satu Data, BPS, BMKG, BI, BNPB, BPJPH (new), BPOM, AHU, OSS, LHKPN, Jakarta, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, LAPOR!, InaRisk, pasal.id |
+| ✅ **Working** (from everywhere) | **22** | Satu Data, BPS, BMKG, BI, BNPB, BPJPH (new), BPOM, AHU, OSS, LHKPN, Jakarta, Kemnaker, ESDM, KKP, ATR/BPN, Kemenkes, Kemenag, OCCRP, ICW, LAPOR!, InaRisk, pasal.id, Aturan.org |
 | ⚠️ **Geo-blocked** (ID only) | **6** | JDIH BPK, LPSE, OJK Registry, KSEI, Satgas Waspada, DJPB Budget |
 | ⚠️ **CF/Bot blocked** | **5** | IDX, Jabar, Komdigi, OpenCorporates, (BPS now working ✅) |
 | ❌ **Down** (DNS ok, server dead) | **3** | Bandung (400/500), AHU-BO (404), KSEI Stats (404) |
