@@ -5,7 +5,7 @@
 
 A comprehensive reference for **57 Indonesian government data portals, APIs, and data sources** — with practical Python examples, scraping patterns, and gotchas learned from production use.
 
-> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking portal availability from Sydney/AU. The Jakarta/ID probe is currently unavailable; missing ID observations are skipped and are not evidence of geo-blocking.
+> **📊 [status.datarakyat.id](https://status.datarakyat.id)** — Live daily status page tracking **75 monitors**: the 57 catalogued portals plus 18 program-data endpoints (procurement, MBG, regional finance, food prices, weather, disaster, courts). Checks run daily at 04:30 UTC from an international probe; some endpoints also get a content check and show as **degraded** when they respond without the expected data. The Jakarta/ID probe is currently unavailable; missing ID observations are skipped and are not evidence of geo-blocking.
 >
 > **Latest automated result:** [`status/data/latest.json`](status/data/latest.json)
 
@@ -194,9 +194,13 @@ requests.get("https://{portal}/api/3/action/package_search", params={"q": "keywo
 
 ## 📅 Portal Status Timeline
 
-Daily log of which Indonesian government portals are accessible, blocked, or down. Currently monitored from Sydney (AU); Jakarta (ID) observations are recorded as unavailable and skipped. Monitoring is provided by [indonesia-civic-signal-monitor](https://github.com/suryast/indonesia-civic-signal-monitor).
+Daily log of which Indonesian government portals are accessible, blocked, or down. Checks are run by [`status/check.py`](status/check.py) from an international probe; Jakarta (ID) observations are recorded as unavailable and skipped while that probe is offline.
 
-**Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no public status page. This is the closest thing to one.
+**Why this matters:** Indonesian government websites frequently go down, change URLs, add geo-blocks, or break without notice. There's no official status page. [status.datarakyat.id](https://status.datarakyat.id) is the closest thing to one.
+
+### 2026-10-10 (Saturday) — [Full update](status/2026-10-10-update.md)
+
+**Monitors: 57 → 75.** Added 18 program-data endpoints in three new status-page groups: *Procurement & Program Data* (INAPROC Data API docs, Satu Data eProc, SIRUP, BGN SPPG Operasional, Cek Bansos, DJPK SIKD, PIHPS, Panel Harga Pangan), *Data APIs & Catalogues* (Satu Data CKAN API, BMKG forecast API, BNPB Satu Data Bencana, Data Referensi Pendidikan) and *Courts & Law* (5 SIPP court instances, JDIHN). Repointed 4 entries whose data moved: Putusan MK → mkri.id, Kemendikdasmen → dapo.kemendikdasmen.go.id, Jakarta → satudata.jakarta.go.id, BIG → geoservices.big.go.id. New **degraded** status for endpoints that respond but lack the expected content. The new URLs had not been live-tested when this was written; the first daily runs are the verification.
 
 ### 2026-03-29 (Sunday) — [Full update](status/2026-03-29-update.md)
 
