@@ -39,6 +39,7 @@
     --up: #16a34a; --up-dim: rgba(22,163,74,.08);
     --warn: #ca8a04; --warn-dim: rgba(202,138,4,.08);
     --down: #dc2626; --down-dim: rgba(220,38,38,.08);
+    --row-columns: 1fr 200px auto;
   }
 
   * { margin: 0; padding: 0; box-sizing: border-box; }
@@ -98,11 +99,18 @@
   /* Portal rows */
   .portal-row {
     display: grid;
-    grid-template-columns: 1fr 200px auto;
+    grid-template-columns: var(--row-columns);
     align-items: center;
     padding: .625rem 0;
     border-bottom: 1px solid var(--border);
     gap: .75rem;
+  }
+  /* Rows share one column set, so every history strip ends on the same line
+     and the status column is as wide as the widest badge on the page. */
+  @supports (grid-template-columns: subgrid) {
+    .portal-grid { display: grid; grid-template-columns: var(--row-columns); column-gap: .75rem; }
+    .tier-group, .portal-row { grid-column: 1 / -1; display: grid; grid-template-columns: subgrid; }
+    .tier-header { grid-column: 1 / -1; }
   }
   .portal-row:last-child { border-bottom: none; }
   .portal-name { font-size: .875rem; font-weight: 600; }
@@ -125,9 +133,9 @@
 
   /* Status pills */
   /* Fit up to 90 daily bars within the desktop and tablet grid tracks. */
-  .spark { display: flex; align-items: center; gap: .5px; height: 24px; }
+  .spark { display: grid; grid-auto-flow: column; grid-auto-columns: minmax(0, 6px); justify-content: end; align-items: center; gap: .5px; height: 24px; }
   .spark-bar {
-    flex: 1; max-width: 6px; min-width: 0; height: 18px; border-radius: 1.5px;
+    min-width: 0; height: 18px; border-radius: 1.5px;
     transition: opacity .15s; cursor: default; position: relative;
   }
   .spark-bar.up { background: var(--up); }
@@ -149,9 +157,10 @@
   .spark-bar:hover .tooltip { opacity: 1; }
 
   /* Status badge */
-  .portal-meta { text-align: right; }
   .badge {
-    display: inline-block;
+    display: block;
+    text-align: center;
+    white-space: nowrap;
     font-family: var(--font-mono);
     font-size: .65rem; font-weight: 600;
     padding: 2px 7px; border-radius: 4px;
@@ -176,11 +185,11 @@
 
   @media (max-width: 768px) {
     .summary { grid-template-columns: repeat(2, 1fr); }
-    .portal-row { grid-template-columns: 1fr 80px auto; }
+    :root { --row-columns: 1fr 80px auto; }
     .spark { max-width: 80px; }
   }
   @media (max-width: 480px) {
-    .portal-row { grid-template-columns: 1fr auto; }
+    :root { --row-columns: 1fr auto; }
     .spark { display: none; }
   }
 </style>
@@ -304,7 +313,7 @@ async function load() {
       tiers[t].push({ ...info, pid });
     }
 
-    let html = "";
+    let html = `<div class="portal-grid">`;
     for (const tier of Object.keys(tiers).sort((a, b) => a - b)) {
       html += `<div class="tier-group"><div class="tier-header">${TIER_NAMES[tier] || `Tier ${tier}`}</div>`;
 
@@ -349,6 +358,7 @@ async function load() {
       }
       html += `</div>`;
     }
+    html += `</div>`;
 
     document.getElementById("portals").innerHTML = html;
   } catch (e) {
