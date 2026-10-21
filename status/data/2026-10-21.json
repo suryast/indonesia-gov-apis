@@ -1,0 +1,1156 @@
+{
+  "schema_version": 2,
+  "date": "2026-10-21",
+  "checked_at": "2026-10-21T09:28:23.704115+00:00",
+  "sources": {
+    "local": {
+      "location": "Unknown geographic location",
+      "provider": "GitHub",
+      "type": "GitHub hosted runner",
+      "available": true
+    }
+  },
+  "portals": {
+    "data-go-id": {
+      "name": "Satu Data (SDI)",
+      "url": "https://data.go.id",
+      "agency": "Bappenas",
+      "tier": 1,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1987,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bps": {
+      "name": "BPS Statistics",
+      "url": "https://webapi.bps.go.id",
+      "agency": "BPS",
+      "tier": 1,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 1216,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bmkg": {
+      "name": "BMKG Weather",
+      "url": "https://data.bmkg.go.id/DataMKG/TEWS/autogempa.json",
+      "agency": "BMKG",
+      "tier": 1,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 140,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "idx": {
+      "name": "IDX / BEI",
+      "url": "https://idx.co.id",
+      "agency": "BEI",
+      "tier": 1,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 49,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "djpb-treasury": {
+      "name": "DJPB Treasury",
+      "url": "https://data.treasury.kemenkeu.go.id",
+      "agency": "Kemenkeu",
+      "tier": 1,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 1760,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "jdih-bpk": {
+      "name": "JDIH BPK",
+      "url": "https://jdih.bpk.go.id",
+      "agency": "BPK",
+      "tier": 1,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 113,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "putusan-ma": {
+      "name": "Putusan MA",
+      "url": "https://putusan3.mahkamahagung.go.id",
+      "agency": "MA",
+      "tier": 1,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 39,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "lpse": {
+      "name": "LPSE / INAPROC",
+      "url": "https://spse.inaproc.id",
+      "agency": "LKPP",
+      "tier": 1,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 139,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "apbn": {
+      "name": "Portal APBN",
+      "url": "https://data.anggaran.kemenkeu.go.id",
+      "agency": "Kemenkeu",
+      "tier": 1,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 506,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "bi": {
+      "name": "Bank Indonesia",
+      "url": "https://www.bi.go.id",
+      "agency": "BI",
+      "tier": 1,
+      "status": "network_error",
+      "observations": {
+        "local": {
+          "http_code": 302,
+          "latency_ms": 1754,
+          "status": "network_error",
+          "curl_exit_code": 56
+        }
+      }
+    },
+    "big": {
+      "name": "BIG Geoservices (ArcGIS)",
+      "url": "https://geoservices.big.go.id/rbi/rest/services?f=json",
+      "agency": "BIG",
+      "tier": 1,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2260,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "bnpb": {
+      "name": "BNPB Disaster",
+      "url": "https://dibi.bnpb.go.id",
+      "agency": "BNPB",
+      "tier": 1,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1471,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bpjph-old": {
+      "name": "BPJPH Halal (old)",
+      "url": "https://sertifikasi.halal.go.id",
+      "agency": "BPJPH",
+      "tier": 2,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 128,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "bpjph-new": {
+      "name": "BPJPH Halal (new)",
+      "url": "https://bpjph.halal.go.id",
+      "agency": "BPJPH",
+      "tier": 2,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2098,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bpom": {
+      "name": "BPOM Products",
+      "url": "https://cekbpom.pom.go.id",
+      "agency": "BPOM",
+      "tier": 2,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1921,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ahu": {
+      "name": "AHU Company Registry",
+      "url": "https://ahu.go.id",
+      "agency": "AHU",
+      "tier": 2,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 5029,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "oss": {
+      "name": "OSS / NIB",
+      "url": "https://oss.go.id",
+      "agency": "BKPM",
+      "tier": 2,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2474,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ojk-registry": {
+      "name": "OJK Registry",
+      "url": "https://sikapiuangmu.ojk.go.id",
+      "agency": "OJK",
+      "tier": 2,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 1499,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ojk-api": {
+      "name": "OJK API",
+      "url": "https://api.ojk.go.id",
+      "agency": "OJK",
+      "tier": 2,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 256,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "lhkpn": {
+      "name": "KPK e-LHKPN",
+      "url": "https://elhkpn.kpk.go.id",
+      "agency": "KPK",
+      "tier": 2,
+      "status": "network_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 9775,
+          "status": "network_error",
+          "curl_exit_code": 7
+        }
+      }
+    },
+    "putusan-mk": {
+      "name": "Putusan MK",
+      "url": "https://www.mkri.id/perkara/persidangan/putusan",
+      "agency": "MK",
+      "tier": 2,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 120,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "ksei": {
+      "name": "KSEI Statistics",
+      "url": "https://www.ksei.co.id",
+      "agency": "KSEI",
+      "tier": 2,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 16737,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ppid": {
+      "name": "e-PPID",
+      "url": "https://ppid.kemenkeu.go.id",
+      "agency": "Kemenkeu",
+      "tier": 2,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 256,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "pajak": {
+      "name": "Pajak / DJP",
+      "url": "https://ereg.pajak.go.id",
+      "agency": "DJP",
+      "tier": 2,
+      "status": "timeout",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 20002,
+          "status": "timeout",
+          "curl_exit_code": 28
+        }
+      }
+    },
+    "jakarta": {
+      "name": "Satu Data Jakarta",
+      "url": "https://satudata.jakarta.go.id",
+      "agency": "DKI Jakarta",
+      "tier": 3,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1288,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "jabar": {
+      "name": "Open Data Jabar",
+      "url": "https://opendata.jabarprov.go.id",
+      "agency": "Jawa Barat",
+      "tier": 3,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 51,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "jatim": {
+      "name": "Open Data Jatim",
+      "url": "https://data.jatimprov.go.id",
+      "agency": "Jawa Timur",
+      "tier": 3,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 58,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "surabaya": {
+      "name": "Satu Data Surabaya",
+      "url": "https://data.surabaya.go.id",
+      "agency": "Surabaya",
+      "tier": 3,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 256,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "bandung": {
+      "name": "Open Data Bandung",
+      "url": "https://data.bandung.go.id",
+      "agency": "Bandung",
+      "tier": 3,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1042,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bali": {
+      "name": "Open Data Bali",
+      "url": "https://data.baliprov.go.id",
+      "agency": "Bali",
+      "tier": 3,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 64,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "kemnaker": {
+      "name": "Kemnaker",
+      "url": "https://kemnaker.go.id",
+      "agency": "Ketenagakerjaan",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2476,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "komdigi": {
+      "name": "Komdigi",
+      "url": "https://komdigi.go.id",
+      "agency": "Komunikasi Digital",
+      "tier": 4,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 289,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "esdm": {
+      "name": "ESDM Energy",
+      "url": "https://www.esdm.go.id",
+      "agency": "ESDM",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 3526,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "kkp": {
+      "name": "KKP Fisheries",
+      "url": "https://kkp.go.id",
+      "agency": "KKP",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1804,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "atr-bpn": {
+      "name": "ATR/BPN Land",
+      "url": "https://www.atrbpn.go.id",
+      "agency": "ATR/BPN",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1061,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "kemdikbud": {
+      "name": "Dapodik Kemendikdasmen",
+      "url": "https://dapo.kemendikdasmen.go.id/pencarian",
+      "agency": "Kemendikdasmen",
+      "tier": 4,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 1361,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "kemenkes": {
+      "name": "Kemenkes Health",
+      "url": "https://sirs.kemkes.go.id",
+      "agency": "Kemenkes",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1299,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "kemenag": {
+      "name": "Kemenag",
+      "url": "https://simas.kemenag.go.id",
+      "agency": "Kemenag",
+      "tier": 4,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2454,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "occrp": {
+      "name": "OCCRP Aleph",
+      "url": "https://aleph.occrp.org",
+      "agency": "OCCRP",
+      "tier": 5,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 532,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "opencorporates": {
+      "name": "OpenCorporates",
+      "url": "https://opencorporates.com",
+      "agency": "OpenCorporates",
+      "tier": 5,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 87,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "eiti": {
+      "name": "EITI Indonesia",
+      "url": "https://eiti.esdm.go.id",
+      "agency": "EITI/ESDM",
+      "tier": 5,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 128,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "ahu-bo": {
+      "name": "AHU-BO",
+      "url": "https://ahu.go.id/pencarian/pencarian-bo",
+      "agency": "AHU",
+      "tier": 5,
+      "status": "http_error",
+      "observations": {
+        "local": {
+          "http_code": 404,
+          "latency_ms": 1783,
+          "status": "http_error",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "icw": {
+      "name": "ICW Corruption Watch",
+      "url": "https://antikorupsi.org",
+      "agency": "ICW",
+      "tier": 5,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2176,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ojk-sikepo": {
+      "name": "OJK SIKEPO (OJK root-only probe)",
+      "url": "https://ojk.go.id",
+      "agency": "OJK",
+      "tier": 6,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 956,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "satgas-waspada": {
+      "name": "Satgas Waspada",
+      "url": "https://sikapiuangmu.ojk.go.id",
+      "agency": "OJK",
+      "tier": 6,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 833,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "ksei-stats": {
+      "name": "KSEI Investor Stats",
+      "url": "https://www.ksei.co.id/publications",
+      "agency": "KSEI",
+      "tier": 6,
+      "status": "http_error",
+      "observations": {
+        "local": {
+          "http_code": 404,
+          "latency_ms": 2329,
+          "status": "http_error",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "djpb-budget": {
+      "name": "DJPB Budget",
+      "url": "https://djpb.kemenkeu.go.id",
+      "agency": "DJPB",
+      "tier": 6,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 14780,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "lapor": {
+      "name": "LAPOR!",
+      "url": "https://www.lapor.go.id",
+      "agency": "KemenPANRB",
+      "tier": 7,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 3059,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "indolii": {
+      "name": "IndoLII",
+      "url": "https://www.indolii.org",
+      "agency": "USAID",
+      "tier": 7,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 7,
+          "status": "dns_error",
+          "curl_exit_code": 6
+        }
+      }
+    },
+    "geoportal": {
+      "name": "Geoportal One Map",
+      "url": "https://tanahair.indonesia.go.id",
+      "agency": "BIG/KLHK",
+      "tier": 7,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1380,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "inarisk": {
+      "name": "SIGAP / InaRisk",
+      "url": "https://inarisk.bnpb.go.id",
+      "agency": "BNPB",
+      "tier": 7,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 977,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "pasal-id": {
+      "name": "pasal.id",
+      "url": "https://pasal.id",
+      "agency": "Community",
+      "tier": 7,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 847,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "kpu": {
+      "name": "KPU Elections",
+      "url": "https://www.kpu.go.id",
+      "agency": "KPU",
+      "tier": 8,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1490,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "simbg": {
+      "name": "SIMBG Building Permits",
+      "url": "https://simbg.pu.go.id",
+      "agency": "Kemen PUPR",
+      "tier": 8,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 414,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "coretax": {
+      "name": "CoreTax DJP",
+      "url": "https://coretaxdjp.pajak.go.id",
+      "agency": "DJP",
+      "tier": 8,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1237,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "satusehat": {
+      "name": "SATUSEHAT",
+      "url": "https://satusehat.kemkes.go.id",
+      "agency": "Kemenkes",
+      "tier": 8,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 424,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "cmsbl-halal": {
+      "name": "Legacy cmsbl Halal (unverified web endpoint)",
+      "url": "https://cmsbl.halal.go.id",
+      "agency": "BPJPH (legacy attribution)",
+      "tier": 8,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 997,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "inaproc-api": {
+      "name": "INAPROC Data API (docs)",
+      "url": "https://data.inaproc.id/docs/dokumentasi/guides/migration-from-isb",
+      "agency": "LKPP",
+      "tier": 9,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 136,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "inaproc-satudata": {
+      "name": "Satu Data eProc",
+      "url": "https://inaproc.id/satudata",
+      "agency": "LKPP",
+      "tier": 9,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 135,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "sirup": {
+      "name": "SIRUP / RUP",
+      "url": "https://sirup.inaproc.id",
+      "agency": "LKPP",
+      "tier": 9,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 125,
+          "status": "blocked",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "bgn-sppg": {
+      "name": "SPPG Operasional (MBG)",
+      "url": "https://www.bgn.go.id/operasional-sppg",
+      "agency": "BGN",
+      "tier": 9,
+      "status": "http_error",
+      "observations": {
+        "local": {
+          "http_code": 418,
+          "latency_ms": 1209,
+          "status": "http_error",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "cekbansos": {
+      "name": "Cek Bansos",
+      "url": "https://cekbansos.kemensos.go.id/",
+      "agency": "Kemensos",
+      "tier": 9,
+      "status": "timeout",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 20002,
+          "status": "timeout",
+          "curl_exit_code": 28,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "djpk-sikd": {
+      "name": "Portal Data SIKD (APBD)",
+      "url": "https://djpk.kemenkeu.go.id/portal/data/apbd",
+      "agency": "DJPK Kemenkeu",
+      "tier": 9,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 12401,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "pihps": {
+      "name": "PIHPS Harga Pangan",
+      "url": "https://www.bi.go.id/hargapangan",
+      "agency": "BI",
+      "tier": 9,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 6672,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "panelharga": {
+      "name": "Panel Harga Pangan",
+      "url": "https://panelharga.badanpangan.go.id/",
+      "agency": "Bapanas",
+      "tier": 9,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1264,
+          "status": "up",
+          "curl_exit_code": 0
+        }
+      }
+    },
+    "sdi-ckan": {
+      "name": "Satu Data CKAN API",
+      "url": "https://katalog.data.go.id/api/3/action/package_search?rows=0",
+      "agency": "Bappenas",
+      "tier": 10,
+      "status": "dns_error",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 64,
+          "status": "dns_error",
+          "curl_exit_code": 6,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "bmkg-forecast": {
+      "name": "BMKG Forecast API",
+      "url": "https://api.bmkg.go.id/publik/prakiraan-cuaca?adm4=31.71.03.1001",
+      "agency": "BMKG",
+      "tier": 10,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 63,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "bnpb-ckan": {
+      "name": "Satu Data Bencana (CKAN)",
+      "url": "https://data.bnpb.go.id/api/3/action/status_show",
+      "agency": "BNPB",
+      "tier": 10,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 434,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "referensi-pendidikan": {
+      "name": "Data Referensi Pendidikan",
+      "url": "https://referensi.data.kemendikdasmen.go.id/",
+      "agency": "Kemendikdasmen",
+      "tier": 10,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2709,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "sipp-jakut": {
+      "name": "SIPP PN Jakarta Utara",
+      "url": "https://sipp.pn-jakartautara.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 2493,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "sipp-sleman": {
+      "name": "SIPP PN Sleman",
+      "url": "https://sipp.pn-sleman.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "status": "up",
+      "observations": {
+        "local": {
+          "http_code": 200,
+          "latency_ms": 1751,
+          "status": "up",
+          "curl_exit_code": 0,
+          "content_check": "matched"
+        }
+      }
+    },
+    "sipp-medan": {
+      "name": "SIPP PN Medan",
+      "url": "https://sipp.pn-medankota.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 130,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "sipp-palembang": {
+      "name": "SIPP PN Palembang",
+      "url": "https://sipp.pn-palembang.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 134,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "sipp-semarang": {
+      "name": "SIPP PN Semarang",
+      "url": "https://sipp.pn-semarangkota.go.id/",
+      "agency": "MA",
+      "tier": 11,
+      "status": "blocked",
+      "observations": {
+        "local": {
+          "http_code": 403,
+          "latency_ms": 38,
+          "status": "blocked",
+          "curl_exit_code": 0,
+          "content_check": "unverified"
+        }
+      }
+    },
+    "jdihn": {
+      "name": "JDIHN",
+      "url": "https://jdihn.go.id/",
+      "agency": "BPHN",
+      "tier": 11,
+      "status": "timeout",
+      "observations": {
+        "local": {
+          "http_code": 0,
+          "latency_ms": 20002,
+          "status": "timeout",
+          "curl_exit_code": 28
+        }
+      }
+    }
+  }
+}
