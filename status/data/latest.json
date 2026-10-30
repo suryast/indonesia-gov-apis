@@ -1,7 +1,7 @@
 {
   "schema_version": 2,
-  "date": "2026-10-29",
-  "checked_at": "2026-10-29T10:59:54.356975+00:00",
+  "date": "2026-10-30",
+  "checked_at": "2026-10-30T10:57:23.045088+00:00",
   "sources": {
     "local": {
       "location": "Unknown geographic location",
@@ -20,7 +20,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1614,
+          "latency_ms": 1594,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -35,7 +35,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1918,
+          "latency_ms": 2088,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -50,7 +50,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 452,
+          "latency_ms": 180,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -65,7 +65,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 371,
+          "latency_ms": 49,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -80,7 +80,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 257,
+          "latency_ms": 256,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -95,7 +95,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 293,
+          "latency_ms": 157,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -110,7 +110,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 381,
+          "latency_ms": 356,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -125,7 +125,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 123,
+          "latency_ms": 59,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -155,7 +155,7 @@
       "observations": {
         "local": {
           "http_code": 302,
-          "latency_ms": 1711,
+          "latency_ms": 1772,
           "status": "network_error",
           "curl_exit_code": 56
         }
@@ -170,7 +170,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1249,
+          "latency_ms": 1309,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -186,7 +186,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1317,
+          "latency_ms": 1415,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -216,7 +216,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1805,
+          "latency_ms": 2184,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -231,7 +231,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1896,
+          "latency_ms": 2116,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -246,7 +246,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1253,
+          "latency_ms": 1418,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -261,7 +261,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2174,
+          "latency_ms": 2365,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -276,7 +276,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 1490,
+          "latency_ms": 922,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -291,7 +291,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 256,
+          "latency_ms": 64,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -306,7 +306,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2202,
+          "latency_ms": 2325,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -321,7 +321,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 195,
+          "latency_ms": 133,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -337,7 +337,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 18003,
+          "latency_ms": 16740,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -352,7 +352,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 507,
+          "latency_ms": 256,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -367,7 +367,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 20002,
+          "latency_ms": 20001,
           "status": "timeout",
           "curl_exit_code": 28
         }
@@ -382,7 +382,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1231,
+          "latency_ms": 1279,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -397,7 +397,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 205,
+          "latency_ms": 51,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -412,7 +412,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 122,
+          "latency_ms": 177,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -427,7 +427,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 256,
+          "latency_ms": 257,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -442,7 +442,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 950,
+          "latency_ms": 1056,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -457,7 +457,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 129,
+          "latency_ms": 64,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -472,7 +472,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1931,
+          "latency_ms": 2451,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -487,7 +487,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 869,
+          "latency_ms": 1048,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -502,7 +502,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 4917,
+          "latency_ms": 3156,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -517,7 +517,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1587,
+          "latency_ms": 1782,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -532,7 +532,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 10303,
+          "latency_ms": 2058,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -547,7 +547,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 946,
+          "latency_ms": 1041,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -562,7 +562,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1122,
+          "latency_ms": 1320,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -577,7 +577,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2128,
+          "latency_ms": 2252,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -592,7 +592,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 701,
+          "latency_ms": 364,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -607,7 +607,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 180,
+          "latency_ms": 103,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -637,7 +637,7 @@
       "observations": {
         "local": {
           "http_code": 404,
-          "latency_ms": 1114,
+          "latency_ms": 1371,
           "status": "http_error",
           "curl_exit_code": 0
         }
@@ -652,7 +652,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2086,
+          "latency_ms": 2176,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -667,7 +667,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 990,
+          "latency_ms": 1061,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -682,7 +682,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 755,
+          "latency_ms": 923,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -697,7 +697,7 @@
       "observations": {
         "local": {
           "http_code": 404,
-          "latency_ms": 5824,
+          "latency_ms": 6311,
           "status": "http_error",
           "curl_exit_code": 0
         }
@@ -712,7 +712,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 8227,
+          "latency_ms": 8740,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -727,7 +727,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2480,
+          "latency_ms": 2769,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -742,7 +742,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 63,
+          "latency_ms": 7,
           "status": "dns_error",
           "curl_exit_code": 6
         }
@@ -757,7 +757,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1440,
+          "latency_ms": 1399,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -772,7 +772,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 965,
+          "latency_ms": 1113,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -787,7 +787,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1274,
+          "latency_ms": 666,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -802,7 +802,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1330,
+          "latency_ms": 1368,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -817,7 +817,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 565,
+          "latency_ms": 491,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -832,7 +832,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1202,
+          "latency_ms": 1312,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -847,7 +847,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1507,
+          "latency_ms": 460,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -862,7 +862,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 893,
+          "latency_ms": 996,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -877,7 +877,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 195,
+          "latency_ms": 126,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -893,7 +893,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 193,
+          "latency_ms": 66,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -909,7 +909,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 101,
+          "latency_ms": 131,
           "status": "blocked",
           "curl_exit_code": 0
         }
@@ -924,7 +924,7 @@
       "observations": {
         "local": {
           "http_code": 418,
-          "latency_ms": 1109,
+          "latency_ms": 1270,
           "status": "http_error",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -956,7 +956,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 4637,
+          "latency_ms": 7535,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -972,7 +972,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 5829,
+          "latency_ms": 4739,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -987,7 +987,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1675,
+          "latency_ms": 1747,
           "status": "up",
           "curl_exit_code": 0
         }
@@ -1002,7 +1002,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 31,
+          "latency_ms": 64,
           "status": "dns_error",
           "curl_exit_code": 6,
           "content_check": "unverified"
@@ -1018,7 +1018,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 186,
+          "latency_ms": 374,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -1034,7 +1034,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 955,
+          "latency_ms": 1118,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -1050,7 +1050,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1535,
+          "latency_ms": 1640,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -1066,7 +1066,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 2156,
+          "latency_ms": 2179,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -1082,7 +1082,7 @@
       "observations": {
         "local": {
           "http_code": 200,
-          "latency_ms": 1505,
+          "latency_ms": 1482,
           "status": "up",
           "curl_exit_code": 0,
           "content_check": "matched"
@@ -1098,7 +1098,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 259,
+          "latency_ms": 175,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -1114,7 +1114,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 181,
+          "latency_ms": 155,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -1130,7 +1130,7 @@
       "observations": {
         "local": {
           "http_code": 403,
-          "latency_ms": 172,
+          "latency_ms": 126,
           "status": "blocked",
           "curl_exit_code": 0,
           "content_check": "unverified"
@@ -1146,7 +1146,7 @@
       "observations": {
         "local": {
           "http_code": 0,
-          "latency_ms": 20001,
+          "latency_ms": 20002,
           "status": "timeout",
           "curl_exit_code": 28
         }
